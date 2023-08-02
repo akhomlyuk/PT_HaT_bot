@@ -22,7 +22,7 @@ async def menu_buttons(message: Message):
         builder.add(InlineKeyboardButton(text="🤖 File IDs bot", callback_data="file_id_bot"))
         builder.adjust(2)
         await message.answer(
-            "Меню:",
+            "🛡 Меню",
             reply_markup=builder.as_markup()
         )
     except Exception as e:

@@ -45,8 +45,8 @@ async def send_b64_encode(message: Message):
         if len(msg) == 1:
             await message.answer(f'Пример:\n<code>!b64_encode Pentest HaT</code>')
         else:
-            msg = ''.join(msg[1:])
-            await message.answer(f'{b64_encode(msg)}')
+            msg2 = message.text[12:]
+            await message.answer(f'{b64_encode(msg2)}')
     except Exception as e:
         logging.warning(e)
         ic(e)
