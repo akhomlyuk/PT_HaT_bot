@@ -5,8 +5,9 @@ bot_token = os.getenv('pt_hat_bot_token')
 bot = Bot(token=bot_token, parse_mode="HTML")
 
 all_commands = {'help_cmds': '!help', 'menu_cmds': '!menu', 'wiki_cmds': '!wiki',
-                'id_cmds': '!id', 'cmds_cmds': '!cmds', 'rev_cmds': '!rev',
-                'links_cmds': '!links',
+                'id_cmds': '!id', 'jwt_cmds': '!jwt', 'cmds_cmds': '!cmds', 'rev_cmds': '!rev',
+                'b64decode_cmds': '!b64_decode', 'b64encode_cmds': '!b64_encode',
+                'links_cmds': '!links'
                 }
 
 admins = [539491282]

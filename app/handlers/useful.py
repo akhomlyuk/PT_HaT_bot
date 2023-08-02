@@ -3,6 +3,7 @@ from aiogram.types import Message
 import logging
 import app.config.cfg as cfg
 from app.helpers.revshell import generate_revshell
+from app.helpers.jwt_decode import jwt_decode
 from icecream import ic
 
 router: Router = Router()
@@ -18,11 +19,30 @@ async def show_menu(message: Message):
         await message.answer(f'{e}')
 
 
+# Декодирование header и payload JWT
+@router.message(F.text.startswith(cfg.all_commands['jwt_cmds']))
+async def send_decode_jwt(message: Message):
+    try:
+        jwt = message.text.split()
+        ic(jwt)
+        ic()
+        if len(jwt) != 2:
+            await message.answer(
+                f'Пример:\n<code>!jwt eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImlhdCI6MTY5MTAxMjU3MSwiZXhwIjoxNjkxMDE2MTcxfQ.BNM4pLUB6wYlnXC0NvHiShDIM6KtIk81prLW8VBCZ88</code>')
+        else:
+            await message.answer(f'<b>Header:</b>\n<code>{jwt_decode(jwt[1])[0]}</code>\n\n'
+                                 f'<b>Payload:</b>\n<code>{jwt_decode(jwt[1])[1]}</code>')
+    except Exception as e:
+        logging.warning(e)
+        ic(e)
+        await message.answer(f'Не валидный JWT')
+
+
+# Вывод всех команд бота
 @router.message(F.text.in_(cfg.all_commands['cmds_cmds']))
 async def show_all_commands(message: Message):
     try:
         commands = '\n'.join([v for v in cfg.all_commands.values()])
-        # await message.answer(f'{cfg.bot_commands}')
         await message.answer(f'<code>{commands}</code>')
     except Exception as e:
         logging.warning(e)
@@ -30,7 +50,7 @@ async def show_all_commands(message: Message):
         await message.answer(f'{e}')
 
 
-# Отправка строки с последующей генерацией реверс шелла
+# Отправка строки с последующей генерацией и выводом реверс шелла
 @router.message(F.text.startswith(cfg.all_commands['rev_cmds']))
 async def send_rev_shell(message: Message):
     try:
@@ -48,7 +68,7 @@ async def send_rev_shell(message: Message):
             else:
                 match msg[1]:
                     case "php":
-                        await message.answer(f'<code>{html.quote(generate_revshell(msg[2], int(msg[3]), revs[0] ))}</code>')
+                        await message.answer(f'<code>{html.quote(generate_revshell(msg[2], int(msg[3]), revs[0]))}</code>')
                     case "bash":
                         await message.answer(f'<code>{html.quote(generate_revshell(msg[2], int(msg[3]), revs[1]))}</code>')
                     case 'python':

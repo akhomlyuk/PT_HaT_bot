@@ -15,8 +15,9 @@ async def menu_buttons(message: Message):
     try:
         builder = InlineKeyboardBuilder()
         builder.add(InlineKeyboardButton(text="🎩 Pentest HaT", callback_data="pt_hat_channel"))
-        builder.add(InlineKeyboardButton(text="🎩 Группа", callback_data="pt_hat_group"))
+        builder.add(InlineKeyboardButton(text="🔧 Base tools", callback_data="base_tools"))
         builder.add(InlineKeyboardButton(text="🔌 Revshell", callback_data="rev_shell"))
+        builder.add(InlineKeyboardButton(text="🔓 JWT Decode", callback_data="jwt_decode"))
         builder.add(InlineKeyboardButton(text="⚙️ Commands", callback_data="bot_commands"))
         builder.add(InlineKeyboardButton(text="🤖 File IDs bot", callback_data="file_id_bot"))
         builder.adjust(2)
@@ -29,6 +30,7 @@ async def menu_buttons(message: Message):
         await message.answer(str(e))
 
 
+# Коллбеки для пунктов меню
 @router.callback_query(F.data == 'pt_hat_channel')
 async def send_channel_link(callback: CallbackQuery):
     await callback.message.answer('https://t.me/pt_soft')
@@ -63,6 +65,29 @@ async def send_bot_commands(callback: CallbackQuery):
 async def send_fileid_bot_link(callback: CallbackQuery):
     try:
         await callback.message.answer(f'Отправить любой файл или сообщение: @File_IDs_bot')
+        await callback.answer()
+    except Exception as e:
+        ic(e)
+
+
+@router.callback_query(F.data == 'jwt_decode')
+async def send_fileid_bot_link(callback: CallbackQuery):
+    try:
+        await callback.message.answer(f'Пример:\n<code>!jwt eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImlhdCI6MTY5MTAxMjU3MSwiZXhwIjoxNjkxMDE2MTcxfQ.BNM4pLUB6wYlnXC0NvHiShDIM6KtIk81prLW8VBCZ88</code>')
+        await callback.answer()
+    except Exception as e:
+        ic(e)
+
+
+@router.callback_query(F.data == 'base_tools')
+async def send_base_tools_description(callback: CallbackQuery):
+    try:
+        await callback.message.answer(f'''
+Пример:
+<code>!b64_decode UGVudGVzdCBIYVQ=</code>
+
+Пример:
+<code>!b64_encode Pentest HaT</code>''')
         await callback.answer()
     except Exception as e:
         ic(e)
