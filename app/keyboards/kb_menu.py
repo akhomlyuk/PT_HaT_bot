@@ -17,8 +17,9 @@ async def menu_buttons(message: Message):
         builder = InlineKeyboardBuilder()
         builder.add(InlineKeyboardButton(text="🎩 Pentest HaT", callback_data="pt_hat_channel"))
         builder.add(InlineKeyboardButton(text="🎩 Группа", callback_data="pt_hat_group"))
-        builder.add(InlineKeyboardButton(text="🔌 Revshell ", callback_data="rev_shell"))
-        builder.add(InlineKeyboardButton(text="⚙️ Commands ", callback_data="bot_commands"))
+        builder.add(InlineKeyboardButton(text="🔌 Revshell", callback_data="rev_shell"))
+        builder.add(InlineKeyboardButton(text="⚙️ Commands", callback_data="bot_commands"))
+        builder.add(InlineKeyboardButton(text="🤖 File IDs bot", callback_data="file_id_bot"))
         builder.adjust(2)
         await message.answer(
             "Меню:",
@@ -54,6 +55,15 @@ async def send_revshell(callback: CallbackQuery):
 async def send_bot_commands(callback: CallbackQuery):
     try:
         await callback.message.answer(f'{cfg.bot_commands}')
+        await callback.answer()
+    except Exception as e:
+        ic(e)
+
+
+@router.callback_query(F.data == 'file_id_bot')
+async def send_fileid_bot_link(callback: CallbackQuery):
+    try:
+        await callback.message.answer(f'@File_IDs_bot')
         await callback.answer()
     except Exception as e:
         ic(e)

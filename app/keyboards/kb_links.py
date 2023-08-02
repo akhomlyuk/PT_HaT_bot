@@ -12,12 +12,16 @@ async def links_buttons(message: Message):
     try:
         builder = InlineKeyboardBuilder()
         builder.add(InlineKeyboardButton(
-            text="Канал 🎩",
+            text="🎩 Канал",
             url='https://t.me/pt_soft')
         )
         builder.add(InlineKeyboardButton(
-            text="Группа 🎩",
+            text="🎩 Группа",
             url="https://t.me/pt_hat")
+        )
+        builder.add(InlineKeyboardButton(
+            text="🤖 File IDs bot",
+            url="https://t.me/File_IDs_bot")
         )
 
         builder.adjust(2)
