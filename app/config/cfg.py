@@ -10,6 +10,7 @@ bot_commands = f'''
 <code>!help</code> - Справка
 <code>!menu</code> - Основное меню
 <code>!id</code> - Показать ID
-<code>!rev</code> - !rev 127.0.0.1 31337
-<code>!links</code> - полезные ссылки
+<code>!rev</code> - <code>!rev 127.0.0.1 31337</code>
+<code>!rev bash 127.0.0.1 31337</code>
+<code>!links</code> - Полезные ссылки
 '''
