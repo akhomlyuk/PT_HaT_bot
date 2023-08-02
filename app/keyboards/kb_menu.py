@@ -8,10 +8,9 @@ from app.texts import revshells
 from icecream import ic
 
 router: Router = Router()
-menu_commands = ['!menu']
 
 
-@router.message(F.text.in_(menu_commands))
+@router.message(F.text.in_(cfg.all_commands['menu_cmds']))
 async def menu_buttons(message: Message):
     try:
         builder = InlineKeyboardBuilder()
@@ -63,7 +62,7 @@ async def send_bot_commands(callback: CallbackQuery):
 @router.callback_query(F.data == 'file_id_bot')
 async def send_fileid_bot_link(callback: CallbackQuery):
     try:
-        await callback.message.answer(f'@File_IDs_bot')
+        await callback.message.answer(f'Отправить любой файл или сообщение: @File_IDs_bot')
         await callback.answer()
     except Exception as e:
         ic(e)

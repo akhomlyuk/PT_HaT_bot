@@ -6,24 +6,24 @@ from app.helpers.revshell import generate_revshell
 from icecream import ic
 
 router: Router = Router()
-id_commands = ['!id']
-cmds_commands = ['!cmds']
 
 
-@router.message(F.text.in_(id_commands))
+@router.message(F.text.in_(cfg.all_commands['id_cmds']))
 async def show_menu(message: Message):
     try:
-        await message.answer(f'<b>ID:</b> <code>{message.from_user.id}</code>')
+        await message.answer(f'<b>ID:</b> <code>{message.from_user.id}</code> Premium: {message.from_user.is_premium}')
     except Exception as e:
         logging.warning(e)
         ic(e)
         await message.answer(f'{e}')
 
 
-@router.message(F.text.in_(cmds_commands))
-async def show_menu(message: Message):
+@router.message(F.text.in_(cfg.all_commands['cmds_cmds']))
+async def show_all_commands(message: Message):
     try:
-        await message.answer(f'{cfg.bot_commands}')
+        commands = '\n'.join([v for v in cfg.all_commands.values()])
+        # await message.answer(f'{cfg.bot_commands}')
+        await message.answer(f'<code>{commands}</code>')
     except Exception as e:
         logging.warning(e)
         ic(e)
@@ -31,11 +31,11 @@ async def show_menu(message: Message):
 
 
 # Отправка строки с последующей генерацией реверс шелла
-@router.message(F.text.startswith('!rev'))
+@router.message(F.text.startswith(cfg.all_commands['rev_cmds']))
 async def send_rev_shell(message: Message):
     try:
         revs = ['php', 'bash', 'python', 'nc', 'socat', 'ruby', 'node']
-        example = (f'<code>!rev (nc,php,bash) 127.0.0.1 31337</code>\n<code>!rev 127.0.0.1 31337</code>\n\n'
+        example = (f'Примеры команд:\n\n<code>!rev (nc,php,bash) 127.0.0.1 31337</code>\n<code>!rev 127.0.0.1 31337</code>\n\n'
                    f'<b>{" : ".join(str(s) for s in revs)}</b>')
         msg = message.text
         msg = msg.split(' ')

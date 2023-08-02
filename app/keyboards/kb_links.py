@@ -1,13 +1,13 @@
 from aiogram import Router, F
-from aiogram.types import Message, InlineKeyboardButton, CallbackQuery
+from aiogram.types import Message, InlineKeyboardButton
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 from icecream import ic
+from app.config import cfg
 
 router: Router = Router()
-menu_commands = ['!links']
 
 
-@router.message(F.text.in_(menu_commands))
+@router.message(F.text.in_(cfg.all_commands['links_cmds']))
 async def links_buttons(message: Message):
     try:
         builder = InlineKeyboardBuilder()

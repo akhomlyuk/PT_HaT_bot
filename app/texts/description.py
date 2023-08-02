@@ -1,6 +1,6 @@
-show_description = f'''Добро пожаловать в <b>HaT</b>!
+show_description = f'''Добро пожаловать в <b>Pentest HaT</b>!
 
-!help, !menu
+!menu, !cmds
 Канал: @pt_soft
 
 Coded with ❤️ on 🐍 and aiogram

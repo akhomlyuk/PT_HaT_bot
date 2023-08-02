@@ -3,7 +3,7 @@ import logging
 import os
 from aiogram import Dispatcher, types
 import app.config.cfg as cfg
-from app.handlers import help, useful
+from app.handlers import help, useful, wiki
 from app.keyboards import kb_menu, kb_links
 from icecream import ic
 
@@ -17,6 +17,7 @@ dp.include_router(help.router)
 dp.include_router(useful.router)
 dp.include_router(kb_menu.router)
 dp.include_router(kb_links.router)
+dp.include_router(wiki.router)
 
 
 @dp.errors()

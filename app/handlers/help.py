@@ -7,7 +7,6 @@ import logging
 from icecream import ic
 
 router: Router = Router()
-info_commands = ['!help']
 
 
 @router.message(Command("start"))
@@ -20,7 +19,7 @@ async def cmd_help(message: Message):
     await message.answer(show_description, disable_web_page_preview=True)
 
 
-@router.message(F.text.in_(info_commands))
+@router.message(F.text.in_(cfg.all_commands['help_cmds']))
 async def show_info(message: Message):
     try:
         if message.from_user.id not in cfg.admins:
