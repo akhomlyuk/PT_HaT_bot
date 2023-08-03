@@ -6,8 +6,8 @@ bot = Bot(token=bot_token, parse_mode="HTML")
 
 all_commands = {'help_cmds': '!help', 'menu_cmds': '!menu', 'wiki_cmds': '!wiki',
                 'id_cmds': '!id', 'jwt_cmds': '!jwt', 'cmds_cmds': '!cmds', 'rev_cmds': '!rev',
-                'b64decode_cmds': '!b64d', 'b64encode_cmds': '!b64e',
-                'links_cmds': '!links'
+                'hash_alz_cmds': '!hash', 'b64decode_cmds': '!b64d', 'b64encode_cmds': '!b64e', 'hex2text_cmds': '!h2t',
+                'text2hex_cmds': '!t2h', 'links_cmds': '!links'
                 }
 
 admins = [539491282]
@@ -16,7 +16,9 @@ bot_commands = f'''
 🆘 <code>!help</code> - Справка
 ⚙️ <code>!menu</code> - Основное меню
 ℹ️ <code>!id</code> - Показать ID
+🔮 <code>!hash</code> - Определить хеш
 👁 <code>!rev</code> - Revshell
+🔍 <code>!b64e</code> <code>!b64d</code> - base64
 📑 <code>!links</code> - Полезные ссылки
 📚 <code>!wiki</code> - Показать с вики
 🎲 <code>!cmds</code> - Команды бота

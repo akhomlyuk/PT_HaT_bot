@@ -17,6 +17,7 @@ async def menu_buttons(message: Message):
         builder.add(InlineKeyboardButton(text="🎩 Pentest HaT", callback_data="pt_hat_channel"))
         builder.add(InlineKeyboardButton(text="🔧 Base tools", callback_data="base_tools"))
         builder.add(InlineKeyboardButton(text="🔌 Revshell", callback_data="rev_shell"))
+        builder.add(InlineKeyboardButton(text="🔮 Hash identify", callback_data="hash_identify"))
         builder.add(InlineKeyboardButton(text="🔓 JWT Decode", callback_data="jwt_decode"))
         builder.add(InlineKeyboardButton(text="⚙️ Commands", callback_data="bot_commands"))
         builder.add(InlineKeyboardButton(text="🤖 File IDs bot", callback_data="file_id_bot"))
@@ -87,7 +88,18 @@ async def send_base_tools_description(callback: CallbackQuery):
 <code>!b64d UGVudGVzdCBIYVQ=</code>
 
 Пример:
-<code>!b64e Pentest HaT</code>''')
+<code>!b64e Pentest Hacks and Tools</code>''')
+        await callback.answer()
+    except Exception as e:
+        ic(e)
+
+
+@router.callback_query(F.data == 'hash_identify')
+async def send_hash_ident_help(callback: CallbackQuery):
+    try:
+        await callback.message.answer(f'''
+Пример:
+<code>!hash a6105c0a611b41b08f1209506350279e</code>''')
         await callback.answer()
     except Exception as e:
         ic(e)
