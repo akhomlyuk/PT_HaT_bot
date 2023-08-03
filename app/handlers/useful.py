@@ -42,8 +42,8 @@ async def send_decode_jwt(message: Message):
 @router.message(F.text.in_(cfg.all_commands['cmds_cmds']))
 async def show_all_commands(message: Message):
     try:
-        commands = '\t'.join([v for v in cfg.all_commands.values()])
-        await message.answer(f'<code>{commands}</code>')
+        commands = '\t'.join([str('<code>' + v + '</code>') for v in cfg.all_commands.values()])
+        await message.answer(f'{commands}')
     except Exception as e:
         logging.warning(e)
         ic(e)

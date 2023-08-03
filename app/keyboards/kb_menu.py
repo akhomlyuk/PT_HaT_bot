@@ -84,10 +84,10 @@ async def send_base_tools_description(callback: CallbackQuery):
     try:
         await callback.message.answer(f'''
 Пример:
-<code>!b64_decode UGVudGVzdCBIYVQ=</code>
+<code>!b64d UGVudGVzdCBIYVQ=</code>
 
 Пример:
-<code>!b64_encode Pentest HaT</code>''')
+<code>!b64e Pentest HaT</code>''')
         await callback.answer()
     except Exception as e:
         ic(e)
