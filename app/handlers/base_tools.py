@@ -10,7 +10,7 @@ router: Router = Router()
 
 def b64_decode(b64_enc: str):
     try:
-        b64_dec = base64.b64decode(b64_enc.encode())
+        b64_dec = base64.b64decode(b64_enc.encode() + b'==')
         return b64_dec.decode('utf-8')
     except Exception as e:
         ic(e)
@@ -31,7 +31,7 @@ async def send_b64_decode(message: Message):
         if len(msg) == 1:
             await message.answer(f'Пример:\n<code>!b64_decode UGVudGVzdCBIYVQ=</code>')
         else:
-            await message.answer(f'{b64_decode(msg[1])}')
+            await message.answer(f'<code>{b64_decode(msg[1])}</code>')
     except Exception as e:
         logging.warning(e)
         ic(e)
@@ -45,8 +45,8 @@ async def send_b64_encode(message: Message):
         if len(msg) == 1:
             await message.answer(f'Пример:\n<code>!b64_encode Pentest HaT</code>')
         else:
-            msg2 = message.text[12:]
-            await message.answer(f'{b64_encode(msg2)}')
+            msg2 = message.text[6:]
+            await message.answer(f'<code>{b64_encode(msg2)}</code>')
     except Exception as e:
         logging.warning(e)
         ic(e)
