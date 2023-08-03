@@ -26,5 +26,3 @@ async def send_text2hex_string(message: Message):
             await message.answer("Основные варианты:\n" + text)
     except Exception as e:
         logging.warning(e)
-        ic(e)
-        ic()
