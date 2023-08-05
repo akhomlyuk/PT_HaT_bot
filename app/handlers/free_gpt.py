@@ -27,7 +27,7 @@ def get_free_gpt_list():
 async def send_freegpt_list(message: Message):
     try:
         gpt_list = "\n".join(str(i) for i in get_free_gpt_list())
-        await message.answer(f'Список случайных GPT ботов:\n{gpt_list}', disable_web_page_preview=True)
+        await message.answer(f'🆓 Список случайных GPT ботов:\n\n{gpt_list}', disable_web_page_preview=True)
     except Exception as e:
         logging.warning(e)
         ic(e)

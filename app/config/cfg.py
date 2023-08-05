@@ -20,6 +20,7 @@ bot_commands = f'''
 🔋 <code>!jwt</code> - Декодер JWT
 👁 <code>!rev</code> - Revshell
 🔍 <code>!b64e</code> <code>!b64d</code> - base64
+🤖 <code>!gpt</code> - Список ChatGPT
 📑 <code>!links</code> - Полезные ссылки
 📚 <code>!wiki</code> - Показать с вики
 🎲 <code>!cmds</code> - Команды бота
