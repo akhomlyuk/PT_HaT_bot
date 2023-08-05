@@ -99,3 +99,18 @@ async def new_members_handler(message: Message):
     except Exception as e:
         logging.error(f'{e}')
         ic(e)
+
+
+@router.message(F.left_chat_member)
+async def on_user_join(message: Message):
+    await message.delete()
+
+
+@router.message(F.new_chat_photo)
+async def on_user_join(message: Message):
+    await message.delete()
+
+
+@router.message(F.delete_chat_photo)
+async def on_user_join(message: Message):
+    await message.delete()

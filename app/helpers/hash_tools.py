@@ -9,7 +9,6 @@ def hash_analyze(hash_string: str):
             return text[hash_string]
         else:
             text = runner.api_return_hashes_as_dict([hash_string], {"popular_only": True})
-
             return text[hash_string]
     except Exception as e:
         ic(e)

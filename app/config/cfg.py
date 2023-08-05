@@ -17,6 +17,7 @@ bot_commands = f'''
 ⚙️ <code>!menu</code> - Основное меню
 ℹ️ <code>!id</code> - Показать ID
 🔮 <code>!hash</code> - Определить хеш
+🔋 <code>!jwt</code> - Декодер JWT
 👁 <code>!rev</code> - Revshell
 🔍 <code>!b64e</code> <code>!b64d</code> - base64
 📑 <code>!links</code> - Полезные ссылки

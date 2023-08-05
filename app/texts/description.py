@@ -1,4 +1,4 @@
-show_description = f'''Добро пожаловать в <b>Pentest HaT</b>!
+show_description = f'''Добро пожаловать в <b>Pentest Hacks and Tools 🎩</b>!
 
 !menu, !cmds
 Канал: @pt_soft
