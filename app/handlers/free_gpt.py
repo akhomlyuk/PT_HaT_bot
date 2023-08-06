@@ -15,7 +15,6 @@ def get_free_gpt_list():
         r = requests.get('https://raw.githubusercontent.com/LiLittleCat/awesome-free-chatgpt/main/urls.json')
         gpt_list = json.loads(r.text)
         randomized_urls = random.sample(gpt_list, 10)
-        json_data = json.dumps(randomized_urls, indent=2)
         return randomized_urls
     except Exception as e:
         ic(e)

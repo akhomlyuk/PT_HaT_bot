@@ -5,6 +5,7 @@ from aiogram import html
 import random as rand
 from app.config import cfg
 from app.texts import revshells
+from app.texts.sqli_examples import sqli_example
 from icecream import ic
 
 router: Router = Router()
@@ -15,11 +16,12 @@ async def menu_buttons(message: Message):
     try:
         builder = InlineKeyboardBuilder()
         builder.add(InlineKeyboardButton(text="🎩 Pentest HaT", callback_data="pt_hat_channel"))
+        builder.add(InlineKeyboardButton(text="⚙️ Commands", callback_data="bot_commands"))
         builder.add(InlineKeyboardButton(text="🔧 Base tools", callback_data="base_tools"))
         builder.add(InlineKeyboardButton(text="🔌 Revshell", callback_data="rev_shell"))
         builder.add(InlineKeyboardButton(text="🔮 Hash identify", callback_data="hash_identify"))
         builder.add(InlineKeyboardButton(text="🔓 JWT Decode", callback_data="jwt_decode"))
-        builder.add(InlineKeyboardButton(text="⚙️ Commands", callback_data="bot_commands"))
+        builder.add(InlineKeyboardButton(text="💉 SQLi", callback_data="sqli_payloads"))
         builder.add(InlineKeyboardButton(text="🤖 File IDs bot", callback_data="file_id_bot"))
         builder.adjust(2)
         await message.answer(
@@ -38,9 +40,9 @@ async def send_channel_link(callback: CallbackQuery):
     await callback.answer()
 
 
-@router.callback_query(F.data == 'pt_hat_group')
+@router.callback_query(F.data == 'sqli_payloads')
 async def send_group_link(callback: CallbackQuery):
-    await callback.message.answer('https://t.me/pt_hat')
+    await callback.message.answer(f'{sqli_example}')
     await callback.answer()
 
 
