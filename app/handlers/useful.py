@@ -12,7 +12,7 @@ router: Router = Router()
 @router.message(F.text.in_(cfg.all_commands['id_cmds']))
 async def show_menu(message: Message):
     try:
-        await message.answer(f'<b>ID:</b> <code>{message.from_user.id}</code> Premium: {message.from_user.is_premium}')
+        await message.answer(f'<b>ID:</b> <code>{message.from_user.id}</code> Premium: <b>{message.from_user.is_premium}</b>')
     except Exception as e:
         logging.warning(e)
         ic(e)
@@ -94,7 +94,7 @@ async def send_rev_shell(message: Message):
 async def new_members_handler(message: Message):
     try:
         new_member = message.new_chat_members[0]
-        await cfg.bot.send_message(message.chat.id, f"Добро пожаловать в HaT 🖖, @{new_member.username} ! 🎩🎩🎩")
+        await cfg.bot.send_message(message.chat.id, f"Добро пожаловать в Pentest HaT 🖖, @{new_member.username} ! 🎩🎩🎩")
         await cfg.bot.send_message(message.chat.id, f"{cfg.bot_commands}")
         await cfg.bot.copy_message()
     except Exception as e:
@@ -102,6 +102,7 @@ async def new_members_handler(message: Message):
         ic(e)
 
 
+# Автоматическое удаление системных сообщений
 @router.message(F.left_chat_member)
 async def on_user_join(message: Message):
     await message.delete()

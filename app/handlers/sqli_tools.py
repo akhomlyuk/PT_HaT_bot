@@ -20,8 +20,10 @@ async def send_sqli_payload(message: Message):
         elif len(payload) == 3:
             await message.answer(f'<code>{get_sqli_columns(payload[2])[0]}</code>\n\n<code>{get_sqli_columns(payload[2])[1]}</code>')
         elif len(payload) == 4:
-            datas = ' '.join(payload)
-            await message.answer(f'<code>{get_sqli_data(datas)[0]}</code>\n\n<code>{get_sqli_data(datas)[1]}</code>')
+            data = ' '.join(payload)
+            await message.answer(f'<code>{get_sqli_data(data)[0]}</code>\n\n<code>{get_sqli_data(data)[1]}</code>')
+        else:
+            await message.answer(sqli_example)
     except Exception as e:
         logging.warning(e)
         ic(e)
