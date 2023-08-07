@@ -5,6 +5,7 @@ import app.config.cfg as cfg
 from app.helpers.revshell import generate_revshell
 from app.helpers.jwt_decode import jwt_decode
 from icecream import ic
+import os
 
 router: Router = Router()
 
@@ -115,3 +116,9 @@ async def on_user_join(message: Message):
 @router.message(F.delete_chat_photo)
 async def on_user_join(message: Message):
     await message.delete()
+
+
+@router.message(F.text.in_('!uptime'))
+async def uptime_info(message: Message):
+    t = os.popen('uptime -p').read()[:-1]
+    await message.answer(f'{t}')
