@@ -96,7 +96,6 @@ async def new_members_handler(message: Message):
         new_member = message.new_chat_members[0]
         await cfg.bot.send_message(message.chat.id, f"Добро пожаловать в Pentest HaT 🖖, @{new_member.username} ! 🎩🎩🎩")
         await cfg.bot.send_message(message.chat.id, f"{cfg.bot_commands}")
-        await cfg.bot.copy_message()
     except Exception as e:
         logging.error(f'{e}')
         ic(e)
