@@ -29,7 +29,7 @@ async def search_sploit(message: Message):
             with open(output_file, "r") as file:
                 data = json.load(file)
             lst = []
-            for item in data["RESULTS_EXPLOIT"]:
+            for item in data["RESULTS_EXPLOIT"][:10]:
                 lst.append('<b>' + item['Title'] + '</b>' + '\n' + item['URL'] + '\n' + '-' * 20 + '\n')
             await message.answer(f'{"".join(lst)}', disable_web_page_preview=True)
     except Exception as e:
