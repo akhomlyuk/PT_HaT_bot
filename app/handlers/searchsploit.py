@@ -13,7 +13,7 @@ async def search_sploit(message: Message):
     try:
         msg = message.text.split()
         sploit_string = ' '.join(msg[1])
-        ss = os.popen(f'searchsploit {sploit_string} -j -w').read()[:-1]
+        ss = os.popen('searchsploit Exchange 2019 -j -w').read()[:-1]
         await message.answer(f'{ss}')
     except Exception as e:
         ic()
