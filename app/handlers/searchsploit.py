@@ -18,11 +18,11 @@ async def search_sploit(message: Message):
             await message.answer('!ss Microsoft Exchange 2019')
         else:
             sploit_string = ' '.join(msg[1])
-            ic(sploit_string)
+            logging.critical(sploit_string)
             command = f"searchsploit {sploit_string} -j -w"
-            ic(command)
+            logging.critical(command)
             output_file = "sploit.json"
-            ic(output_file)
+            logging.critical(output_file)
             subprocess.run(f"{command} > {output_file}", shell=True)
             with open(output_file, "r") as file:
                 data = json.load(file)
