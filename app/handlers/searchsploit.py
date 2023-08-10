@@ -31,10 +31,10 @@ async def search_sploit(message: Message):
             lst = []
             for item in data["RESULTS_EXPLOIT"][:10]:
                 lst.append('<b>' + item['Title'] + '</b>' + '\n' + item['URL'] + '\n' + '-' * 20 + '\n')
-            if len(lst) > 10:
-                await message.answer(f'Выведены первые 10:\n{"".join(lst)}', disable_web_page_preview=True)
-            else:
-                await message.answer(f'{"".join(lst)}', disable_web_page_preview=True)
+            # if len(lst) > 10:
+            await message.answer(f'Выведены первые 10:\n{"".join(lst)}', disable_web_page_preview=True)
+            # else:
+            #     await message.answer(f'{"".join(lst)}', disable_web_page_preview=True)
     except Exception as e:
         await message.answer(f'{e}')
         ic()
