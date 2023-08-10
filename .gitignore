@@ -6,6 +6,8 @@ __pycache__/
 
 # C extensions
 *.so
+app/handlers/sploit.json
+sploit.json
 
 # Distribution / packaging
 .Python
