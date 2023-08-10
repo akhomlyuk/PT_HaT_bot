@@ -33,7 +33,7 @@ async def search_sploit(message: Message):
                 lst.append('<b>' + item['Title'] + '</b>' + '\n' + item['URL'] + '\n' + '-' * 20 + '\n')
             await message.answer(f'{"".join(lst)}', disable_web_page_preview=True)
     except Exception as e:
-        await message.answer(e)
+        await message.answer(f'{e}')
         ic()
         ic(e)
         logging.error(e)
