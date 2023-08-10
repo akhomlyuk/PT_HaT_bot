@@ -28,8 +28,10 @@ async def search_sploit(message: Message):
             subprocess.run(f"{command} > {output_file}", shell=True)
             with open(output_file, "r") as file:
                 data = json.load(file)
-            data_out = json.dumps(data, indent=2)
-            await message.answer(f'{data["RESULTS_EXPLOIT"]}', disable_web_page_preview=True)
+            lst = []
+            for item in data["RESULTS_EXPLOIT"]:
+                lst.append(item['Title'] + ' ' + item['URL'] + '\n')
+            await message.answer(f'{lst}', disable_web_page_preview=True)
     except Exception as e:
         ic()
         ic(e)
