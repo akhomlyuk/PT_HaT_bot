@@ -13,11 +13,13 @@ router: Router = Router()
 @router.message(F.text.startswith('!ss'))
 async def search_sploit(message: Message):
     try:
-        msg = message.text.split()
+        msg = message.split()
+        msg2 = message[4:].split()
         if len(msg) == 1:
-            await message.answer('!ss Exchange')
+            print('!ss Exchange')
         else:
-            sploit_string = msg[1]
+            sploit_string = ' '.join(msg2)
+            ic(sploit_string)
             logging.critical(sploit_string)
             command = f"searchsploit {sploit_string} -j -w"
             logging.critical(command)
@@ -26,7 +28,6 @@ async def search_sploit(message: Message):
             subprocess.run(f"{command} > {output_file}", shell=True)
             with open(output_file, "r") as file:
                 data = json.load(file)
-            ic(data)
             await message.answer(f'{data}')
     except Exception as e:
         ic()
