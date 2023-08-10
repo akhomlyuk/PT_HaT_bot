@@ -19,6 +19,7 @@ async def menu_buttons(message: Message):
         builder.add(InlineKeyboardButton(text="⚙️ Commands", callback_data="bot_commands"))
         builder.add(InlineKeyboardButton(text="🔧 Base tools", callback_data="base_tools"))
         builder.add(InlineKeyboardButton(text="🔌 Revshell", callback_data="rev_shell"))
+        builder.add(InlineKeyboardButton(text="🛰 Поиск эксплоита", callback_data="search_sploit"))
         builder.add(InlineKeyboardButton(text="🔮 Hash identify", callback_data="hash_identify"))
         builder.add(InlineKeyboardButton(text="🔓 JWT Decode", callback_data="jwt_decode"))
         builder.add(InlineKeyboardButton(text="💉 SQLi", callback_data="sqli_payloads"))
@@ -37,6 +38,12 @@ async def menu_buttons(message: Message):
 @router.callback_query(F.data == 'pt_hat_channel')
 async def send_channel_link(callback: CallbackQuery):
     await callback.message.answer('https://t.me/pt_soft')
+    await callback.answer()
+
+
+@router.callback_query(F.data == 'search_sploit')
+async def send_searchsploit_cmd(callback: CallbackQuery):
+    await callback.message.answer(f'<code>!ss Microsoft Exchange 2019</code>')
     await callback.answer()
 
 
