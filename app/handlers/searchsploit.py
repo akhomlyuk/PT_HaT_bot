@@ -15,9 +15,9 @@ async def search_sploit(message: Message):
     try:
         msg = message.text.split()
         if len(msg) == 1:
-            await message.answer('!ss Microsoft Exchange 2019')
+            await message.answer('!ss Exchange')
         else:
-            sploit_string = ' '.join(msg[1])
+            sploit_string = msg[1]
             logging.critical(sploit_string)
             command = f"searchsploit {sploit_string} -j -w"
             logging.critical(command)
