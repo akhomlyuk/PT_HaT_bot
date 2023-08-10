@@ -16,7 +16,7 @@ async def search_sploit(message: Message):
         msg = message.text.split()
         msg2 = message.text[4:].split()
         if len(msg) == 1:
-            print('!ss Exchange')
+            await message.answer('<code>!ss Microsoft Exchange 2019</code>')
         else:
             sploit_string = ' '.join(msg2)
             ic(sploit_string)
@@ -28,7 +28,8 @@ async def search_sploit(message: Message):
             subprocess.run(f"{command} > {output_file}", shell=True)
             with open(output_file, "r") as file:
                 data = json.load(file)
-            await message.answer(f'{data}')
+            data_out = json.dumps(data, indent=2)
+            await message.answer(f'{data_out}', disable_web_page_preview=True)
     except Exception as e:
         ic()
         ic(e)
