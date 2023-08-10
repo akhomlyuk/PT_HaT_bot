@@ -13,8 +13,8 @@ router: Router = Router()
 @router.message(F.text.startswith('!ss'))
 async def search_sploit(message: Message):
     try:
-        msg = message.split()
-        msg2 = message[4:].split()
+        msg = message.text.split()
+        msg2 = message.text[4:].split()
         if len(msg) == 1:
             print('!ss Exchange')
         else:
