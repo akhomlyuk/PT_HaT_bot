@@ -29,7 +29,7 @@ async def search_sploit(message: Message):
             with open(output_file, "r") as file:
                 data = json.load(file)
             data_out = json.dumps(data, indent=2)
-            await message.answer(f'{data_out}', disable_web_page_preview=True)
+            await message.answer(f'{data["RESULTS_EXPLOIT"]}', disable_web_page_preview=True)
     except Exception as e:
         ic()
         ic(e)
