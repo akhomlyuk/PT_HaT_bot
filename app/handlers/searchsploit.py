@@ -8,7 +8,7 @@ import os
 router: Router = Router()
 
 
-@router.message(F.text.in_('!ss'))
+@router.message(F.text.startswith('!ss'))
 async def search_sploit(message: Message):
     try:
         msg = message.text.split()
