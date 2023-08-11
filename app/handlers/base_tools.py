@@ -31,7 +31,8 @@ async def send_b64_decode(message: Message):
         if len(msg) == 1:
             await message.answer(f'Пример:\n<code>!b64d UGVudGVzdCBIYVQ=</code>')
         else:
-            await message.answer(f'<code>{b64_decode(msg[1])}</code>')
+            msg2 = message.text[6:]
+            await message.answer(f'<code>{b64_decode(msg2)}</code>')
     except Exception as e:
         logging.warning(e)
         ic(e)
