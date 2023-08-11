@@ -32,7 +32,7 @@ async def search_sploit(message: Message):
             for item in data["RESULTS_EXPLOIT"][:10]:
                 lst.append('<b>' + item['Title'] + '</b>' + '\n' + item['URL'] + '\n' + '-' * 20 + '\n')
             if len(data["RESULTS_EXPLOIT"]) > 10:
-                await message.answer(f'<b>Выведены первые 10</b>:\n\n{"".join(lst)}', disable_web_page_preview=True)
+                await message.answer(f'<b>Выведены первые 10</b>:\n\n{html.quote("".join(lst))}', disable_web_page_preview=True)
             else:
                 await message.answer(f'{"".join(lst)}', disable_web_page_preview=True)
     except Exception as e:
