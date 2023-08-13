@@ -59,7 +59,7 @@ async def whois_domain_info(callback: CallbackQuery):
 @router.callback_query(F.data == 'dns_records')
 async def dig_info(callback: CallbackQuery):
     await callback.message.answer(
-        '<code>!dig ya.ru</code>\nor\n<code>!dig ya.ru MX)</code>\n\nhttps://en.wikipedia.org/wiki/List_of_DNS_record_types')
+        '<code>!dig ya.ru</code>\nor\n<code>!dig ya.ru MX</code>\n\nhttps://en.wikipedia.org/wiki/List_of_DNS_record_types', disable_web_page_preview=True)
     await callback.answer()
 
 
