@@ -17,14 +17,14 @@ async def send_sqli_payload(message: Message):
             await message.answer(sqli_example)
         elif len(payload) == 2:
             await message.answer(f'<code>{get_sqli_tables(payload[1])[0]}</code>\n\n<code>{get_sqli_tables(payload[1])[1]}</code>'
-                                 f'\n\nMore info: https://book.hacktricks.xyz/pentesting-web/sql-injection')
+                                 f'\n\nMore info: https://book.hacktricks.xyz/pentesting-web/sql-injection', disable_web_page_preview=True)
         elif len(payload) == 3:
             await message.answer(f'<code>{get_sqli_columns(payload[2])[0]}</code>\n\n<code>{get_sqli_columns(payload[2])[1]}</code>'
-                                 f'\n\nMore info: https://book.hacktricks.xyz/pentesting-web/sql-injection')
+                                 f'\n\nMore info: https://book.hacktricks.xyz/pentesting-web/sql-injection', disable_web_page_preview=True)
         elif len(payload) == 4:
             data = ' '.join(payload)
             await message.answer(f'<code>{get_sqli_data(data)[0]}</code>\n\n<code>{get_sqli_data(data)[1]}</code>'
-                                 f'\n\nMore info: https://book.hacktricks.xyz/pentesting-web/sql-injection')
+                                 f'\n\nMore info: https://book.hacktricks.xyz/pentesting-web/sql-injection', disable_web_page_preview=True)
         else:
             await message.answer(sqli_example)
     except Exception as e:
