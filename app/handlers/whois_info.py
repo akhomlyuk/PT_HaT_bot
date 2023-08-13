@@ -4,6 +4,7 @@ import logging
 import app.config.cfg as cfg
 from icecream import ic
 import whois
+import json
 
 router: Router = Router()
 
@@ -28,7 +29,7 @@ async def whois_info(message: Message):
             await message.answer(f'<code>!whois yandex.ru</code>')
         else:
             ic(whois_inf(msg[1]))
-            await message.answer(f"{whois_inf(msg[1])}")
+            await message.answer(f"{json.dumps(whois_inf(msg[1]), indent=2)}")
     except Exception as e:
         ic()
         ic(e)
