@@ -71,7 +71,7 @@ async def send_searchsploit_cmd(callback: CallbackQuery):
 
 @router.callback_query(F.data == 'sqli_payloads')
 async def send_group_link(callback: CallbackQuery):
-    await callback.message.answer(f'{sqli_example}')
+    await callback.message.answer(f'{sqli_example}', disable_web_page_preview=True)
     await callback.answer()
 
 
