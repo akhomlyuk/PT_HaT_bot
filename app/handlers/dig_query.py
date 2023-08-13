@@ -7,8 +7,6 @@ import pydig
 
 router: Router = Router()
 
-resolver = pydig.Resolver(executable='/usr/bin/dig', nameservers=['1.1.1.1', '1.0.0.1'], additional_args=['+time=10'])
-
 
 @router.message(F.text.startswith(cfg.all_commands['dig_cmds']))
 async def dig_query(message: Message):
