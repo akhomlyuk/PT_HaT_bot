@@ -6,7 +6,7 @@ bot = Bot(token=bot_token, parse_mode="HTML")
 
 all_commands = {'help_cmds': '!help', 'menu_cmds': '!menu', 'wiki_cmds': '!wiki',
                 'id_cmds': '!id', 'jwt_cmds': '!jwt', 'cmds_cmds': '!cmds', 'rev_cmds': '!rev', 'sqli_cmds': '!sqli',
-                'search_sploit_cmds': '!ss',
+                'search_sploit_cmds': '!ss', 'checkport_cmds' : '!port',
                 'hash_alz_cmds': '!hash', 'b64decode_cmds': '!b64d', 'b64encode_cmds': '!b64e', 'hex2text_cmds': '!h2t',
                 'text2hex_cmds': '!t2h', 'gpt_cmds': '!gpt', 'links_cmds': '!links', 'ssti_cmds': '!ssti'
                 }
@@ -22,7 +22,8 @@ bot_commands = f'''
 👁 <code>!rev</code> - Revshell
 🧨 <code>!ss</code> - Search Sploit
 💉 <code>!sqli</code> - SQLi payloads
-🔍 <code>!b64e</code> <code>!b64d</code> - base64
+🔍 <code>!port</code> - Проверить порт
+🖌 <code>!b64e</code> <code>!b64d</code> - base64
 🤖 <code>!gpt</code> - Список ChatGPT
 📑 <code>!links</code> - Полезные ссылки
 📚 <code>!wiki</code> - Показать с вики

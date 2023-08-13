@@ -1,9 +1,8 @@
-from aiogram import Router, F, html
+from aiogram import Router, F
 from aiogram.types import Message
 import logging
 import app.config.cfg as cfg
 from icecream import ic
-import os
 import subprocess
 import json
 
