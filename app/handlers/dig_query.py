@@ -19,8 +19,8 @@ async def dig_query(message: Message):
         elif len(msg) != 2:
             await message.answer(f'<code>!dig yandex.ru</code>')
         else:
-            logging.info(pydig.query(msg[1]))
-            await message.answer(f"<code>{resolver.query(msg[1], query_type='ANY')}</code>")
+            query = pydig.query('ya.ru', 'TXT')
+            await message.answer(f"<code>{query}</code>")
     except Exception as e:
         ic()
         ic(e)
