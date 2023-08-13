@@ -15,11 +15,11 @@ async def dig_query(message: Message):
     try:
         msg = message.text.split()
         if len(msg) == 1:
-            await message.answer('<code>!dig yandex.ru</code>')
-        elif len(msg) != 2:
-            await message.answer(f'<code>!dig yandex.ru</code>')
+            await message.answer('<code>!dig ya.ru (A,MX,TXT,etc)</code>\n\nhttps://en.wikipedia.org/wiki/List_of_DNS_record_types', disable_web_page_preview=True)
+        elif len(msg) != 3:
+            await message.answer('<code>!dig ya.ru (A,MX,TXT,etc)</code>\n\nhttps://en.wikipedia.org/wiki/List_of_DNS_record_types', disable_web_page_preview=True)
         else:
-            query = pydig.query(msg[1], 'TXT')
+            query = pydig.query(msg[1], msg[2])
             await message.answer(f"<code>{query}</code>")
     except Exception as e:
         ic()
