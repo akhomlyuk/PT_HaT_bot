@@ -14,16 +14,15 @@ def check_port(host: str, port: int):
         s.settimeout(1)
         s.connect((host, port))
         s.close()
-        return f"Port {port} on {host} is open"
+        return f"Port {port} on {host} is open 😄"
     except socket.error:
-        return f"Port {port} closed or filtered."
+        return f"Port {port} closed or filtered 😞"
 
 
 @router.message(F.text.startswith(cfg.all_commands['checkport_cmds']))
 async def search_sploit(message: Message):
     try:
         msg = message.text.split()
-        msg2 = message.text[4:].split()
         if len(msg) == 1:
             await message.answer('<code>!port yandex.ru 443</code>')
         elif len(msg) != 3:
