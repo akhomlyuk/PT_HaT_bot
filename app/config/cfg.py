@@ -20,6 +20,7 @@ bot_commands = f'''
 🔮 <code>!hash</code> - Определить хеш
 🔋 <code>!jwt</code> - Декодер JWT
 👁 <code>!rev</code> - Revshell
+🧨 <code>!ss</code> - Search Sploit
 💉 <code>!sqli</code> - SQLi payloads
 🔍 <code>!b64e</code> <code>!b64d</code> - base64
 🤖 <code>!gpt</code> - Список ChatGPT
