@@ -14,7 +14,7 @@ async def send_sqli_payload(message: Message):
     try:
         payload = message.text.split(' ')
         if len(payload) == 1:
-            await message.answer(sqli_example)
+            await message.answer(sqli_example, disable_web_page_preview=True)
         elif len(payload) == 2:
             await message.answer(f'<code>{get_sqli_tables(payload[1])[0]}</code>\n\n<code>{get_sqli_tables(payload[1])[1]}</code>'
                                  f'\n\nMore info: https://book.hacktricks.xyz/pentesting-web/sql-injection', disable_web_page_preview=True)

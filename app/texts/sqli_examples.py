@@ -6,4 +6,4 @@ sqli_example = f'''Узнаем имя БД:
 <code>!sqli db_name</code> - узнаем таблицы
 <code>!sqli db_name table_name</code> - узнаем столбцы
 <code>!sqli db_name table_name column_name</code> - извлекаем данные
-\nMore info: https://book.hacktricks.xyz/pentesting-web/sql-injection', disable_web_page_preview=True'''
+\nMore info: https://book.hacktricks.xyz/pentesting-web/sql-injection'''
