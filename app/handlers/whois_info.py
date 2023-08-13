@@ -11,7 +11,7 @@ router: Router = Router()
 def whois_inf(host: str):
     try:
         domain = whois.query(host)
-        return domain
+        return domain.__dict__
     except Exception as e:
         ic()
         ic(e)
