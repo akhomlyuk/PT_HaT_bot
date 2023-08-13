@@ -3,7 +3,7 @@ from aiogram.types import Message
 import logging
 import app.config.cfg as cfg
 from icecream import ic
-import whois
+import whoisdomain as whois
 import json
 
 router: Router = Router()
