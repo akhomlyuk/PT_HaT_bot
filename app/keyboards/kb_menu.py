@@ -19,6 +19,9 @@ async def menu_buttons(message: Message):
         builder.add(InlineKeyboardButton(text="⚙️ Commands", callback_data="bot_commands"))
         builder.add(InlineKeyboardButton(text="🔧 Base tools", callback_data="base_tools"))
         builder.add(InlineKeyboardButton(text="🔌 Revshell", callback_data="rev_shell"))
+        builder.add(InlineKeyboardButton(text="🔍 Port checker", callback_data="port_checker"))
+        builder.add(InlineKeyboardButton(text="🔎 Whois domain", callback_data="whois_domain"))
+        builder.add(InlineKeyboardButton(text="📄 DNS records", callback_data="dns_records"))
         builder.add(InlineKeyboardButton(text="🛰 Поиск эксплоита", callback_data="search_sploit"))
         builder.add(InlineKeyboardButton(text="🔮 Hash identify", callback_data="hash_identify"))
         builder.add(InlineKeyboardButton(text="🔓 JWT Decode", callback_data="jwt_decode"))
@@ -38,6 +41,25 @@ async def menu_buttons(message: Message):
 @router.callback_query(F.data == 'pt_hat_channel')
 async def send_channel_link(callback: CallbackQuery):
     await callback.message.answer('https://t.me/pt_soft')
+    await callback.answer()
+
+
+@router.callback_query(F.data == 'port_checker')
+async def port_check_info(callback: CallbackQuery):
+    await callback.message.answer('<code>!port yandex.ru 443</code>')
+    await callback.answer()
+
+
+@router.callback_query(F.data == 'whois_domain')
+async def whois_domain_info(callback: CallbackQuery):
+    await callback.message.answer('<code>!whois yandex.ru</code>')
+    await callback.answer()
+
+
+@router.callback_query(F.data == 'dns_records')
+async def dig_info(callback: CallbackQuery):
+    await callback.message.answer(
+        '<code>!dig ya.ru</code>\nor\n<code>!dig ya.ru MX)</code>\n\nhttps://en.wikipedia.org/wiki/List_of_DNS_record_types')
     await callback.answer()
 
 
@@ -83,7 +105,8 @@ async def send_fileid_bot_link(callback: CallbackQuery):
 @router.callback_query(F.data == 'jwt_decode')
 async def send_fileid_bot_link(callback: CallbackQuery):
     try:
-        await callback.message.answer(f'Пример:\n<code>!jwt eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImlhdCI6MTY5MTAxMjU3MSwiZXhwIjoxNjkxMDE2MTcxfQ.BNM4pLUB6wYlnXC0NvHiShDIM6KtIk81prLW8VBCZ88</code>')
+        await callback.message.answer(
+            f'Пример:\n<code>!jwt eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImlhdCI6MTY5MTAxMjU3MSwiZXhwIjoxNjkxMDE2MTcxfQ.BNM4pLUB6wYlnXC0NvHiShDIM6KtIk81prLW8VBCZ88</code>')
         await callback.answer()
     except Exception as e:
         ic(e)
