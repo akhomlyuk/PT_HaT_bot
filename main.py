@@ -3,7 +3,8 @@ import logging
 import os
 from aiogram import Dispatcher, types
 import app.config.cfg as cfg
-from app.handlers import help, useful, wiki, base_tools, hex_tools, hash_tools_handler, free_gpt, sqli_tools, ssti, searchsploit, check_port
+from app.handlers import (help, useful, wiki, base_tools, hex_tools, hash_tools_handler,
+                          free_gpt, sqli_tools, ssti, searchsploit, check_port, whois_info)
 from app.keyboards import kb_menu, kb_links
 from icecream import ic
 
@@ -26,6 +27,7 @@ dp.include_router(sqli_tools.router)
 dp.include_router(ssti.router)
 dp.include_router(searchsploit.router)
 dp.include_router(check_port.router)
+dp.include_router(whois_info.router)
 
 
 @dp.errors()
