@@ -12,10 +12,10 @@ def check_port(host: str, port: int):
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.connect((host, port))
-        print(f"Port {port} on {host} is open")
         s.close()
+        return f"Port {port} on {host} is open"
     except socket.error:
-        print(f"Port {port} closed or filtered.")
+        return f"Port {port} closed or filtered."
 
 
 @router.message(F.text.startswith(cfg.all_commands['checkport_cmds']))
