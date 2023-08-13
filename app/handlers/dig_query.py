@@ -7,6 +7,8 @@ import pydig
 
 router: Router = Router()
 
+resolver = pydig.Resolver(executable='/usr/bin/dig', nameservers=['1.1.1.1', '1.0.0.1'], additional_args=['+time=10'])
+
 
 @router.message(F.text.startswith(cfg.all_commands['dig_cmds']))
 async def dig_query(message: Message):
@@ -18,7 +20,7 @@ async def dig_query(message: Message):
             await message.answer(f'<code>!dig yandex.ru</code>')
         else:
             logging.info(pydig.query(msg[1]))
-            await message.answer(f"<code>{pydig.query(msg[1], query_type='MX')}</code>")
+            await message.answer(f"<code>{resolver.query(msg[1], query_type='ANY')}</code>")
     except Exception as e:
         ic()
         ic(e)
