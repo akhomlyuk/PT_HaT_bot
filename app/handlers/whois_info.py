@@ -29,7 +29,7 @@ async def whois_info(message: Message):
             await message.answer(f'<code>!whois yandex.ru</code>')
         else:
             ic(whois_inf(msg[1]))
-            await message.answer(f"{json.dumps(whois_inf(msg[1]), indent=2)}")
+            await message.answer(f"{json.dumps(whois_inf(msg[1]), indent=2, default=str)}")
     except Exception as e:
         ic()
         ic(e)
