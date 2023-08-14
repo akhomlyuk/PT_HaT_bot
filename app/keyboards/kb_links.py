@@ -20,6 +20,22 @@ async def links_buttons(message: Message):
             url="https://t.me/pt_hat")
         )
         builder.add(InlineKeyboardButton(
+            text="💻 Get Kali Linux",
+            url="https://www.kali.org/get-kali/")
+        )
+        builder.add(InlineKeyboardButton(
+            text="🐈‍ HashCat examples",
+            url="https://hashcat.net/wiki/doku.php?id=example_hashes")
+        )
+        builder.add(InlineKeyboardButton(
+            text="🐧 Linux PrivEsc (gtfo)",
+            url="https://gtfobins.github.io/")
+        )
+        builder.add(InlineKeyboardButton(
+            text="🖥 Windows enum cheatsheet",
+            url="https://wadcoms.github.io/")
+        )
+        builder.add(InlineKeyboardButton(
             text="♻️ cURL converter",
             url="https://curlconverter.com/")
         )
