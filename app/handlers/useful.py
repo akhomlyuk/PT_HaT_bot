@@ -20,6 +20,14 @@ async def show_menu(message: Message):
         await message.answer(f'{e}')
 
 
+@router.message(F.text.in_(cfg.all_commands['commands_cmds']))
+async def show_commands(message: Message):
+    try:
+        await message.answer(f'{cfg.bot_commands}')
+    except Exception as e:
+        ic(e)
+
+
 # Декодирование header и payload JWT
 @router.message(F.text.startswith(cfg.all_commands['jwt_cmds']))
 async def send_decode_jwt(message: Message):
