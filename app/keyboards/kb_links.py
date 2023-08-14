@@ -20,13 +20,17 @@ async def links_buttons(message: Message):
             url="https://t.me/pt_hat")
         )
         builder.add(InlineKeyboardButton(
+            text="♻️ cURL converter",
+            url="https://curlconverter.com/")
+        )
+        builder.add(InlineKeyboardButton(
             text="🤖 File IDs bot",
             url="https://t.me/File_IDs_bot")
         )
 
         builder.adjust(2)
         await message.answer(
-            "Ссылки: ",
+            "Ссылки:",
             reply_markup=builder.as_markup()
         )
     except Exception as e:
