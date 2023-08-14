@@ -36,6 +36,10 @@ async def links_buttons(message: Message):
             url="https://wadcoms.github.io/")
         )
         builder.add(InlineKeyboardButton(
+            text="🪝 Webhook HTTP reqs",
+            url="https://webhook.site/")
+        )
+        builder.add(InlineKeyboardButton(
             text="♻️ cURL converter",
             url="https://curlconverter.com/")
         )
