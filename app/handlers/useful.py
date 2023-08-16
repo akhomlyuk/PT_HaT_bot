@@ -68,7 +68,6 @@ async def send_rev_shell(message: Message):
                    f'<b>{" : ".join(str(s) for s in revs)}</b>')
         msg = message.text
         msg = msg.split(' ')
-        ic(msg, len(msg))
         if len(msg) == 3:
             await message.answer(f'<code>{html.quote(generate_revshell(msg[1], int(msg[2]), None))}</code>')
         elif len(msg) == 4:
@@ -103,7 +102,7 @@ async def send_rev_shell(message: Message):
 async def new_members_handler(message: Message):
     try:
         new_member = message.new_chat_members[0]
-        await cfg.bot.send_message(message.chat.id, f"Добро пожаловать в Pentest HaT 🖖, @{new_member.username} ! 🎩🎩🎩")
+        await cfg.bot.send_message(message.chat.id, f"Добро пожаловать в {message.chat.title} 🖖, @{new_member.username} ! 🎩🎩🎩")
         await cfg.bot.send_message(message.chat.id, f"{cfg.bot_commands}")
     except Exception as e:
         logging.error(f'{e}')
