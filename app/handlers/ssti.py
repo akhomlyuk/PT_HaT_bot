@@ -15,9 +15,9 @@ async def send_ssti_identify(message: Message):
         photo = FSInputFile(photo_path)
         msg = message.text.split()
         if len(msg) == 1:
-            await message.answer_photo(photo,
+            await message.answer_photo('AQADmcoxGzQy8Up9',
                                        caption='Определяем шаблонизатор'
-                                               '\nMore info: https://book.hacktricks.xyz/pentesting-web/ssti-server-side-template-injection')
+                                               '\nhttps://book.hacktricks.xyz/pentesting-web/ssti-server-side-template-injection')
         # elif len(msg) > 2:
         #     await message.answer(
         #         f'Неправильная hex последовательность\nПример:\n<code>!h2t 50656e74657374204861636b7320616e6420546f6f6c73</code>')
