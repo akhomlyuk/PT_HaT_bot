@@ -3,6 +3,7 @@ from aiogram.types import Message, URLInputFile, FSInputFile
 import logging
 import app.config.cfg as cfg
 from icecream import ic
+import os
 
 router: Router = Router()
 
@@ -10,7 +11,8 @@ router: Router = Router()
 @router.message(F.text.startswith(cfg.all_commands['ssti_cmds']))
 async def send_ssti_identify(message: Message):
     try:
-        photo = FSInputFile('ssti.png')
+        photo_path = os.path.abspath("ssti.webp")
+        photo = FSInputFile(photo_path)
         msg = message.text.split()
         if len(msg) == 1:
             await message.answer_photo(photo,
