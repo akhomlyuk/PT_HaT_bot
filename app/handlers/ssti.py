@@ -12,7 +12,7 @@ async def send_ssti_identify(message: Message):
     try:
         msg = message.text.split()
         if len(msg) == 1:
-            await message.answer_photo('AgACAgIAAxkBAAIF-WTeFjWu7BrA89FXbe8H9CL6iTz8AAKdyjEbNDLxSkOqTrfjd6zCAQADAgADeAADMAQ-AQADncoxGzQy8Up9',
+            await message.answer_photo('AgACAgIAAxkBAAIF-WTeFjWu7BrA89FXbe8H9CL6iTz8AAKdyjEbNDLxSkOqTrfjd6zCAQADAgADeAADMAQ'[-1],
                                        caption='Определяем шаблонизатор'
                                                '\nhttps://book.hacktricks.xyz/pentesting-web/ssti-server-side-template-injection')
         # elif len(msg) > 2:
