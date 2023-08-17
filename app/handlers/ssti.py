@@ -1,5 +1,5 @@
 from aiogram import Router, F
-from aiogram.types import Message, URLInputFile
+from aiogram.types import Message, URLInputFile, FSInputFile
 import logging
 import app.config.cfg as cfg
 from icecream import ic
@@ -12,9 +12,8 @@ async def send_ssti_identify(message: Message):
     try:
         msg = message.text.split()
         if len(msg) == 1:
-            await message.answer_photo('AgACAgIAAxkBAAIF-WTeFjWu7BrA89FXbe8H9CL6iTz8AAKdyjEbNDLxSkOqTrfjd6zCAQADAgADeAADMAQ'[-1],
-                                       caption='Определяем шаблонизатор'
-                                               '\nhttps://book.hacktricks.xyz/pentesting-web/ssti-server-side-template-injection')
+            await message.answer_photo('AgACAgIAAxkBAAIF_mTeHJWrQxmkISotQYadLk-iOW_qAAL70zEbb7LwSqnZnI0KVt_UAQADAgADeAADMAQ',
+                                       caption='\nhttps://book.hacktricks.xyz/pentesting-web/ssti-server-side-template-injection')
         # elif len(msg) > 2:
         #     await message.answer(
         #         f'Неправильная hex последовательность\nПример:\n<code>!h2t 50656e74657374204861636b7320616e6420546f6f6c73</code>')
