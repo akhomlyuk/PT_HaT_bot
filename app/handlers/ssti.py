@@ -14,9 +14,6 @@ async def send_ssti_identify(message: Message):
         if len(msg) == 1:
             await message.answer_photo('AgACAgIAAxkBAAIF_mTeHJWrQxmkISotQYadLk-iOW_qAAL70zEbb7LwSqnZnI0KVt_UAQADAgADeAADMAQ',
                                        caption='\nhttps://book.hacktricks.xyz/pentesting-web/ssti-server-side-template-injection')
-        # elif len(msg) > 2:
-        #     await message.answer(
-        #         f'Неправильная hex последовательность\nПример:\n<code>!h2t 50656e74657374204861636b7320616e6420546f6f6c73</code>')
         else:
             msg2 = message.text[5:]
             await message.answer(f'not ready yet')
