@@ -10,7 +10,7 @@ router: Router = Router()
 @router.message(F.text.startswith(cfg.all_commands['ssti_cmds']))
 async def send_ssti_identify(message: Message):
     try:
-        photo = FSInputFile('ssti.webp')
+        photo = FSInputFile('ssti.png')
         msg = message.text.split()
         if len(msg) == 1:
             await message.answer_photo(photo,
