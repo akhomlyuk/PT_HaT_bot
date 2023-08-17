@@ -30,5 +30,5 @@ bot_commands = f'''
 📑 <code>!links</code> - Полезные ссылки
 📚 <code>!wiki</code> - Показать с вики
 🎲 <code>!cmds</code> - Команды бота
-@pt_soft
+Канал бота: @pt_soft
 '''
