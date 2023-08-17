@@ -15,7 +15,7 @@ async def send_ssti_identify(message: Message):
         photo = FSInputFile(photo_path)
         msg = message.text.split()
         if len(msg) == 1:
-            await message.answer_photo('AQADmcoxGzQy8Up9',
+            await message.answer_photo('AgACAgIAAxkBAAIF72TeFT_jKjXjKHGCKawpbwiKREH_AAKZyjEbNDLxSpoJ72oKciX7AQADAgADeAADMAQ',
                                        caption='Определяем шаблонизатор'
                                                '\nhttps://book.hacktricks.xyz/pentesting-web/ssti-server-side-template-injection')
         # elif len(msg) > 2:
