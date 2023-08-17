@@ -23,7 +23,7 @@ bot_commands = f'''
 👁 <code>!rev</code> - Revshell
 🧨 <code>!ss</code> - Search Sploit
 💉 <code>!sqli</code> - SQLi payloads
-💉 <code>!ssti</code> - SQLi payloads
+🔨 <code>!ssti</code> - SSTI
 🔍 <code>!port</code> - Проверить порт
 📄 <code>!dig</code> - Просмотр DNS записей
 🖌 <code>!b64e</code> <code>!b64d</code> - base64
