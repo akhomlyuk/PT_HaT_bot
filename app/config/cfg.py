@@ -29,6 +29,6 @@ bot_commands = f'''
 🤖 <code>!gpt</code> - Список ChatGPT
 📑 <code>!links</code> - Полезные ссылки
 📚 <code>!wiki</code> - Показать с вики
-🎲 <code>!cmds</code> - Команды бота
+🎲 <code>!commands</code> - Команды бота
 Канал бота: @pt_soft
 '''
