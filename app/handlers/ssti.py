@@ -11,9 +11,8 @@ router: Router = Router()
 async def send_ssti_identify(message: Message):
     try:
         msg = message.text.split()
-        photo = URLInputFile('https://i.ytimg.com/vi/z8RkdgpQXWY/maxresdefault.jpg')
         if len(msg) == 1:
-            await message.answer_photo(photo,
+            await message.answer_photo('AgACAgIAAxkBAAIF-WTeFjWu7BrA89FXbe8H9CL6iTz8AAKdyjEbNDLxSkOqTrfjd6zCAQADAgADeAADMAQ-AQADncoxGzQy8Up9',
                                        caption='Определяем шаблонизатор'
                                                '\nhttps://book.hacktricks.xyz/pentesting-web/ssti-server-side-template-injection')
         # elif len(msg) > 2:
