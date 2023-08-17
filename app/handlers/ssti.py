@@ -1,9 +1,8 @@
 from aiogram import Router, F
-from aiogram.types import Message, URLInputFile, FSInputFile
+from aiogram.types import Message, URLInputFile
 import logging
 import app.config.cfg as cfg
 from icecream import ic
-import os
 
 router: Router = Router()
 
@@ -11,11 +10,9 @@ router: Router = Router()
 @router.message(F.text.startswith(cfg.all_commands['ssti_cmds']))
 async def send_ssti_identify(message: Message):
     try:
-        photo_path = os.path.abspath("ssti.webp")
-        photo = FSInputFile(photo_path)
         msg = message.text.split()
         if len(msg) == 1:
-            await message.answer_photo('AgACAgIAAxkBAAIF72TeFT_jKjXjKHGCKawpbwiKREH_AAKZyjEbNDLxSpoJ72oKciX7AQADAgADeAADMAQ',
+            await message.answer_photo('AgACAgIAAxkBAAIExmTU_v1vwElH0RFLS-ONv48C8t4KAAIa1zEb2KWoSlyMmRZHYhQRAQADAgADeAADMAQ',
                                        caption='Определяем шаблонизатор'
                                                '\nhttps://book.hacktricks.xyz/pentesting-web/ssti-server-side-template-injection')
         # elif len(msg) > 2:
