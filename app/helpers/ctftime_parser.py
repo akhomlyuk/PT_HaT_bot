@@ -151,7 +151,7 @@ def top_teams_ru() -> list:
                     elif i[j].get("Place") == 1:
                         results_for_menu.append(f'🥇 <b>{i[j].get("Place")}</b> {j} Points: <b>{i[j].get("CTF points")}</b>')
                     else:
-                        results_for_menu.append(f'<b>{i[j].get("Place")}</b> {j} Points: <b>{i[j].get("CTF points")}</b>')
+                        results_for_menu.append(f'▪️ <b>{i[j].get("Place")}</b> {j} Points: <b>{i[j].get("CTF points")}</b>')
             return results_for_menu
     except Exception as e:
         ic()
