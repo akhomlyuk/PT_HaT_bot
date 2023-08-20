@@ -26,7 +26,7 @@ async def python_onepic(message: Message):
     try:
         photo = URLInputFile('https://raw.githubusercontent.com/coreb1t/awesome-pentest-cheat-sheets/master/docs/python-3-in-one-pic.png',
                              bot=bot)
-        await message.answer_photo(photo)
+        await message.answer_document(photo)
     except Exception as e:
         logging.warning(e)
         ic(e)
