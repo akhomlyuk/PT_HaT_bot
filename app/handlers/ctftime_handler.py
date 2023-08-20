@@ -7,6 +7,7 @@ from app.helpers.ctftime_parser import rht_info
 
 router: Router = Router()
 
+rht_info = rht_info()
 rht_summary = f'''🌍 Worldwide position: <b>{rht_info["rating"]["2023"]["rating_place"]}</b>
 🇷🇺 RU position: <b>{rht_info["rating"]["2023"]["country_place"]}</b>
 🎯 Rating points: <b>{rht_info["rating"]["2023"]["rating_points"]}</b>
