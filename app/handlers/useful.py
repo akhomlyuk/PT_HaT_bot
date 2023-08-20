@@ -119,7 +119,7 @@ async def new_members_handler(message: Message):
 
         for chat_member in message.new_chat_members:
             if chat_member.id == bot_id:
-                logging.info(f'Бота добавили в группу: {message.chat.title, message.chat.id}')
+                logging.info(f'Бота добавили в группу: {message.chat.title, message.chat.id, message.chat.get_administrators()}')
         new_member = message.new_chat_members[0]
         await cfg.bot.send_message(message.chat.id, f"Добро пожаловать в <b>{message.chat.title}</b> 🖖, @{new_member.username} ! 🎩")
         await cfg.bot.send_message(message.chat.id, f"{cfg.bot_commands}")
