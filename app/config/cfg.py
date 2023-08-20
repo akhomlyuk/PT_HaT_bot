@@ -19,6 +19,8 @@ bot_commands = f'''
 ⚙️ <code>!menu</code> - Основное меню
 ℹ️ <code>!id</code> - Показать ID
 🚩 <code>!team</code> - RHTeam
+🏆 <code>!results</code> - Лучшие результаты
+🇷🇺 <code>!top</code> - Команды России
 🔮 <code>!hash</code> - Определить хеш
 🔋 <code>!jwt</code> - Декодер JWT
 🔎 <code>!whois</code> - Whois домена
