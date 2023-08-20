@@ -1,5 +1,5 @@
 from aiogram import Router, F
-from aiogram.types import Message, URLInputFile, FSInputFile
+from aiogram.types import Message, URLInputFile
 import logging
 import app.config.cfg as cfg
 from app.config.cfg import bot
@@ -17,8 +17,7 @@ async def send_ssti_identify(message: Message):
             await message.answer_photo(photo,
                                        caption='\nhttps://book.hacktricks.xyz/pentesting-web/ssti-server-side-template-injection')
         else:
-            msg2 = message.text[5:]
-            await message.answer(f'not ready')
+            await message.answer(f'https://book.hacktricks.xyz/pentesting-web/ssti-server-side-template-injection')
     except Exception as e:
         logging.warning(e)
         ic(e)
