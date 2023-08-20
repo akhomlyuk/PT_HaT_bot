@@ -32,7 +32,7 @@ async def rhteam_info(message: Message):
 async def top_teams_ru(message: Message):
     try:
         top = '\n'.join(str(team) for team in top_ru)
-        await message.answer(f'🇷🇺 Топ команд по России: 🇷🇺\n\n{top}')
+        await message.answer(f'🇷🇺 <b>Топ команд по России</b>: 🇷🇺\n\n{top}\nhttps://ctftime.org/stats/RU')
     except Exception as e:
         ic()
         ic(e)
