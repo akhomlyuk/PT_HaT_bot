@@ -144,7 +144,14 @@ def top_teams_ru() -> list:
             results_for_menu = []
             for i in results[:8]:
                 for j in i:
-                    results_for_menu.append(f'<b>{i[j].get("Place")}</b> {j} Points: <b>{i[j].get("CTF points")}</b>')
+                    if i[j].get("Place") == 3:
+                        results_for_menu.append(f'🥉 <b>{i[j].get("Place")}</b> {j} Points: <b>{i[j].get("CTF points")}</b>')
+                    elif i[j].get("Place") == 2:
+                        results_for_menu.append(f'🥈 <b>{i[j].get("Place")}</b> {j} Points: <b>{i[j].get("CTF points")}</b>')
+                    elif i[j].get("Place") == 1:
+                        results_for_menu.append(f'🥇 <b>{i[j].get("Place")}</b> {j} Points: <b>{i[j].get("CTF points")}</b>')
+                    else:
+                        results_for_menu.append(f'<b>{i[j].get("Place")}</b> {j} Points: <b>{i[j].get("CTF points")}</b>')
             return results_for_menu
     except Exception as e:
         ic()
