@@ -114,6 +114,12 @@ async def send_rev_shell(message: Message):
 @router.message(F.new_chat_members)
 async def new_members_handler(message: Message):
     try:
+        bot_obj = await bot.get_me()
+        bot_id = bot_obj.id
+
+        for chat_member in message.new_chat_members:
+            if chat_member.id == bot_id:
+                logging.info(f'Бота добавили в группу: {message.chat.title, message.chat.id}')
         new_member = message.new_chat_members[0]
         await cfg.bot.send_message(message.chat.id, f"Добро пожаловать в <b>{message.chat.title}</b> 🖖, @{new_member.username} ! 🎩")
         await cfg.bot.send_message(message.chat.id, f"{cfg.bot_commands}")
