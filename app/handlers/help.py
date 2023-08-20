@@ -11,7 +11,14 @@ router: Router = Router()
 
 @router.message(Command("start"))
 async def cmd_start(message: Message):
-    await message.answer(show_description, disable_web_page_preview=True)
+    try:
+        # if message.from_user.id not in cfg.admins:
+        logging.info(f'Бот активирован: {message.from_user}')
+        await message.answer(show_description, disable_web_page_preview=True)
+    except Exception as e:
+        ic()
+        ic(e)
+        logging.error(e)
 
 
 @router.message(Command("help"))
