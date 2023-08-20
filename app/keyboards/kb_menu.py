@@ -46,26 +46,26 @@ async def send_channel_link(callback: CallbackQuery):
 
 @router.callback_query(F.data == 'port_checker')
 async def port_check_info(callback: CallbackQuery):
-    await callback.message.answer('<code>!port yandex.ru 443</code>')
+    await callback.message.answer('Пример:\n<code>!port yandex.ru 443</code>')
     await callback.answer()
 
 
 @router.callback_query(F.data == 'whois_domain')
 async def whois_domain_info(callback: CallbackQuery):
-    await callback.message.answer('<code>!whois yandex.ru</code>')
+    await callback.message.answer('Пример:\n<code>!whois yandex.ru</code>')
     await callback.answer()
 
 
 @router.callback_query(F.data == 'dns_records')
 async def dig_info(callback: CallbackQuery):
     await callback.message.answer(
-        '<code>!dig ya.ru</code>\nor\n<code>!dig ya.ru MX</code>\n\nhttps://en.wikipedia.org/wiki/List_of_DNS_record_types', disable_web_page_preview=True)
+        'Пример:\n<code>!dig ya.ru</code>\nor\n<code>!dig ya.ru MX</code>\n\nhttps://en.wikipedia.org/wiki/List_of_DNS_record_types', disable_web_page_preview=True)
     await callback.answer()
 
 
 @router.callback_query(F.data == 'search_sploit')
 async def send_searchsploit_cmd(callback: CallbackQuery):
-    await callback.message.answer(f'<code>!ss Microsoft Exchange 2019</code>')
+    await callback.message.answer(f'Пример:\n<code>!ss Microsoft Exchange 2019</code>')
     await callback.answer()
 
 

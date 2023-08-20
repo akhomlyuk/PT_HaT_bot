@@ -1,7 +1,8 @@
 from aiogram import Router, F, html
-from aiogram.types import Message
+from aiogram.types import Message, URLInputFile
 import logging
 import app.config.cfg as cfg
+from app.config.cfg import bot
 from app.helpers.revshell import generate_revshell
 from app.helpers.jwt_decode import jwt_decode
 from icecream import ic
@@ -14,6 +15,18 @@ router: Router = Router()
 async def show_menu(message: Message):
     try:
         await message.answer(f'<b>ID:</b> <code>{message.from_user.id}</code> Premium: <b>{message.from_user.is_premium}</b>')
+    except Exception as e:
+        logging.warning(e)
+        ic(e)
+        await message.answer(f'{e}')
+
+
+@router.message(F.text.in_(cfg.all_commands['python_cmds']))
+async def python_onepic(message: Message):
+    try:
+        photo = URLInputFile('https://raw.githubusercontent.com/coreb1t/awesome-pentest-cheat-sheets/master/docs/python-3-in-one-pic.png',
+                             bot=bot)
+        await message.answer_photo(photo)
     except Exception as e:
         logging.warning(e)
         ic(e)
