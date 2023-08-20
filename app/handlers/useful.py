@@ -130,18 +130,30 @@ async def new_members_handler(message: Message):
 
 # Автоматическое удаление системных сообщений
 @router.message(F.left_chat_member)
-async def on_user_join(message: Message):
-    await message.delete()
+async def on_user_left(message: Message):
+    try:
+        await message.delete()
+    except Exception as e:
+        ic()
+        ic(e)
 
 
 @router.message(F.new_chat_photo)
-async def on_user_join(message: Message):
-    await message.delete()
+async def on_new_photo(message: Message):
+    try:
+        await message.delete()
+    except Exception as e:
+        ic()
+        ic(e)
 
 
 @router.message(F.delete_chat_photo)
-async def on_user_join(message: Message):
-    await message.delete()
+async def on_delete_photo(message: Message):
+    try:
+        await message.delete()
+    except Exception as e:
+        ic()
+        ic(e)
 
 
 @router.message(F.text.in_('!uptime'))
