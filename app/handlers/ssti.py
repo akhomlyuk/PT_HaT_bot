@@ -18,7 +18,7 @@ async def send_ssti_identify(message: Message):
                                        caption='\nhttps://book.hacktricks.xyz/pentesting-web/ssti-server-side-template-injection')
         else:
             msg2 = message.text[5:]
-            await message.answer(f'not ready yet')
+            await message.answer(f'not ready')
     except Exception as e:
         logging.warning(e)
         ic(e)

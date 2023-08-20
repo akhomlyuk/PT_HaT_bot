@@ -18,12 +18,8 @@ async def search_sploit(message: Message):
             await message.answer('<code>!ss Microsoft Exchange 2019</code>')
         else:
             sploit_string = ' '.join(msg2)
-            ic(sploit_string)
-            logging.critical(sploit_string)
             command = f"searchsploit {sploit_string} -j -w"
-            logging.critical(command)
             output_file = "sploit.json"
-            logging.critical(output_file)
             subprocess.run(f"{command} > {output_file}", shell=True)
             with open(output_file, "r") as file:
                 data = json.load(file)
@@ -35,7 +31,7 @@ async def search_sploit(message: Message):
             else:
                 await message.answer(f'{"".join(lst)}', disable_web_page_preview=True)
     except Exception as e:
-        await message.answer(f'{e}')
+        await message.answer(f'Ничего не найдено 😞\nПопробуй изменить запрос')
         ic()
         ic(e)
         logging.error(e)
