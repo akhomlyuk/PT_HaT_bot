@@ -1,9 +1,10 @@
 from aiogram import Router, F
-from aiogram.types import Message, InlineKeyboardButton, CallbackQuery
+from aiogram.types import Message, InlineKeyboardButton, CallbackQuery, URLInputFile
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 from aiogram import html
 import random as rand
 from app.config import cfg
+from app.config.cfg import bot
 from app.texts import revshells
 from app.texts.sqli_examples import sqli_example
 from icecream import ic
@@ -26,6 +27,7 @@ async def menu_buttons(message: Message):
         builder.add(InlineKeyboardButton(text="🔮 Hash identify", callback_data="hash_identify"))
         builder.add(InlineKeyboardButton(text="🔓 JWT Decode", callback_data="jwt_decode"))
         builder.add(InlineKeyboardButton(text="💉 SQLi", callback_data="sqli_payloads"))
+        builder.add(InlineKeyboardButton(text="🐍 Python easy!", callback_data="python_easy"))
         builder.add(InlineKeyboardButton(text="🤖 File IDs bot", callback_data="file_id_bot"))
         builder.adjust(2)
         await message.answer(
@@ -44,6 +46,14 @@ async def send_channel_link(callback: CallbackQuery):
     await callback.answer()
 
 
+@router.callback_query(F.data == 'python_easy')
+async def send_python_onepic(callback: CallbackQuery):
+    photo = URLInputFile('https://raw.githubusercontent.com/coreb1t/awesome-pentest-cheat-sheets/master/docs/python-3-in-one-pic.png',
+                         bot=bot, filename='python3_onepic.png')
+    await callback.message.answer_document(photo)
+    await callback.answer()
+
+
 @router.callback_query(F.data == 'port_checker')
 async def port_check_info(callback: CallbackQuery):
     await callback.message.answer('Пример:\n<code>!port yandex.ru 443</code>')
@@ -59,7 +69,8 @@ async def whois_domain_info(callback: CallbackQuery):
 @router.callback_query(F.data == 'dns_records')
 async def dig_info(callback: CallbackQuery):
     await callback.message.answer(
-        'Пример:\n<code>!dig ya.ru</code>\nor\n<code>!dig ya.ru MX</code>\n\nhttps://en.wikipedia.org/wiki/List_of_DNS_record_types', disable_web_page_preview=True)
+        'Пример:\n<code>!dig ya.ru</code>\nor\n<code>!dig ya.ru MX</code>\n\nhttps://en.wikipedia.org/wiki/List_of_DNS_record_types',
+        disable_web_page_preview=True)
     await callback.answer()
 
 
