@@ -143,7 +143,7 @@ async def new_members_handler(message: Message):
                                                        f'<b>message_chat</b>\n<code>{json_chat}</code>\n'
                                                        f'<b>message</b>\n<code>{json_data}</code>\n'
                                                        f'{await bot.get_chat(message.chat.id)}\n'
-                                                       f'{await bot.get_chat_administrators(message.chat.id)}')
+                                                       f'{await bot.get_chat_administrators(message.chat.id)}', parse_mode=None)
         new_member = message.new_chat_members[0]
         await cfg.bot.send_message(message.chat.id, f"Добро пожаловать в <b>{message.chat.title}</b> 🖖, @{new_member.username} ! 🎩")
         await cfg.bot.send_message(message.chat.id, f"{cfg.bot_commands}")
