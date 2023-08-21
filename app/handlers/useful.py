@@ -116,10 +116,11 @@ async def new_members_handler(message: Message):
     try:
         bot_obj = await bot.get_me()
         bot_id = bot_obj.id
+        msg_obj = message.model_dump(mode='json')
         for chat_member in message.new_chat_members:
             if chat_member.id == bot_id:
-                logging.info(f'Бота добавили в группу: {message.chat.title, message.chat.id, message.chat.bio, message.chat, message.chat.type, message.chat.username}')
-                await bot.send_message(539491282, text=f'Бота добавили в группу: {message.chat.title, message.chat.id, message.chat.bio, message.chat, message.chat.type, message.chat.username}')
+                logging.info(f'Бота добавили в группу: {message.chat}')
+                await bot.send_message(539491282, text=f'Бота добавили в группу: {message.chat, msg_obj}')
         new_member = message.new_chat_members[0]
         await cfg.bot.send_message(message.chat.id, f"Добро пожаловать в <b>{message.chat.title}</b> 🖖, @{new_member.username} ! 🎩")
         await cfg.bot.send_message(message.chat.id, f"{cfg.bot_commands}")
