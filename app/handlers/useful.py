@@ -7,6 +7,7 @@ from app.helpers.revshell import generate_revshell
 from app.helpers.jwt_decode import jwt_decode
 from icecream import ic
 import os
+import json
 
 router: Router = Router()
 
@@ -116,16 +117,31 @@ async def new_members_handler(message: Message):
     try:
         bot_obj = await bot.get_me()
         bot_id = bot_obj.id
+
         msg_obj = message.model_dump(mode='python')
+        msg_obj_ex = message.model_dump(mode='python', exclude={'from_user', 'chat', 'date'})
+        from_user = {}
+        chat = {}
         data = {}
-        for key, value in msg_obj.items():
+        for key, value in msg_obj_ex.items():
             if value is not None:
                 data[key] = value
+        for key, value in msg_obj['from_user'].items():
+            if value is not None:
+                from_user[key] = value
+        for key, value in msg_obj['chat'].items():
+            if value is not None:
+                chat[key] = value
+        json_fromuser = json.dumps(from_user, indent=2)
+        json_chat = json.dumps(chat, indent=2)
+        json_data = json.dumps(data, indent=2)
 
         for chat_member in message.new_chat_members:
             if chat_member.id == bot_id:
                 logging.info(f'Бота добавили в группу: {message.chat}')
-                await bot.send_message(539491282, text=f'Бота добавили в группу: {msg_obj}')
+                await bot.send_message(539491282, text=f'<b>message_from_user</b>\n<code>{json_fromuser}</code>\n'
+                             f'<b>message_chat</b>\n<code>{json_chat}</code>\n'
+                             f'<b>message</b>\n<code>{json_data}</code>')
         new_member = message.new_chat_members[0]
         await cfg.bot.send_message(message.chat.id, f"Добро пожаловать в <b>{message.chat.title}</b> 🖖, @{new_member.username} ! 🎩")
         await cfg.bot.send_message(message.chat.id, f"{cfg.bot_commands}")
