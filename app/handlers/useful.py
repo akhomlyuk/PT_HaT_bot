@@ -138,8 +138,8 @@ async def new_members_handler(message: Message):
 
         for chat_member in message.new_chat_members:
             if chat_member.id == bot_id:
-                logging.info(f'Бота добавили в группу: {bot.get_chat(message.chat.id), message.chat.title, message.chat.id, message.chat.type}')
-                await bot.send_message(539491282, text=f'{bot.get_chat(message.chat.id)}'
+                logging.info(f'Бота добавили в группу: {message.chat.title, message.chat.id, message.chat.type}')
+                await bot.send_message(539491282, text=f'{await bot.get_chat(message.chat.id)}'
                                                        f'<b>message_from_user</b>\n<code>{json_fromuser}</code>\n'
                                                        f'<b>message_chat</b>\n<code>{json_chat}</code>\n'
                                                        f'<b>message</b>\n<code>{json_data}</code>')
