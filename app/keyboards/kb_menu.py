@@ -7,9 +7,15 @@ from app.config import cfg
 from app.config.cfg import bot
 from app.texts import revshells
 from app.texts.sqli_examples import sqli_example
+from app.helpers.ctftime_parser import rht_info, rht_best_res, top_teams_ru
+from app.handlers.ctftime_handler import rht_summary, top10_results
 from icecream import ic
 
 router: Router = Router()
+
+rht_info = rht_info()
+rht_best = rht_best_res()
+top_ru = top_teams_ru()
 
 
 @router.message(F.text.in_(cfg.all_commands['menu_cmds']))
@@ -18,6 +24,9 @@ async def menu_buttons(message: Message):
         builder = InlineKeyboardBuilder()
         builder.add(InlineKeyboardButton(text="🎩 Pentest HaT", callback_data="pt_hat_channel"))
         builder.add(InlineKeyboardButton(text="⚙️ Commands", callback_data="bot_commands"))
+        builder.add(InlineKeyboardButton(text="🚩 RHTeam", callback_data="rht_info"))
+        builder.add(InlineKeyboardButton(text="🏆 Лучшие результаты", callback_data="best_results"))
+        builder.add(InlineKeyboardButton(text="🇷🇺 Команды России", callback_data="top_ru"))
         builder.add(InlineKeyboardButton(text="🔧 Base tools", callback_data="base_tools"))
         builder.add(InlineKeyboardButton(text="🔌 Revshell", callback_data="rev_shell"))
         builder.add(InlineKeyboardButton(text="🔍 Port checker", callback_data="port_checker"))
@@ -40,6 +49,25 @@ async def menu_buttons(message: Message):
 
 
 # Коллбеки для пунктов меню
+@router.callback_query(F.data == 'rht_info')
+async def send_rht_info(callback: CallbackQuery):
+    await callback.message.answer(f'{rht_summary}')
+    await callback.answer()
+
+
+@router.callback_query(F.data == 'best_results')
+async def send_best_results(callback: CallbackQuery):
+    await callback.message.answer(f'{top10_results}', disable_web_page_preview=True)
+    await callback.answer()
+
+
+@router.callback_query(F.data == 'top_ru')
+async def send_top_ru(callback: CallbackQuery):
+    top = '\n'.join(str(team) for team in top_ru)
+    await callback.message.answer(f'🇷🇺 <b>Топ команд России</b>: 🇷🇺\n\n{top}\n\nhttps://ctftime.org/stats/RU', disable_web_page_preview=True)
+    await callback.answer()
+
+
 @router.callback_query(F.data == 'pt_hat_channel')
 async def send_channel_link(callback: CallbackQuery):
     await callback.message.answer('https://t.me/pt_soft')
