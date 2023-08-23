@@ -26,7 +26,7 @@ async def show_menu(message: Message):
 async def create_invite(message: Message):
     try:
         invite = await message.bot.create_chat_invite_link(message.chat.id)
-        await message.answer(f'{invite}')
+        await message.answer(f'{invite.invite_link}')
     except Exception as e:
         logging.warning(e)
         ic(e)
