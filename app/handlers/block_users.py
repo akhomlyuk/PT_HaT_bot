@@ -4,7 +4,6 @@ import logging
 import app.config.cfg as cfg
 from icecream import ic
 
-
 router: Router = Router()
 
 
@@ -13,7 +12,7 @@ async def ban_user(message: Message):
     try:
         if message.from_user.id in cfg.admins:
             await message.bot.ban_chat_member(message.chat.id, message.reply_to_message.from_user.id)
-            await message.answer(f'Пользователь {message.reply_to_message.from_user.first_name} заблокирован!')
+            await message.answer(f'Пользователь <b>{message.reply_to_message.from_user.first_name}</b> заблокирован!')
         else:
             await message.answer(f'Недостаточно прав')
     except Exception as e:
@@ -27,7 +26,7 @@ async def unban_user(message: Message):
     try:
         if message.from_user.id in cfg.admins:
             await message.bot.unban_chat_member(message.chat.id, message.reply_to_message.from_user.id)
-            await message.answer(f'Пользователь {message.reply_to_message.from_user.first_name} разблокирован!')
+            await message.answer(f'Пользователь <b>{message.reply_to_message.from_user.first_name}</b> разблокирован!')
         else:
             await message.answer(f'Недостаточно прав')
     except Exception as e:
