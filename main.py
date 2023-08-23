@@ -31,7 +31,7 @@ dp.include_router(check_port.router)
 dp.include_router(whois_info.router)
 dp.include_router(dig_query.router)
 dp.include_router(ctftime_handler.router)
-dp.include_router(block_users.router)
+# dp.include_router(block_users.router)
 
 
 @dp.errors()
