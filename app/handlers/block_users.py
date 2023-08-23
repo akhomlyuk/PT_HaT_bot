@@ -13,7 +13,7 @@ async def ban_user(message: Message):
     try:
         if message.from_user.id in cfg.admins:
             await message.bot.ban_chat_member(message.chat.id, message.reply_to_message.from_user.id)
-            await message.answer(f'Пользователь {message.from_user.first_name} заблокирован!')
+            await message.answer(f'Пользователь {message.reply_to_message.from_user.first_name} заблокирован!')
         else:
             await message.answer(f'Недостаточно прав')
     except Exception as e:
@@ -27,7 +27,7 @@ async def unban_user(message: Message):
     try:
         if message.from_user.id in cfg.admins:
             await message.bot.unban_chat_member(message.chat.id, message.reply_to_message.from_user.id)
-            await message.answer(f'Пользователь {message.from_user.first_name} разблокирован!')
+            await message.answer(f'Пользователь {message.reply_to_message.from_user.first_name} разблокирован!')
         else:
             await message.answer(f'Недостаточно прав')
     except Exception as e:
