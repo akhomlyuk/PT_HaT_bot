@@ -20,3 +20,17 @@ async def ban_user(message: Message):
         logging.error(e)
         ic(e)
         await message.answer(f'{e}')
+
+
+@router.message(F.text.startswith(cfg.all_commands['unban_cmds']))
+async def unban_user(message: Message):
+    try:
+        if message.from_user.id in cfg.admins:
+            await message.bot.unban_chat_member(message.chat.id, message.reply_to_message.from_user.id)
+            await message.answer(f'Пользователь {message.from_user.first_name} разблокирован!')
+        else:
+            await message.answer(f'Недостаточно прав')
+    except Exception as e:
+        logging.error(e)
+        ic(e)
+        await message.answer(f'{e}')
