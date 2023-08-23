@@ -33,3 +33,16 @@ async def unban_user(message: Message):
         logging.error(e)
         ic(e)
         await message.answer(f'{e}')
+
+
+@router.message(F.text.startswith('!del'))
+async def del_message_from_bot(message: Message):
+    try:
+        if message.from_user.id in cfg.admins:
+            await message.bot.delete_message(message.chat.id, message.reply_to_message.message_id)
+        else:
+            await message.answer(f'Недостаточно прав')
+    except Exception as e:
+        logging.error(e)
+        ic(e)
+        await message.answer(f'{e}')
