@@ -22,6 +22,16 @@ async def show_menu(message: Message):
         await message.answer(f'{e}')
 
 
+@router.message(F.text.in_(cfg.all_commands['invite_cmds']))
+async def create_invite(message: Message):
+    try:
+        await message.bot.create_chat_invite_link(message.chat.id)
+    except Exception as e:
+        logging.warning(e)
+        ic(e)
+        await message.answer(f'{e}')
+
+
 @router.message(F.text.in_(cfg.all_commands['python_cmds']))
 async def python_onepic(message: Message):
     try:
