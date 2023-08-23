@@ -25,7 +25,8 @@ async def show_menu(message: Message):
 @router.message(F.text.in_(cfg.all_commands['invite_cmds']))
 async def create_invite(message: Message):
     try:
-        await message.bot.create_chat_invite_link(message.chat.id)
+        invite = await message.bot.create_chat_invite_link(message.chat.id)
+        await message.answer(f'{invite}')
     except Exception as e:
         logging.warning(e)
         ic(e)
