@@ -31,7 +31,7 @@ async def get_socks_proxy(message: Message):
                 response = requests.get(url, proxies=proxies, timeout=3, headers=agent, verify=False)
                 ip = response.text
                 if ip == proxy_ip:
-                    await message.answer(f"Free proxy: <code>socks5://{proxy}</code>")
+                    await message.answer(f"<b>Free proxy:</b>\n<code>socks5://{proxy}</code>")
                     break
             except Exception as e:
                 ic(e)
