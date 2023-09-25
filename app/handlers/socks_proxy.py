@@ -9,10 +9,6 @@ router: Router = Router()
 
 agent = {'User-agent': 'Mozilla/5.0'}
 socks5_url = 'https://raw.githubusercontent.com/TheSpeedX/SOCKS-List/master/socks5.txt'
-socks5_response = requests.get(socks5_url)
-
-socks5_lst = list(socks5_response.text.split('\n'))
-random_proxies = random.choices(socks5_lst, k=50)
 
 url = 'http://ifconfig.me/ip'
 
@@ -20,6 +16,10 @@ url = 'http://ifconfig.me/ip'
 @router.message(F.text.in_(cfg.all_commands['proxy_cmds']))
 async def get_socks_proxy(message: Message):
     try:
+        socks5_response = requests.get(socks5_url)
+        socks5_lst = list(socks5_response.text.split('\n'))
+        random_proxies = random.choices(socks5_lst, k=50)
+
         for proxy in random_proxies:
             try:
                 proxy_ip, proxy_port = proxy.split(':')
