@@ -41,6 +41,11 @@ else:
     with open(proxies_path + r'/proxies/proxies_geolocation/socks4.txt', 'r') as socks4_file_geo:
         socks4_file_geo = socks4_file_geo.read()
 
+socks5_lst = list(socks5_file.split('\n'))
+random_socks5 = random.choices(socks5_lst, k=3)
+
+socks5_lst_geo = list(socks5_file_geo.split('\n'))
+random_socks5_geo = random.choices(socks5_lst_geo, k=3)
 
 socks4_lst = list(socks4_file.split('\n'))
 random_socks4 = random.choices(socks4_lst, k=3)
@@ -58,11 +63,6 @@ random_http_geo = random.choices(http_lst_geo, k=3)
 @router.message(F.text.startswith(cfg.all_commands['socks5_cmds']))
 async def get_socks5_proxy(message: Message):
     try:
-        socks5_lst = list(socks5_file.split('\n'))
-        random_socks5 = random.choices(socks5_lst, k=3)
-
-        socks5_lst_geo = list(socks5_file_geo.split('\n'))
-        # random_socks5_geo = random.choices(socks5_lst_geo, k=3)
         args = message.text.split()
         newline = '\n'
         if len(args) == 1:
@@ -143,7 +143,6 @@ async def get_http_proxy(message: Message):
 @router.message(F.text.startswith(cfg.all_commands['proxies_cmds']))
 async def get_proxies_help(message: Message):
     try:
-        socks5_lst = list(socks5_file.split('\n'))
         await message.answer(f"<b>Socks5</b>: {len(socks5_lst)}\n"
                              f"<b>Socks4</b>: {len(socks4_lst)}\n"
                              f"<b>Http</b>: {len(http_lst)}\n\n"
