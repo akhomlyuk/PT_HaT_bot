@@ -61,7 +61,7 @@ async def get_socks5_proxy(message: Message):
             except ValueError:
                 await message.answer(f"<b>Usage:</b>\n<code>!socks5 1...20</code>\n<code>!socks5 1...20 geo</code>")
         elif len(args) == 3:
-            if args[2] == "geo" and 1 <= int(args[1]) <= 20:
+            if args[2].lower() == "geo" and 1 <= int(args[1]) <= 20:
                 await message.answer(f"<b>Socks5 proxies with geo:</b>\n"
                                      f"<code>{nr.join(random.choices(geo_file_paths['socks5'], k=int(args[1])))}</code>")
             else:
@@ -89,7 +89,7 @@ async def get_socks4_proxy(message: Message):
             except ValueError:
                 await message.answer(f"<b>Usage:</b>\n<code>!socks4 1...20</code>\n<code>!socks4 1...20 geo</code>")
         elif len(args) == 3:
-            if args[2] == "geo" and 1 <= int(args[1]) <= 20:
+            if args[2].lower() == "geo" and 1 <= int(args[1]) <= 20:
                 await message.answer(f"<b>Socks4 proxies with geo:</b>\n"
                                      f"<code>{nr.join(random.choices(geo_file_paths['socks4'], k=int(args[1])))}</code>")
             else:
@@ -117,7 +117,7 @@ async def get_http_proxy(message: Message):
             except ValueError:
                 await message.answer(f"<b>Usage:</b>\n<code>!http 1...20</code>\n<code>!http 1...20 geo</code>")
         elif len(args) == 3:
-            if args[2] == "geo" and 1 <= int(args[1]) <= 20:
+            if args[2].lower() == "geo" and 1 <= int(args[1]) <= 20:
                 await message.answer(f"<b>Http proxies with geo:</b>\n"
                                      f"<code>{nr.join(random.choices(geo_file_paths['http'], k=int(args[1])))}</code>")
             else:
