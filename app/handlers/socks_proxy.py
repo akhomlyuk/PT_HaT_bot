@@ -5,7 +5,7 @@ from icecream import ic
 import random
 import os
 from sys import platform
-from ..texts import description
+from app.texts import description
 
 router: Router = Router()
 
