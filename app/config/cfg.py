@@ -6,10 +6,11 @@ bot = Bot(token=bot_token, parse_mode="HTML")
 
 all_commands = {'help_cmds': '!help', 'menu_cmds': '!menu', 'wiki_cmds': '!wiki', 'dig_cmds': '!dig', 'commands_cmds': '!commands',
                 'id_cmds': '!id', 'jwt_cmds': '!jwt', 'cmds_cmds': '!cmds', 'rev_cmds': '!rev', 'sqli_cmds': '!sqli', 'team_cmds': '!team',
-                'bestres_cmds': '!results', 'ban_cmds': '!ban', 'unban_cmds': '!unban', 'invite_cmds': '!invite', 'proxy_cmds': '!proxy',
+                'bestres_cmds': '!results', 'ban_cmds': '!ban', 'unban_cmds': '!unban', 'invite_cmds': '!invite',
                 'search_sploit_cmds': '!ss', 'checkport_cmds': '!port', 'whois_cmds': '!whois', 'python_cmds': '!python',
                 'hash_alz_cmds': '!hash', 'b64decode_cmds': '!b64d', 'b64encode_cmds': '!b64e', 'hex2text_cmds': '!h2t',
-                'text2hex_cmds': '!t2h', 'gpt_cmds': '!gpt', 'links_cmds': '!links', 'ssti_cmds': '!ssti', 'topteams_cmds': '!top'
+                'text2hex_cmds': '!t2h', 'gpt_cmds': '!gpt', 'links_cmds': '!links', 'ssti_cmds': '!ssti', 'topteams_cmds': '!top',
+                'socks5_cmds': '!socks5', 'socks4_cmds': '!socks4', 'proxy_cmds': '!http', 'proxies_cmds': '!proxies'
                 }
 
 admins = [539491282]
