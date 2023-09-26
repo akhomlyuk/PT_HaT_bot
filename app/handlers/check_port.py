@@ -10,10 +10,10 @@ router: Router = Router()
 
 def check_port(host: str, port: int):
     try:
-        blacklist = ['127.0.0.1', 'localhost', '0.0.0.0', '[:]', ':', '::', '[::]', '127.1']
+        blacklist = ['localhost', '0.0.0.0', '[:]', ':', '::', '[::]']
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.settimeout(1)
-        if host not in blacklist:
+        if host not in blacklist and not host.startswith('127'):
             s.connect((host, port))
             s.close()
             return f"Port {port} on {host} is open 😄"
