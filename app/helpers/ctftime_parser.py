@@ -137,7 +137,7 @@ def top_teams_ru() -> list:
                 cols = row.find_all("td")
                 place = cols[2].text.strip()
                 team_name = cols[4].text.strip()
-                points = cols[5].text.strip()
+                points = cols[5].text.replace('*', '').strip()
                 results.append(
                     {team_name: {'Place': int(place), 'CTF points': float(points)}})
             results_for_menu = []
