@@ -66,6 +66,8 @@ async def get_socks5_proxy(message: Message):
                                      f"<code>{nr.join(random.choices(geo_file_paths['socks5'], k=int(args[1])))}</code>")
             else:
                 await message.answer(f"<b>Usage:</b>\n<code>!socks5 1...20 geo</code>")
+        else:
+            await message.answer(f"<b>Usage:</b>\n<code>!socks5 1...20</code>\n<code>!socks5 1...20 geo</code>")
     except Exception as e:
         ic()
         ic(e)
@@ -92,7 +94,8 @@ async def get_socks4_proxy(message: Message):
                                      f"<code>{nr.join(random.choices(geo_file_paths['socks4'], k=int(args[1])))}</code>")
             else:
                 await message.answer(f"<b>Usage:</b>\n<code>!socks4 1...20 geo</code>")
-
+        else:
+            await message.answer(f"<b>Usage:</b>\n<code>!socks4 1...20</code>\n<code>!socks4 1...20 geo</code>")
     except Exception as e:
         ic()
         ic(e)
@@ -119,7 +122,8 @@ async def get_http_proxy(message: Message):
                                      f"<code>{nr.join(random.choices(geo_file_paths['http'], k=int(args[1])))}</code>")
             else:
                 await message.answer(f"<b>Usage:</b>\n<code>!http 1...20 geo</code>")
-
+        else:
+            await message.answer(f"<b>Usage:</b>\n<code>!http 1...20</code>\n<code>!http 1...20 geo</code>")
     except Exception as e:
         ic()
         ic(e)
