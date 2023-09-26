@@ -12,11 +12,11 @@ router: Router = Router()
 async def dig_query(message: Message):
     try:
         msg = message.text.split()
-        blacklist = ['127.0.0.1', 'localhost', '0.0.0.0', '[:]', ':', '::', '[::]', '127.1']
+        blacklist = ['localhost', '0.0.0.0', '[:]', ':', '::', '[::]']
         if len(msg) == 1:
             await message.answer('<code>!dig ya.ru</code>\nor\n<code>!dig ya.ru MX)</code>\n\nhttps://en.wikipedia.org/wiki/List_of_DNS_record_types', disable_web_page_preview=True)
         elif len(msg) == 2:
-            if msg[1] not in blacklist:
+            if msg[1] not in blacklist and not msg[1].startswith('127'):
                 query_a = pydig.query(msg[1], 'A')
                 query_cname = pydig.query(msg[1], 'CNAME')
                 query_mx = pydig.query(msg[1], 'MX')
@@ -31,7 +31,7 @@ async def dig_query(message: Message):
         elif len(msg) != 3:
             await message.answer('<code>!dig ya.ru</code>\nor\n<code>!dig ya.ru (A,MX,TXT,etc)</code>\n\nhttps://en.wikipedia.org/wiki/List_of_DNS_record_types', disable_web_page_preview=True)
         else:
-            if msg[1] not in blacklist:
+            if msg[1] not in blacklist and not msg[1].startswith('127'):
                 query = pydig.query(msg[1], msg[2])
                 await message.answer(f"<code>{query}</code>")
             else:
