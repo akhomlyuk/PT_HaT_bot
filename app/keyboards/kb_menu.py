@@ -5,7 +5,7 @@ from aiogram import html
 import random as rand
 from app.config import cfg
 from app.config.cfg import bot
-from app.texts import revshells
+from app.texts import revshells, description
 from app.texts.sqli_examples import sqli_example
 from app.helpers.ctftime_parser import rht_info, rht_best_res, top_teams_ru
 from app.handlers.ctftime_handler import rht_summary, top10_results
@@ -26,6 +26,7 @@ async def menu_buttons(message: Message):
         builder.add(InlineKeyboardButton(text="⚙️ Commands", callback_data="bot_commands"))
         builder.add(InlineKeyboardButton(text="🚩 RHTeam", callback_data="rht_info"))
         builder.add(InlineKeyboardButton(text="🏆 Лучшие результаты", callback_data="best_results"))
+        builder.add(InlineKeyboardButton(text="📑 Free socks/http proxy", callback_data="free_proxy"))
         builder.add(InlineKeyboardButton(text="🇷🇺 Команды России", callback_data="top_ru"))
         builder.add(InlineKeyboardButton(text="🔧 Base tools", callback_data="base_tools"))
         builder.add(InlineKeyboardButton(text="🔌 Revshell", callback_data="rev_shell"))
@@ -51,6 +52,12 @@ async def menu_buttons(message: Message):
 # Коллбеки для пунктов меню
 @router.callback_query(F.data == 'rht_info')
 async def send_rht_info(callback: CallbackQuery):
+    await callback.message.answer(f'{description.show_proxies_help}')
+    await callback.answer()
+
+
+@router.callback_query(F.data == 'free_proxy')
+async def send_proxy_info(callback: CallbackQuery):
     await callback.message.answer(f'{rht_summary}')
     await callback.answer()
 
