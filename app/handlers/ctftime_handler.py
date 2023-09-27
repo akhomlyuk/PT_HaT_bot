@@ -44,7 +44,7 @@ async def top_teams_ru(message: Message):
 @router.message(F.text.startswith(cfg.all_commands['bestres_cmds']))
 async def rhteam_best(message: Message):
     try:
-        await message.answer(f'''<b>Лучшие результаты по рейтингу</b>\n{top10_results}''', disable_web_page_preview=True)
+        await message.answer(f'<b>Лучшие результаты по рейтингу</b>\n\n{top10_results}', disable_web_page_preview=True)
     except Exception as e:
         ic()
         ic(e)

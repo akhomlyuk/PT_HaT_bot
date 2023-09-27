@@ -60,7 +60,7 @@ async def send_proxy_info(callback: CallbackQuery):
 
 @router.callback_query(F.data == 'best_results')
 async def send_best_results(callback: CallbackQuery):
-    await callback.message.answer(f'{top10_results}', disable_web_page_preview=True)
+    await callback.message.answer(f'<b>Лучшие результаты по рейтингу</b>\n\n{top10_results}', disable_web_page_preview=True)
     await callback.answer()
 
 
