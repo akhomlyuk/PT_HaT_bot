@@ -17,16 +17,7 @@ rht_summary = f'''🌍 Worldwide position: <b>{rht_info["rating"]["2023"]["ratin
 🚩 Team ID: <b>{rht_info["id"]}</b>
 https://ctftime.org/team/186788'''
 
-top10_results = f'''<b>Лучшие результаты по рейтингу</b>\n
-{rht_best[2][0]}
-{rht_best[2][1]}
-{rht_best[2][2]}
-{rht_best[2][3]}
-{rht_best[2][4]}
-{rht_best[2][5]}
-{rht_best[2][6]}
-{rht_best[2][7]}
-{rht_best[2][8]}'''
+top10_results = '\n'.join([i for i in rht_best[2]])
 
 
 @router.message(F.text.startswith(cfg.all_commands['team_cmds']))
@@ -53,7 +44,7 @@ async def top_teams_ru(message: Message):
 @router.message(F.text.startswith(cfg.all_commands['bestres_cmds']))
 async def rhteam_best(message: Message):
     try:
-        await message.answer(f'{top10_results}', disable_web_page_preview=True)
+        await message.answer(f'''<b>Лучшие результаты по рейтингу</b>\n{top10_results}''', disable_web_page_preview=True)
     except Exception as e:
         ic()
         ic(e)
