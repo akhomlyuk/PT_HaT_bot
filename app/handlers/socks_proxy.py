@@ -49,13 +49,13 @@ random_http_geo = random.choices(geo_file_paths['http'], k=3)
 async def get_socks5_proxy(message: Message):
     try:
         args = message.text.split()
-        nr = '\n'
+        nl = '\n'
         if len(args) == 1:
-            await message.answer(f"<b>Socks5 proxies:</b>\n<code>{nr.join(random_socks5)}</code>")
+            await message.answer(f"<b>Socks5 proxies:</b>\n<code>{nl.join(random_socks5)}</code>")
         elif len(args) == 2:
             try:
                 if 1 <= int(args[1]) <= 20:
-                    await message.answer(f"<b>Socks5 proxies:</b>\n<code>{nr.join(random.choices(file_paths['socks5'], k=int(args[1])))}</code>")
+                    await message.answer(f"<b>Socks5 proxies:</b>\n<code>{nl.join(random.choices(file_paths['socks5'], k=int(args[1])))}</code>")
                 else:
                     await message.answer(f"<b>Usage:</b>\n<code>!socks5 1...20</code>\n<code>!socks5 1...20 geo</code>")
             except ValueError:
@@ -63,7 +63,7 @@ async def get_socks5_proxy(message: Message):
         elif len(args) == 3:
             if args[2].lower() == "geo" and 1 <= int(args[1]) <= 20:
                 await message.answer(f"<b>Socks5 proxies with geo:</b>\n"
-                                     f"<code>{nr.join(random.choices(geo_file_paths['socks5'], k=int(args[1])))}</code>")
+                                     f"<code>{nl.join(random.choices(geo_file_paths['socks5'], k=int(args[1])))}</code>")
             else:
                 await message.answer(f"<b>Usage:</b>\n<code>!socks5 1...20 geo</code>")
         else:
@@ -77,13 +77,13 @@ async def get_socks5_proxy(message: Message):
 async def get_socks4_proxy(message: Message):
     try:
         args = message.text.split()
-        nr = '\n'
+        nl = '\n'
         if len(args) == 1:
-            await message.answer(f"<b>Socks4 proxies:</b>\n<code>{nr.join(random_socks4)}</code>")
+            await message.answer(f"<b>Socks4 proxies:</b>\n<code>{nl.join(random_socks4)}</code>")
         elif len(args) == 2:
             try:
                 if 1 <= int(args[1]) <= 20:
-                    await message.answer(f"<b>Socks4 proxies:</b>\n<code>{nr.join(random.choices(file_paths['socks4'], k=int(args[1])))}</code>")
+                    await message.answer(f"<b>Socks4 proxies:</b>\n<code>{nl.join(random.choices(file_paths['socks4'], k=int(args[1])))}</code>")
                 else:
                     await message.answer(f"<b>Usage:</b>\n<code>!socks4 1...20</code>")
             except ValueError:
@@ -91,7 +91,7 @@ async def get_socks4_proxy(message: Message):
         elif len(args) == 3:
             if args[2].lower() == "geo" and 1 <= int(args[1]) <= 20:
                 await message.answer(f"<b>Socks4 proxies with geo:</b>\n"
-                                     f"<code>{nr.join(random.choices(geo_file_paths['socks4'], k=int(args[1])))}</code>")
+                                     f"<code>{nl.join(random.choices(geo_file_paths['socks4'], k=int(args[1])))}</code>")
             else:
                 await message.answer(f"<b>Usage:</b>\n<code>!socks4 1...20 geo</code>")
         else:
@@ -105,13 +105,13 @@ async def get_socks4_proxy(message: Message):
 async def get_http_proxy(message: Message):
     try:
         args = message.text.split()
-        nr = '\n'
+        nl = '\n'
         if len(args) == 1:
-            await message.answer(f"<b>Http proxies:</b>\n<code>{nr.join(random_http)}</code>")
+            await message.answer(f"<b>Http proxies:</b>\n<code>{nl.join(random_http)}</code>")
         elif len(args) == 2:
             try:
                 if 1 <= int(args[1]) <= 20:
-                    await message.answer(f"<b>Http proxies:</b>\n<code>{nr.join(random.choices(file_paths['http'], k=int(args[1])))}</code>")
+                    await message.answer(f"<b>Http proxies:</b>\n<code>{nl.join(random.choices(file_paths['http'], k=int(args[1])))}</code>")
                 else:
                     await message.answer(f"<b>Usage:</b>\n<code>!http 1...20</code>")
             except ValueError:
@@ -119,7 +119,7 @@ async def get_http_proxy(message: Message):
         elif len(args) == 3:
             if args[2].lower() == "geo" and 1 <= int(args[1]) <= 20:
                 await message.answer(f"<b>Http proxies with geo:</b>\n"
-                                     f"<code>{nr.join(random.choices(geo_file_paths['http'], k=int(args[1])))}</code>")
+                                     f"<code>{nl.join(random.choices(geo_file_paths['http'], k=int(args[1])))}</code>")
             else:
                 await message.answer(f"<b>Usage:</b>\n<code>!http 1...20 geo</code>")
         else:
