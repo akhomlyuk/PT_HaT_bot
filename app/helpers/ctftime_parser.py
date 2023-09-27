@@ -10,6 +10,10 @@ rht_url = 'https://ctftime.org/api/v1/teams/186788/'
 rht_results = "https://ctftime.org/team/186788"
 top_teams_ru_url = 'https://ctftime.org/stats/RU'
 
+header = {'Host': 'ctftime.org',
+          'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:88.0) Gecko/20100101 Firefox/88.0',
+          'Connection': 'close'}
+
 
 def rating(results: list):
     team_points = results[0]
@@ -26,11 +30,6 @@ def rating(results: list):
 def rht_best_res() -> list:
     try:
         with requests.Session() as s:
-            header = {
-                'Host': 'ctftime.org',
-                'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:88.0) Gecko/20100101 Firefox/88.0',
-                'Connection': 'close'
-            }
             response = s.get(rht_results, headers=header)
             soup = BeautifulSoup(response.content, "html.parser")
             table_div = soup.find("div", {"id": "rating_2023"})
@@ -69,11 +68,6 @@ def rht_best_res() -> list:
 def rht_info() -> dict:
     try:
         with requests.Session() as s:
-            header = {
-                'Host': 'ctftime.org',
-                'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:88.0) Gecko/20100101 Firefox/88.0',
-                'Connection': 'close'
-            }
             try:
                 rht = s.get(rht_url, headers=header)
                 rht = json.loads(rht.text)
@@ -89,11 +83,6 @@ def rht_info() -> dict:
 def results_from_ctftime() -> dict:
     try:
         with requests.Session() as s:
-            header = {
-                'Host': 'ctftime.org',
-                'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:88.0) Gecko/20100101 Firefox/88.0',
-                'Connection': 'close'
-            }
             try:
                 b = s.get(result_api_url, headers=header)
                 b = json.loads(b.text)
@@ -107,11 +96,6 @@ def results_from_ctftime() -> dict:
 
 def event_information(event_id: int) -> dict:
     with requests.Session() as s:
-        header = {
-            'Host': 'ctftime.org',
-            'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:88.0) Gecko/20100101 Firefox/88.0',
-            'Connection': 'close'
-        }
         try:
             event_info = s.get(event_info_api_url + str(event_id) + '/', headers=header)
             event_info = json.loads(event_info.text)
@@ -123,11 +107,6 @@ def event_information(event_id: int) -> dict:
 def top_teams_ru() -> list:
     try:
         with requests.Session() as s:
-            header = {
-                'Host': 'ctftime.org',
-                'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:88.0) Gecko/20100101 Firefox/88.0',
-                'Connection': 'close'
-            }
             response = s.get(top_teams_ru_url, headers=header)
             soup = BeautifulSoup(response.content, "html.parser")
             table = soup.find("table", {"class": "table table-striped"})
