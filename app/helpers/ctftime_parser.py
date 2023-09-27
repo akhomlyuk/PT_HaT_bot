@@ -15,7 +15,7 @@ header = {'Host': 'ctftime.org',
           'Connection': 'close'}
 
 
-def rating(results: list):
+async def rating(results: list):
     team_points = results[0]
     best_points = results[1]
     team_place = results[2]
@@ -27,7 +27,7 @@ def rating(results: list):
     return result
 
 
-def rht_best_res() -> list:
+async def rht_best_res() -> list:
     try:
         with requests.Session() as s:
             response = s.get(rht_results, headers=header)
@@ -65,7 +65,7 @@ def rht_best_res() -> list:
         ic(e)
 
 
-def rht_info() -> dict:
+async def rht_info() -> dict:
     try:
         with requests.Session() as s:
             try:
@@ -80,7 +80,7 @@ def rht_info() -> dict:
         logging.error(e)
 
 
-def results_from_ctftime() -> dict:
+async def results_from_ctftime() -> dict:
     try:
         with requests.Session() as s:
             try:
@@ -94,7 +94,7 @@ def results_from_ctftime() -> dict:
         ic(e)
 
 
-def event_information(event_id: int) -> dict:
+async def event_information(event_id: int) -> dict:
     with requests.Session() as s:
         try:
             event_info = s.get(event_info_api_url + str(event_id) + '/', headers=header)
@@ -104,7 +104,7 @@ def event_information(event_id: int) -> dict:
     return event_info
 
 
-def top_teams_ru() -> list:
+async def top_teams_ru() -> list:
     try:
         with requests.Session() as s:
             response = s.get(top_teams_ru_url, headers=header)
