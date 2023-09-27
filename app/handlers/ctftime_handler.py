@@ -7,15 +7,11 @@ from app.helpers.ctftime_parser import rht_info, rht_best_res, top_teams_ru
 
 router: Router = Router()
 
-rht_info = rht_info()
+
 rht_best = rht_best_res()
 top_ru = top_teams_ru()
 
-rht_summary = f'''🌍 Worldwide position: <b>{rht_info["rating"]["2023"]["rating_place"]}</b>
-🇷🇺 RU position: <b>{rht_info["rating"]["2023"]["country_place"]}</b>
-🎯 Rating points: <b>{rht_info["rating"]["2023"]["rating_points"]}</b>
-🚩 Team ID: <b>{rht_info["id"]}</b>
-https://ctftime.org/team/186788'''
+
 
 top10_results = f'''<b>Лучшие результаты по рейтингу</b>\n
 {rht_best[2][0]}
@@ -32,6 +28,12 @@ top10_results = f'''<b>Лучшие результаты по рейтингу</
 @router.message(F.text.startswith(cfg.all_commands['team_cmds']))
 async def rhteam_info(message: Message):
     try:
+
+        rht_summary = f'''🌍 Worldwide position: <b>{rht_info["rating"]["2023"]["rating_place"]}</b>
+        🇷🇺 RU position: <b>{rht_info()["rating"]["2023"]["country_place"]}</b>
+        🎯 Rating points: <b>{rht_info()["rating"]["2023"]["rating_points"]}</b>
+        🚩 Team ID: <b>{rht_info()["id"]}</b>
+        https://ctftime.org/team/186788'''
         await message.answer(f'{rht_summary}')
     except Exception as e:
         ic()

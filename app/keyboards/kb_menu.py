@@ -7,13 +7,11 @@ from app.config import cfg
 from app.config.cfg import bot
 from app.texts import revshells, description
 from app.texts.sqli_examples import sqli_example
-from app.helpers.ctftime_parser import rht_info, rht_best_res, top_teams_ru
+from app.helpers.ctftime_parser import top_teams_ru
 from app.handlers.ctftime_handler import rht_summary, top10_results
 from icecream import ic
 
 router: Router = Router()
-
-top_ru = top_teams_ru()
 
 
 @router.message(F.text.in_(cfg.all_commands['menu_cmds']))
@@ -68,6 +66,7 @@ async def send_best_results(callback: CallbackQuery):
 
 @router.callback_query(F.data == 'top_ru')
 async def send_top_ru(callback: CallbackQuery):
+    top_ru = top_teams_ru()
     top = '\n'.join(str(team) for team in top_ru)
     await callback.message.answer(f'🇷🇺 <b>Топ команд России</b>: 🇷🇺\n\n{top}\n\nhttps://ctftime.org/stats/RU', disable_web_page_preview=True)
     await callback.answer()
