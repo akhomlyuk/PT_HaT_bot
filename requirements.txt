@@ -1,0 +1,8 @@
+aiogram~=3.1.1
+icecream~=2.1.3
+requests~=2.31.0
+beautifulsoup4~=4.12.2
+wikipedia~=1.4.0
+pydig~=0.4.0
+whoisdomain==1.20230917.1
+lxml~=4.9.3

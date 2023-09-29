@@ -15,7 +15,8 @@ async def send_ssti_identify(message: Message):
         if len(msg) == 1:
             photo = URLInputFile('https://1517081779-files.gitbook.io/~/files/v0/b/gitbook-legacy-files/o/assets%2F-L_2uGJGU7AVNRcqRvEi%2F-M7O4Hp6bOFFkge_yq4G%2F-M7OCvxwZCiaP8Whx2fi%2Fimage.png?alt=media&token=4b40cf58-5561-4925-bc86-1d4689ca53d1', bot=bot)
             await message.answer_photo(photo,
-                                       caption='\nhttps://book.hacktricks.xyz/pentesting-web/ssti-server-side-template-injection')
+                                       caption='\nhttps://book.hacktricks.xyz/pentesting-web/ssti-server-side-template-injection\n'
+                                               'https://github.com/vladko312/SSTImap')
         else:
             await message.answer(f'https://book.hacktricks.xyz/pentesting-web/ssti-server-side-template-injection')
     except Exception as e:
