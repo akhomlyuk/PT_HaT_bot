@@ -45,6 +45,18 @@ async def python_onepic(message: Message):
         await message.answer(f'{e}')
 
 
+@router.message(F.text.in_(cfg.all_commands['lin_cmds']))
+async def linux_onepic(message: Message):
+    try:
+        photo = URLInputFile('https://pbs.twimg.com/media/FivvVeuVUAASHCX?format=jpg&name=4096x4096',
+                             bot=bot, filename='linux_commands.jpg')
+        await message.answer_document(photo)
+    except Exception as e:
+        logging.warning(e)
+        ic(e)
+        await message.answer(f'{e}')
+
+
 @router.message(F.text.in_(cfg.all_commands['commands_cmds']))
 async def show_commands(message: Message):
     try:

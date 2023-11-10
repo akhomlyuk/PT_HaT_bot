@@ -11,6 +11,7 @@ from icecream import ic
 
 os.makedirs('logs', exist_ok=True)
 
+
 bot = cfg.bot
 dp = Dispatcher()
 
