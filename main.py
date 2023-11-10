@@ -47,8 +47,6 @@ async def main():
     except (KeyboardInterrupt, SystemExit) as e:
         logging.info("Bot stopped")
         ic(e)
-    finally:
-        await bot.session.close()
 
 
 if __name__ == "__main__":
