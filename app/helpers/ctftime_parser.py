@@ -31,7 +31,7 @@ def rht_best_res() -> list:
     try:
         with requests.Session() as s:
             response = s.get(rht_results, headers=header)
-            soup = BeautifulSoup(response.content, "lxml")
+            soup = BeautifulSoup(response.content, "html.parser")
             table_div = soup.find("div", {"id": "rating_2023"})
             table = table_div.find("table")
             results = []
