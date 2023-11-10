@@ -11,6 +11,7 @@ from icecream import ic
 
 os.makedirs('logs', exist_ok=True)
 
+logging.basicConfig(level=logging.INFO, filename='logs/bot.log', format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
 bot = cfg.bot
 dp = Dispatcher()
@@ -50,6 +51,5 @@ async def main():
 
 
 if __name__ == "__main__":
-    logging.basicConfig(level=logging.INFO, filename='logs/bot.log', format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
     logging.info('Bot starting...')
     asyncio.run(main())
