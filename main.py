@@ -12,6 +12,7 @@ from icecream import ic
 os.makedirs('logs', exist_ok=True)
 
 logging.basicConfig(level=logging.INFO, filename='logs/bot.log', format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
 
 bot = cfg.bot
 dp = Dispatcher()
@@ -39,17 +40,17 @@ dp.include_router(socks_proxy.router)
 
 @dp.errors()
 async def errors_handler(update: types.Update, exception: Exception):
-    logging.error(f'Ошибка при обработке запроса {update}: {exception}')
+    logger.error(f'Ошибка при обработке запроса {update}: {exception}')
 
 
 async def main():
     try:
         await dp.start_polling(bot)
     except (KeyboardInterrupt, SystemExit) as e:
-        logging.info("Bot stopped")
+        logger.info("Bot stopped")
         ic(e)
 
 
 if __name__ == "__main__":
-    logging.info('Bot starting...')
+    logger.info('Bot starting...')
     asyncio.run(main())
