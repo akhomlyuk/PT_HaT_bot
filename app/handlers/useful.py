@@ -48,7 +48,7 @@ async def python_onepic(message: Message):
 @router.message(F.text.in_(cfg.all_commands['lin_cmds']))
 async def linux_onepic(message: Message):
     try:
-        photo = URLInputFile('https://raw.githubusercontent.com/coreb1t/awesome-pentest-cheat-sheets/master/docs/python-3-in-one-pic.png',
+        photo = URLInputFile('https://raw.githubusercontent.com/akhomlyuk/PT_HaT_bot/master/app/static/lin-az.jpg',
                              bot=bot, filename='linux_commands.jpg')
         await message.answer_document(photo)
     except Exception as e:
