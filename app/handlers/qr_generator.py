@@ -31,7 +31,7 @@ async def send_qr(message: Message):
             await message.answer(f'!qr some text data')
         else:
 
-            qr = qrcode.QRCode(error_correction=qrcode.constants.ERROR_CORRECT_L, border=1, box_size=12)
+            qr = qrcode.QRCode(error_correction=qrcode.constants.ERROR_CORRECT_L, border=1, box_size=14)
             qr.add_data(qr_text[3:])
             print(qr_text)
             img = qr.make_image(image_factory=StyledPilImage, module_drawer=RoundedModuleDrawer(), color_mask=RadialGradiantColorMask())
