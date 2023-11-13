@@ -38,8 +38,8 @@ async def send_qr(message: Message):
             img.save(path + 'qr-' + str(t) + '.png', format='PNG')
 
             photo = FSInputFile(path + 'qr-' + str(t) + '.png', filename='qr-' + str(t) + '.png')
-
-            await message.answer_photo(photo, caption='qr-' + str(t) + '.png')
+            await message.answer_photo(photo)
+            await message.answer_document(photo, thumbnail=photo)
     except Exception as e:
         logging.warning(e)
         ic(e)
