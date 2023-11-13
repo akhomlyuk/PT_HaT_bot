@@ -37,7 +37,7 @@ async def send_qr(message: Message):
             random.seed(t)
             rng = random.randint(0, 255)
             img = qr.make_image(image_factory=StyledPilImage, module_drawer=RoundedModuleDrawer(),
-                                color_mask=RadialGradiantColorMask(edge_color=(rng, rng, rng)))
+                                color_mask=RadialGradiantColorMask(edge_color=(255, 0, 0)))
             img.save(path + 'qr-' + str(t) + '.png', format='PNG')
 
             photo = FSInputFile(path + 'qr-' + str(t) + '.png', filename='qr-' + str(t) + '.png')
