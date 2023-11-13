@@ -15,6 +15,7 @@ import random
 router: Router = Router()
 
 t = round(time.time())
+random.seed(t)
 rng = random.randint(0, 255)
 
 if platform == "win32":
