@@ -38,8 +38,10 @@ async def send_qr(message: Message):
             img_1 = qr.make_image(image_factory=StyledPilImage, module_drawer=RoundedModuleDrawer())
             img_2 = qr.make_image(image_factory=StyledPilImage, color_mask=RadialGradiantColorMask())
             img_3 = qr.make_image(image_factory=StyledPilImage, embeded_image_path=path + 'qr-' + str(t) + '.png')
-
+            ic(img_3)
             photo = FSInputFile(path + 'qr-' + str(t) + '.png', 'qr-' + str(t) + '.png')
+            ic(photo)
+            ic(path + 'qr-' + str(t) + '.png', 'qr-' + str(t) + '.png')
             await message.answer_photo(photo)
     except Exception as e:
         logging.warning(e)
