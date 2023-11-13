@@ -35,7 +35,6 @@ async def send_qr(message: Message):
 
             qr = qrcode.QRCode(error_correction=qrcode.constants.ERROR_CORRECT_H, border=1, box_size=12, version=8)
             qr.add_data(qr_text[3:])
-            await asyncio.sleep(0.1)
 
             rng = [(0, 255, 0), (255, 0, 0), (0, 0, 255), (255, 255, 0), (0, 255, 255), (255, 0, 255)]
             rng = random.choice(rng)
