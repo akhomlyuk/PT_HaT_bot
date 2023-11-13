@@ -11,7 +11,6 @@ from sys import platform
 import os
 import time
 import random
-import asyncio
 
 router: Router = Router()
 
@@ -20,7 +19,7 @@ t = round(time.time())
 if platform == "win32":
     path = os.path.expanduser('~')
 else:
-    os.makedirs('/home/rht_info_bot/PT_HaT_bot/app/static/qrs', exist_ok=True)
+    os.makedirs(os.path.expanduser('~') + '/PT_HaT_bot/app/static/qrs', exist_ok=True)
     path = os.path.expanduser('~') + r'/PT_HaT_bot/app/static/qrs/'
 
 
@@ -40,7 +39,7 @@ async def send_qr(message: Message):
             ic(logging.info(rng))
             img = qr.make_image(image_factory=StyledPilImage, module_drawer=RoundedModuleDrawer(),
                                 color_mask=RadialGradiantColorMask(edge_color=rng),
-                                embeded_image_path="/home/rht_info_bot/PT_HaT_bot/app/static/pthat_logo.png")
+                                embeded_image_path=os.path.expanduser('~') + '/PT_HaT_bot/app/static/pthat_logo.png')
             img.save(path + 'qr-' + str(t) + '.png', format='PNG')
 
             photo = FSInputFile(path + 'qr-' + str(t) + '.png', filename='qr-' + str(t) + '.png')
