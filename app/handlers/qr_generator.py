@@ -32,16 +32,13 @@ async def send_qr(message: Message):
             await message.answer(f'!qr some text data')
         else:
 
-            qr = qrcode.QRCode(error_correction=qrcode.constants.ERROR_CORRECT_L)
+            qr = qrcode.QRCode(error_correction=qrcode.constants.ERROR_CORRECT_L, border=1, box_size=15)
             qr.add_data(qr_text[3:])
+            img = qr.make_image(image_factory=StyledPilImage, module_drawer=RoundedModuleDrawer(), color_mask=RadialGradiantColorMask())
+            img.save(path + 'qr-' + str(t) + '.png')
 
-            img_1 = qr.make_image(image_factory=StyledPilImage, module_drawer=RoundedModuleDrawer())
-            img_2 = qr.make_image(image_factory=StyledPilImage, color_mask=RadialGradiantColorMask())
-            img_3 = qr.make_image(image_factory=StyledPilImage, embeded_image_path=path + 'qr-' + str(t) + '.png')
-            logging.warning(img_3)
             photo = FSInputFile(path + 'qr-' + str(t) + '.png', 'qr-' + str(t) + '.png')
-            logging.warning(photo)
-            logging.warning(path + 'qr-' + str(t) + '.png', 'qr-' + str(t) + '.png')
+
             await message.answer_photo(photo)
     except Exception as e:
         logging.warning(e)
