@@ -36,8 +36,9 @@ async def send_qr(message: Message):
             qr.add_data(qr_text[3:])
             random.seed(t)
             rng = [(0, 255, 0), (255, 0, 0), (0, 0, 255), (255, 255, 0), (0, 255, 255), (255, 0, 255)]
+            ic(logging.info(rng))
             img = qr.make_image(image_factory=StyledPilImage, module_drawer=RoundedModuleDrawer(),
-                                color_mask=RadialGradiantColorMask(edge_color=random.choices(rng)),
+                                color_mask=RadialGradiantColorMask(edge_color=random.choice(rng)),
                                 embeded_image_path="/home/rht_info_bot/PT_HaT_bot/app/static/pthat_logo.jpg")
             img.save(path + 'qr-' + str(t) + '.png', format='PNG')
 
