@@ -8,8 +8,12 @@ from app.handlers import (help, useful, wiki, base_tools, hex_tools, hash_tools_
                           ctftime_handler, block_users, socks_proxy, qr_generator)
 from app.keyboards import kb_menu, kb_links
 from icecream import ic
+from sys import platform
 
-os.makedirs('logs', exist_ok=True)
+if platform == "win32":
+    os.makedirs(r'c:\Users\relic\PycharmProjects\PT_HaT_bot\logs', exist_ok=True)
+else:
+    os.makedirs('/home/rht_info_bot/PT_HaT_bot/logs', exist_ok=True)
 
 # for handler in logging.root.handlers[:]:
 #     logging.root.removeHandler(handler)

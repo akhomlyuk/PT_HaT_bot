@@ -24,7 +24,7 @@ else:
 
 
 @router.message(F.text.startswith(cfg.all_commands['qr_cmds']))
-async def send_ssti_identify(message: Message):
+async def send_qr(message: Message):
     try:
         msg = message.text.split()
         qr_text = message.text
