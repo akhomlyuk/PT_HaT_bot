@@ -14,7 +14,8 @@ if platform == "win32":
     os.makedirs(r'c:\Users\relic\PycharmProjects\PT_HaT_bot\logs', exist_ok=True)
 else:
     os.makedirs('/home/rht_info_bot/PT_HaT_bot/logs', exist_ok=True)
-    logging.basicConfig(level=logging.INFO, filename='/home/rht_info_bot/PT_HaT_bot/logs/bot.log', format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    logging.basicConfig(level=logging.INFO, force=True, filename='/home/rht_info_bot/PT_HaT_bot/logs/bot.log',
+                        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
 # for handler in logging.root.handlers[:]:
 #     logging.root.removeHandler(handler)
