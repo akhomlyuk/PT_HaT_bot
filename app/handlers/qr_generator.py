@@ -32,7 +32,6 @@ async def send_qr(message: Message):
         if len(msg) == 1:
             await message.answer(f'!qr some text data')
         else:
-
             qr = qrcode.QRCode(error_correction=qrcode.constants.ERROR_CORRECT_H, border=1, box_size=12, version=8)
             qr.add_data(qr_text[3:])
 
@@ -41,7 +40,7 @@ async def send_qr(message: Message):
             ic(logging.info(rng))
             img = qr.make_image(image_factory=StyledPilImage, module_drawer=RoundedModuleDrawer(),
                                 color_mask=RadialGradiantColorMask(edge_color=rng),
-                                embeded_image_path="/home/rht_info_bot/PT_HaT_bot/app/static/pthat_logo.jpg")
+                                embeded_image_path="/home/rht_info_bot/PT_HaT_bot/app/static/pthat_logo.png")
             img.save(path + 'qr-' + str(t) + '.png', format='PNG')
 
             photo = FSInputFile(path + 'qr-' + str(t) + '.png', filename='qr-' + str(t) + '.png')
