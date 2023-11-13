@@ -12,15 +12,12 @@ from sys import platform
 
 if platform == "win32":
     os.makedirs(os.path.expanduser('~') + r'\PycharmProjects\PT_HaT_bot\logs', exist_ok=True)
+    logging.basicConfig(level=logging.INFO, force=True, filename=os.path.expanduser('~') + r'\PycharmProjects\PT_HaT_bot\logs\bot.log',
+                        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 else:
     os.makedirs(os.path.expanduser('~') + '/PT_HaT_bot/logs', exist_ok=True)
-    logging.basicConfig(level=logging.INFO, force=True, filename='/home/rht_info_bot/PT_HaT_bot/logs/bot.log',
+    logging.basicConfig(level=logging.INFO, force=True, filename=os.path.expanduser('~') + '/PT_HaT_bot/logs/bot.log',
                         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-
-# for handler in logging.root.handlers[:]:
-#     logging.root.removeHandler(handler)
-
-# logger = logging.getLogger(__name__)
 
 bot = cfg.bot
 dp = Dispatcher()
