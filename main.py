@@ -5,17 +5,17 @@ from aiogram import Dispatcher, types
 import app.config.cfg as cfg
 from app.handlers import (help, useful, wiki, base_tools, hex_tools, hash_tools_handler,
                           free_gpt, sqli_tools, ssti, searchsploit, check_port, whois_info, dig_query,
-                          ctftime_handler, block_users, socks_proxy)
+                          ctftime_handler, block_users, socks_proxy, qr_generator)
 from app.keyboards import kb_menu, kb_links
 from icecream import ic
 
 os.makedirs('logs', exist_ok=True)
 
-for handler in logging.root.handlers[:]:
-    logging.root.removeHandler(handler)
+# for handler in logging.root.handlers[:]:
+#     logging.root.removeHandler(handler)
 
 logging.basicConfig(level=logging.INFO, filename='logs/bot.log', format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-logger = logging.getLogger(__name__)
+# logger = logging.getLogger(__name__)
 
 bot = cfg.bot
 dp = Dispatcher()
@@ -39,21 +39,22 @@ dp.include_router(dig_query.router)
 dp.include_router(ctftime_handler.router)
 dp.include_router(block_users.router)
 dp.include_router(socks_proxy.router)
+dp.include_router(qr_generator.router)
 
 
 @dp.errors()
 async def errors_handler(update: types.Update, exception: Exception):
-    logger.error(f'Ошибка при обработке запроса {update}: {exception}')
+    logging.error(f'Ошибка при обработке запроса {update}: {exception}')
 
 
 async def main():
     try:
+        logging.info('Bot starting...')
         await dp.start_polling(bot)
     except (KeyboardInterrupt, SystemExit) as e:
-        logger.info("Bot stopped")
+        logging.info("Bot stopped")
         ic(e)
 
 
 if __name__ == "__main__":
-    logger.info('Bot starting...')
     asyncio.run(main())
