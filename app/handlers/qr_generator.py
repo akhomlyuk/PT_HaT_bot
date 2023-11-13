@@ -6,7 +6,6 @@ from qrcode.image.styles.moduledrawers.pil import RoundedModuleDrawer
 from qrcode.image.styles.colormasks import RadialGradiantColorMask
 import logging
 import app.config.cfg as cfg
-from app.config.cfg import bot
 from icecream import ic
 from sys import platform
 import os
@@ -14,10 +13,10 @@ import time
 
 router: Router = Router()
 
-t = time.time()
+t = round(time.time())
 
 if platform == "win32":
-    path = os.path.expanduser('~') + r'\qr-' + str(t) + '.png'
+    path = os.path.expanduser('~')
 else:
     os.makedirs('/home/rht_info_bot/PT_HaT_bot/app/static/qrs', exist_ok=True)
     path = os.path.expanduser('~') + r'/PT_HaT_bot/app/static/qrs/'
@@ -32,7 +31,7 @@ async def send_qr(message: Message):
             await message.answer(f'!qr some text data')
         else:
 
-            qr = qrcode.QRCode(error_correction=qrcode.constants.ERROR_CORRECT_L, border=1, box_size=15)
+            qr = qrcode.QRCode(error_correction=qrcode.constants.ERROR_CORRECT_L, border=1, box_size=10)
             qr.add_data(qr_text[3:])
             print(qr_text)
             img = qr.make_image(image_factory=StyledPilImage, module_drawer=RoundedModuleDrawer(), color_mask=RadialGradiantColorMask())
