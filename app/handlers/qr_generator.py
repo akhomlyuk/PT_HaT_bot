@@ -32,7 +32,7 @@ async def send_qr(message: Message):
             await message.answer(f'!qr some text data')
         else:
 
-            qr = qrcode.QRCode(error_correction=qrcode.constants.ERROR_CORRECT_Q, border=1, box_size=12, version=4)
+            qr = qrcode.QRCode(error_correction=qrcode.constants.ERROR_CORRECT_Q, border=1, box_size=12, version=8)
             qr.add_data(qr_text[3:])
             random.seed(t)
             rng = random.randint(0, 255)
