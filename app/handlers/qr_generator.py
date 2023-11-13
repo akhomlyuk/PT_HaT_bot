@@ -15,8 +15,6 @@ import random
 router: Router = Router()
 
 t = round(time.time())
-random.seed(t)
-rng = random.randint(0, 255)
 
 if platform == "win32":
     path = os.path.expanduser('~')
@@ -36,7 +34,8 @@ async def send_qr(message: Message):
 
             qr = qrcode.QRCode(error_correction=qrcode.constants.ERROR_CORRECT_L, border=1, box_size=14)
             qr.add_data(qr_text[3:])
-
+            random.seed(t)
+            rng = random.randint(0, 255)
             img = qr.make_image(image_factory=StyledPilImage, module_drawer=RoundedModuleDrawer(),
                                 color_mask=RadialGradiantColorMask(edge_color=(rng, rng, rng)))
             img.save(path + 'qr-' + str(t) + '.png', format='PNG')
