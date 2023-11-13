@@ -32,14 +32,13 @@ async def send_qr(message: Message):
         msg = message.text.split()
         qr_text = message.text
         if len(msg) == 1:
-            await message.answer(f'!qr some text data')
+            await message.answer(f'!qr Some text data')
         else:
             qr = qrcode.QRCode(error_correction=qrcode.constants.ERROR_CORRECT_H, border=1, box_size=12, version=8)
             qr.add_data(qr_text[3:])
 
             rng = [(0, 255, 0), (255, 0, 0), (0, 0, 255), (255, 255, 0), (0, 255, 255), (255, 0, 255)]
             rng = random.choice(rng)
-            ic(logging.info(rng))
             img = qr.make_image(image_factory=StyledPilImage, module_drawer=RoundedModuleDrawer(),
                                 color_mask=RadialGradiantColorMask(edge_color=rng),
                                 embeded_image_path=pt_logo)
