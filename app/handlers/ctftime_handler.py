@@ -45,7 +45,7 @@ async def top_teams_ru(message: Message):
 async def rhteam_best(message: Message):
     try:
         await message.answer(f'<b>Лучшие результаты по рейтингу</b>\n{top10_results}\n\n'
-                             f'<b>Organized CTF events</b>\n▪️ Cybercoliseum: {22.83 * 2}\n▪️ Cybercoliseum II: {20.60 * 2}',
+                             f'<b>Organized CTF events</b>\n▪️ Cybercoliseum: <b>{22.83 * 2}</b>\n▪️ Cybercoliseum II: <b>{20.60 * 2}</b>',
                              disable_web_page_preview=True)
     except Exception as e:
         ic()
