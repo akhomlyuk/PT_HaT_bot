@@ -49,7 +49,7 @@ def rht_best_res() -> list:
             for i in sorted_data[:9]:
                 for j in i:
                     total_rating += i[j].get('Rating')
-            for i in sorted_data[:9]:
+            for i in sorted_data[:8]:
                 for j in i:
                     if i[j].get("Place") == 3:
                         results_for_menu.append(f'🥉 {j} Rate: <b>{i[j].get("Rating")}</b>')
