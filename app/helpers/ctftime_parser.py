@@ -59,7 +59,7 @@ def rht_best_res() -> list:
                         results_for_menu.append(f'🥇 {j} Rate: <b>{i[j].get("Rating")}</b>')
                     else:
                         results_for_menu.append(f'▪️ {i[j].get("Place")} {j} Rate: <b>{i[j].get("Rating")}</b>')
-            return [sorted_data[:9], total_rating, results_for_menu]
+            return [sorted_data[:8], total_rating, results_for_menu]
     except Exception as e:
         ic()
         ic(e)
