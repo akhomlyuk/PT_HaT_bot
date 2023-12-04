@@ -35,7 +35,7 @@ async def search_poc(message: Message):
         else:
             await message.answer('<code>!poc CVE-2023-46604</code>')
     except Exception as e:
-        await message.answer(str(e))
+        await message.answer('Нет информации')
         ic()
         ic(e)
         logging.error(e)
