@@ -48,12 +48,6 @@ async def menu_buttons(message: Message):
 # Коллбеки для пунктов меню
 @router.callback_query(F.data == 'rht_info')
 async def send_rht_info(callback: CallbackQuery):
-    user = callback.from_user
-    if user.is_blocked:
-        await callback.answer(
-            'You have been banned!',
-            show_alert=True
-        )
     await callback.message.answer(f'{rht_summary}\n\nFrom: @{callback.from_user.username}')
     await callback.answer()
 
