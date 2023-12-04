@@ -49,7 +49,6 @@ async def menu_buttons(message: Message):
 @router.callback_query(F.data == 'rht_info')
 async def send_rht_info(callback: CallbackQuery):
     await callback.message.answer(f'{rht_summary}')
-    await callback.message.answer(callback.message.from_user.username)
     await callback.answer()
 
 
