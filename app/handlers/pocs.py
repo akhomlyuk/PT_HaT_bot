@@ -27,11 +27,14 @@ async def search_poc(message: Message):
         if len(msg) == 1:
             await message.answer('<code>!poc CVE-2023-46604</code>')
         elif len(msg) == 2:
-            pocs = get_poc(msg2)
-            lst = []
-            for item in pocs["pocs"]:
-                lst.append('<b>' + item['name'] + '</b>' + '\n' + item['html_url'] + '\n' + '-' * 20 + '\n')
-            await message.answer(f'{"".join(lst)}', disable_web_page_preview=True)
+            if not msg2.startswith('CVE'):
+                await message.answer('<code>!poc CVE-2023-46604</code>')
+            else:
+                pocs = get_poc(msg2)
+                lst = []
+                for item in pocs["pocs"]:
+                    lst.append('<b>' + item['name'] + '</b>' + '\n' + item['html_url'] + '\n' + '-' * 20 + '\n')
+                await message.answer(f'{"".join(lst)}', disable_web_page_preview=True)
         else:
             await message.answer('<code>!poc CVE-2023-46604</code>')
     except Exception as e:
