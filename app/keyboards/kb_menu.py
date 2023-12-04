@@ -49,9 +49,9 @@ async def menu_buttons(message: Message):
 @router.callback_query(F.data == 'rht_info')
 async def send_rht_info(callback: CallbackQuery, update, context):
     query = update.callback_query
-    # Disable the button
-    context.bot.answer_callback_query(callback_query_id=query.id, text="Button disabled", show_alert=False, disable_notification=True)
+
     await callback.message.answer(f'{rht_summary}\n\nCallback from: @{callback.from_user.username} {callback.from_user.id}')
+    context.bot.answer_callback_query(callback_query_id=query.id, text="Button disabled", show_alert=False, disable_notification=True)
     await callback.answer()
 
 
