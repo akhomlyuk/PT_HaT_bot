@@ -48,19 +48,21 @@ async def menu_buttons(message: Message):
 # Коллбеки для пунктов меню
 @router.callback_query(F.data == 'rht_info')
 async def send_rht_info(callback: CallbackQuery):
-    await callback.message.answer(f'{rht_summary}\n\nFrom: @{callback.from_user.username} {callback.from_user.id} {callback.from_user.full_name}')
+    await callback.message.answer(f'{rht_summary}\n\nFrom:@{callback.from_user.username} {callback.from_user.id} {callback.from_user.full_name}')
     await callback.answer()
 
 
 @router.callback_query(F.data == 'free_proxy')
 async def send_proxy_info(callback: CallbackQuery):
-    await callback.message.answer(f'{description.show_proxies_help}')
+    await callback.message.answer(f'{description.show_proxies_help}'
+                                  f'\n\nFrom:@{callback.from_user.username} {callback.from_user.id} {callback.from_user.full_name}')
     await callback.answer()
 
 
 @router.callback_query(F.data == 'best_results')
 async def send_best_results(callback: CallbackQuery):
-    await callback.message.answer(f'<b>Лучшие результаты по рейтингу</b>\n\n{top10_results}', disable_web_page_preview=True)
+    await callback.message.answer(f'<b>Лучшие результаты по рейтингу</b>\n\n{top10_results}'
+                                  f'\n\nFrom:@{callback.from_user.username} {callback.from_user.id} {callback.from_user.full_name}', disable_web_page_preview=True)
     await callback.answer()
 
 
@@ -68,13 +70,15 @@ async def send_best_results(callback: CallbackQuery):
 async def send_top_ru(callback: CallbackQuery):
     top_ru = top_teams_ru()
     top = '\n'.join(str(team) for team in top_ru)
-    await callback.message.answer(f'🇷🇺 <b>Топ команд России</b>: 🇷🇺\n\n{top}\n\nhttps://ctftime.org/stats/RU', disable_web_page_preview=True)
+    await callback.message.answer(f'🇷🇺 <b>Топ команд России</b>: 🇷🇺\n\n{top}\n\nhttps://ctftime.org/stats/RU'
+                                  f'\n\nFrom:@{callback.from_user.username} {callback.from_user.id} {callback.from_user.full_name}', disable_web_page_preview=True)
     await callback.answer()
 
 
 @router.callback_query(F.data == 'pt_hat_channel')
 async def send_channel_link(callback: CallbackQuery):
-    await callback.message.answer('https://t.me/pt_soft')
+    await callback.message.answer(f'https://t.me/pt_soft '
+                                  f'\n\nFrom:@{callback.from_user.username} {callback.from_user.id} {callback.from_user.full_name}')
     await callback.answer()
 
 
@@ -88,40 +92,46 @@ async def send_python_onepic(callback: CallbackQuery):
 
 @router.callback_query(F.data == 'port_checker')
 async def port_check_info(callback: CallbackQuery):
-    await callback.message.answer('Пример:\n<code>!port yandex.ru 443</code>')
+    await callback.message.answer(f'Пример:\n<code>!port yandex.ru 443</code>'
+                                  f'\n\nFrom:@{callback.from_user.username} {callback.from_user.id} {callback.from_user.full_name}')
     await callback.answer()
 
 
 @router.callback_query(F.data == 'whois_domain')
 async def whois_domain_info(callback: CallbackQuery):
-    await callback.message.answer('Пример:\n<code>!whois yandex.ru</code>')
+    await callback.message.answer(f'Пример:\n<code>!whois yandex.ru</code>'
+                                  f'\n\nFrom:@{callback.from_user.username} {callback.from_user.id} {callback.from_user.full_name}')
     await callback.answer()
 
 
 @router.callback_query(F.data == 'dns_records')
 async def dig_info(callback: CallbackQuery):
     await callback.message.answer(
-        'Пример:\n<code>!dig ya.ru</code>\nor\n<code>!dig ya.ru MX</code>\n\nhttps://en.wikipedia.org/wiki/List_of_DNS_record_types',
+        f'Пример:\n<code>!dig ya.ru</code>\nor\n<code>!dig ya.ru MX</code>\n\nhttps://en.wikipedia.org/wiki/List_of_DNS_record_types '
+        f'\n\nFrom:@{callback.from_user.username} {callback.from_user.id} {callback.from_user.full_name}',
         disable_web_page_preview=True)
     await callback.answer()
 
 
 @router.callback_query(F.data == 'search_sploit')
 async def send_searchsploit_cmd(callback: CallbackQuery):
-    await callback.message.answer(f'Пример:\n<code>!ss Microsoft Exchange 2019</code>')
+    await callback.message.answer(f'Пример:\n<code>!ss Microsoft Exchange 2019</code>'
+                                  f'\n\nFrom:@{callback.from_user.username} {callback.from_user.id} {callback.from_user.full_name}')
     await callback.answer()
 
 
 @router.callback_query(F.data == 'sqli_payloads')
 async def send_group_link(callback: CallbackQuery):
-    await callback.message.answer(f'{sqli_example}', disable_web_page_preview=True)
+    await callback.message.answer(f'{sqli_example}'
+                                  f'\n\nFrom:@{callback.from_user.username} {callback.from_user.id} {callback.from_user.full_name}', disable_web_page_preview=True)
     await callback.answer()
 
 
 @router.callback_query(F.data == 'rev_shell')
 async def send_revshell(callback: CallbackQuery):
     try:
-        await callback.message.answer(f'<code>{html.quote(rand.choice(revshells.shells))}</code>')
+        await callback.message.answer(f'<code>{html.quote(rand.choice(revshells.shells))}</code>'
+                                      f'\n\nFrom:@{callback.from_user.username} {callback.from_user.id} {callback.from_user.full_name}')
         await callback.answer()
     except Exception as e:
         ic(e)
@@ -130,7 +140,8 @@ async def send_revshell(callback: CallbackQuery):
 @router.callback_query(F.data == 'bot_commands')
 async def send_bot_commands(callback: CallbackQuery):
     try:
-        await callback.message.answer(f'{cfg.bot_commands}')
+        await callback.message.answer(f'{cfg.bot_commands}'
+                                      f'\n\nFrom:@{callback.from_user.username} {callback.from_user.id} {callback.from_user.full_name}')
         await callback.answer()
     except Exception as e:
         ic(e)
@@ -139,7 +150,8 @@ async def send_bot_commands(callback: CallbackQuery):
 @router.callback_query(F.data == 'file_id_bot')
 async def send_fileid_bot_link(callback: CallbackQuery):
     try:
-        await callback.message.answer(f'Отправить любой файл или сообщение: @File_IDs_bot')
+        await callback.message.answer(f'Отправить любой файл или сообщение: @File_IDs_bot '
+                                      f'\n\nFrom:@{callback.from_user.username} {callback.from_user.id} {callback.from_user.full_name}')
         await callback.answer()
     except Exception as e:
         ic(e)
@@ -149,7 +161,8 @@ async def send_fileid_bot_link(callback: CallbackQuery):
 async def send_fileid_bot_link(callback: CallbackQuery):
     try:
         await callback.message.answer(
-            f'Пример:\n<code>!jwt eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImlhdCI6MTY5MTAxMjU3MSwiZXhwIjoxNjkxMDE2MTcxfQ.BNM4pLUB6wYlnXC0NvHiShDIM6KtIk81prLW8VBCZ88</code>')
+            f'Пример:\n<code>!jwt eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImlhdCI6MTY5MTAxMjU3MSwiZXhwIjoxNjkxMDE2MTcxfQ.BNM4pLUB6wYlnXC0NvHiShDIM6KtIk81prLW8VBCZ88</code>'
+            f'\n\nFrom:@{callback.from_user.username} {callback.from_user.id} {callback.from_user.full_name}')
         await callback.answer()
     except Exception as e:
         ic(e)
@@ -163,7 +176,8 @@ async def send_base_tools_description(callback: CallbackQuery):
 <code>!b64d UGVudGVzdCBIYVQ=</code>
 
 Пример:
-<code>!b64e Pentest Hacks and Tools</code>''')
+<code>!b64e Pentest Hacks and Tools</code>
+\n\nFrom:@{callback.from_user.username} {callback.from_user.id} {callback.from_user.full_name}''')
         await callback.answer()
     except Exception as e:
         ic(e)
@@ -174,7 +188,7 @@ async def send_hash_ident_help(callback: CallbackQuery):
     try:
         await callback.message.answer(f'''
 Пример:
-<code>!hash a6105c0a611b41b08f1209506350279e</code>''')
+<code>!hash a6105c0a611b41b08f1209506350279e</code>\n\nFrom:@{callback.from_user.username} {callback.from_user.id} {callback.from_user.full_name}''')
         await callback.answer()
     except Exception as e:
         ic(e)
