@@ -31,8 +31,7 @@ async def search_poc(message: Message):
             lst = []
             for item in pocs["pocs"]:
                 lst.append('<b>' + item['name'] + '</b>' + '\n' + item['html_url'] + '\n' + '-' * 20 + '\n')
-
-                await message.answer(f'{"".join(lst)}', disable_web_page_preview=True)
+            await message.answer(f'{"".join(lst)}', disable_web_page_preview=True)
     except Exception as e:
         await message.answer(str(e))
         ic()
