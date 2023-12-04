@@ -6,7 +6,7 @@ bot = Bot(token=bot_token, parse_mode="HTML")
 
 all_commands = {'help_cmds': '!help', 'menu_cmds': '!menu', 'wiki_cmds': '!wiki', 'dig_cmds': '!dig', 'commands_cmds': '!commands',
                 'id_cmds': '!id', 'jwt_cmds': '!jwt', 'cmds_cmds': '!cmds', 'rev_cmds': '!rev', 'sqli_cmds': '!sqli', 'team_cmds': '!team',
-                'bestres_cmds': '!results', 'ban_cmds': '!ban', 'unban_cmds': '!unban', 'invite_cmds': '!invite',
+                'bestres_cmds': '!results', 'ban_cmds': '!ban', 'unban_cmds': '!unban', 'invite_cmds': '!invite', 'poc_cmds': '!poc',
                 'search_sploit_cmds': '!ss', 'checkport_cmds': '!port', 'whois_cmds': '!whois', 'python_cmds': '!python', 'lin_cmds': '!lin_cmds',
                 'hash_alz_cmds': '!hash', 'b64decode_cmds': '!b64d', 'b64encode_cmds': '!b64e', 'hex2text_cmds': '!h2t',
                 'text2hex_cmds': '!t2h', 'gpt_cmds': '!gpt', 'links_cmds': '!links', 'ssti_cmds': '!ssti', 'topteams_cmds': '!top',
@@ -16,6 +16,7 @@ all_commands = {'help_cmds': '!help', 'menu_cmds': '!menu', 'wiki_cmds': '!wiki'
 admins = [539491282]
 
 bot_commands = f'''
+Канал: @pt_soft
 🆘 <code>!help</code> - Справка
 ⚙️ <code>!menu</code> - Основное меню
 ℹ️ <code>!id</code> - Показать ID
@@ -36,5 +37,4 @@ bot_commands = f'''
 📑 <code>!links</code> - Полезные ссылки
 📚 <code>!wiki</code> - Показать с вики
 🎲 <code>!commands</code> - Команды бота
-Канал бота: @pt_soft
 '''
