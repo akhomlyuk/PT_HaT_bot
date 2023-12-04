@@ -48,7 +48,7 @@ async def menu_buttons(message: Message):
 # Коллбеки для пунктов меню
 @router.callback_query(F.data == 'rht_info')
 async def send_rht_info(callback: CallbackQuery):
-    await callback.message.answer(f'{rht_summary}\n Callback from: {callback.from_user.username, callback.from_user.id}')
+    await callback.message.answer(f'{rht_summary}\n\n Callback from: @{callback.from_user.username} {callback.from_user.id}')
     await callback.answer()
 
 
