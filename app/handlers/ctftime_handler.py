@@ -11,9 +11,9 @@ rht_info = rht_info()
 rht_best = rht_best_res()
 top_ru = top_teams_ru()
 
-rht_summary = f'''🌍 Worldwide position: <b>{rht_info["rating"]["2023"]["rating_place"]}</b>
-🇷🇺 RU position: <b>{rht_info["rating"]["2023"]["country_place"]}</b>
-🎯 Rating points: <b>{rht_info["rating"]["2023"]["rating_points"]}</b>
+rht_summary = f'''🌍 Worldwide position: <b>{rht_info["rating"]["2024"]["rating_place"]}</b>
+🇷🇺 RU position: <b>{rht_info["rating"]["2024"]["country_place"]}</b>
+🎯 Rating points: <b>{rht_info["rating"]["2024"]["rating_points"]}</b>
 🚩 Team ID: <b>{rht_info["id"]}</b>
 https://ctftime.org/team/186788'''
 
@@ -45,8 +45,8 @@ async def top_teams_ru(message: Message):
 async def rhteam_best(message: Message):
     try:
         await message.answer(f'<b>Лучшие результаты по рейтингу</b>\n{top10_results}\n\n'
-                             f'<b>Organized CTF events</b>\n▪️ Cybercoliseum: <b>{22.83 * 2}</b>\n▪️ Cybercoliseum II: <b>{20.60 * 2}</b>\n\n'
-                             f'🎯 Rating points: <b>{rht_info["rating"]["2023"]["rating_points"]}</b>',
+                             # f'<b>Organized CTF events</b>\n▪️ Cybercoliseum: <b>{22.83 * 2}</b>\n▪️ Cybercoliseum II: <b>{20.60 * 2}</b>\n\n'
+                             f'🎯 Rating points: <b>{rht_info["rating"]["2024"]["rating_points"]}</b>',
                              disable_web_page_preview=True)
     except Exception as e:
         ic()
