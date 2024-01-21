@@ -32,7 +32,7 @@ def rht_best_res() -> list:
         with requests.Session() as s:
             response = s.get(rht_results, headers=header)
             soup = BeautifulSoup(response.content, "lxml")
-            table_div = soup.find("div", {"id": "rating_2023"})
+            table_div = soup.find("div", {"id": "rating_2024"})
             table = table_div.find("table")
             results = []
             results_for_menu = []

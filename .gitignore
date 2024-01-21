@@ -3,7 +3,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
-
+.idea/
 # C extensions
 *.so
 app/handlers/sploit.json
@@ -163,3 +163,4 @@ cython_debug/
 #.idea/
 test.py
 /test2.py
+/.idea/
