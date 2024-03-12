@@ -12,14 +12,14 @@ url = 'https://github.com/scriptzteam/Tor-Bridges-Collector/raw/main/bridges-obf
 
 req = requests.get(url)
 bridges = req.text.split('\n')
-rnd_bridges = random.choices(bridges, k=10)
+rnd_bridges = random.choices(bridges, k=4)
 
 
 @router.message(F.text.in_(cfg.all_commands['bridges']))
 async def send_tor_bridges_list(message: Message):
     try:
-        nl = "\n"
-        await message.answer(f'Мосты(obfs4 bridges) для Tor:\n\n{nl.join(rnd_bridges)}', disable_web_page_preview=True)
+        bridges_list = "\n".join(str(i) for i in rnd_bridges)
+        await message.answer(f'Мосты(obfs4 bridges) для Tor:\n\n{bridges_list}', disable_web_page_preview=True)
     except Exception as e:
         logging.warning(e)
         ic(e)
