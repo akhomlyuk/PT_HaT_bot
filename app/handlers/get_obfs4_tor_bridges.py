@@ -19,7 +19,7 @@ rnd_bridges = random.choices(bridges, k=4)
 async def send_tor_bridges_list(message: Message):
     try:
         bridges_list = "\n\n".join(str(i) for i in rnd_bridges)
-        await message.answer(f'Мосты(obfs4 bridges) для Tor:\n\n```{bridges_list}```', disable_web_page_preview=True)
+        await message.answer(f'<b>Мосты(obfs4 bridges) для Tor</b>:\n\n<code>{bridges_list}</code>>', disable_web_page_preview=True)
     except Exception as e:
         logging.warning(e)
         ic(e)
