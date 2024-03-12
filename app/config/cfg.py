@@ -10,8 +10,7 @@ all_commands = {'help_cmds': '!help', 'menu_cmds': '!menu', 'wiki_cmds': '!wiki'
                 'search_sploit_cmds': '!ss', 'checkport_cmds': '!port', 'whois_cmds': '!whois', 'python_cmds': '!python', 'lin_cmds': '!lin_cmds',
                 'hash_alz_cmds': '!hash', 'b64decode_cmds': '!b64d', 'b64encode_cmds': '!b64e', 'hex2text_cmds': '!h2t',
                 'text2hex_cmds': '!t2h', 'gpt_cmds': '!gpt', 'links_cmds': '!links', 'ssti_cmds': '!ssti', 'topteams_cmds': '!top',
-                'socks5_cmds': '!socks5', 'socks4_cmds': '!socks4', 'proxy_cmds': '!http', 'proxies_cmds': '!proxies', 'qr_cmds': '!qr',
-                'bridges': '!bridges'
+                'socks5_cmds': '!socks5', 'socks4_cmds': '!socks4', 'proxy_cmds': '!http', 'proxies_cmds': '!proxies', 'qr_cmds': '!qr'
                 }
 
 admins = [539491282]
