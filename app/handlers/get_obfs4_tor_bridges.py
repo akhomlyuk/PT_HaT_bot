@@ -18,7 +18,8 @@ rnd_bridges = random.choices(bridges, k=10)
 @router.message(F.text.in_(cfg.all_commands['bridges']))
 async def send_tor_bridges_list(message: Message):
     try:
-        await message.answer(f'Мосты(obfs4 bridges) для Tor:\n\n{"\n".join(rnd_bridges)}', disable_web_page_preview=True)
+        nl = "\n"
+        await message.answer(f'Мосты(obfs4 bridges) для Tor:\n\n{nl.join(rnd_bridges)}', disable_web_page_preview=True)
     except Exception as e:
         logging.warning(e)
         ic(e)
