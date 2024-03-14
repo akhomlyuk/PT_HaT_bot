@@ -169,8 +169,17 @@ async def new_members_handler(message: Message):
         new_member = message.new_chat_members[0]
         await cfg.bot.send_message(message.chat.id, f"Добро пожаловать в <b>{message.chat.title}</b> 🖖, @{new_member.username} ! 🎩")
         await cfg.bot.send_message(message.chat.id, f"{cfg.bot_commands}")
+        await cfg.bot.send_message(message.chat.id, f"Отправить вопрос/предложение/просьбу - @pt_feedback_bot")
     except Exception as e:
         logging.error(f'{e}')
+        ic(e)
+
+
+@router.message(F.text.in_(cfg.all_commands['feedback']))
+async def feedback_bot(message: Message):
+    try:
+        await message.answer(f'Отправить вопрос/предложение/просьбу - @pt_feedback_bot')
+    except Exception as e:
         ic(e)
 
 
