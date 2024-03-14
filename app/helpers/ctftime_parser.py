@@ -115,29 +115,32 @@ def top_teams_ru() -> list:
     try:
         with requests.Session() as s:
             response = s.get(top_teams_ru_url, headers=header)
-            soup = BeautifulSoup(response.content, "lxml")
-            table = soup.find("table", {"class": "table table-striped"})
-            results = []
+            if "Just a moment" not in response.text:
+                soup = BeautifulSoup(response.content, "lxml")
+                table = soup.find("table", {"class": "table table-striped"})
+                results = []
 
-            for row in table.find_all("tr")[1:]:
-                cols = row.find_all("td")
-                place = cols[2].text.strip()
-                team_name = cols[4].text.strip()
-                points = cols[5].text.replace('*', '').strip()
-                results.append(
-                    {team_name: {'Place': int(place), 'CTF points': float(points)}})
-            results_for_menu = []
-            for i in results[:14]:
-                for j in i:
-                    if i[j].get("Place") == 3:
-                        results_for_menu.append(f'🥉 <b>{i[j].get("Place")}</b> {j} Points: <b>{i[j].get("CTF points")}</b>')
-                    elif i[j].get("Place") == 2:
-                        results_for_menu.append(f'🥈 <b>{i[j].get("Place")}</b> {j} Points: <b>{i[j].get("CTF points")}</b>')
-                    elif i[j].get("Place") == 1:
-                        results_for_menu.append(f'🥇 <b>{i[j].get("Place")}</b> {j} Points: <b>{i[j].get("CTF points")}</b>')
-                    else:
-                        results_for_menu.append(f'▪️ <b>{i[j].get("Place")}</b> {j} Points: <b>{i[j].get("CTF points")}</b>')
-            return results_for_menu
+                for row in table.find_all("tr")[1:]:
+                    cols = row.find_all("td")
+                    place = cols[2].text.strip()
+                    team_name = cols[4].text.strip()
+                    points = cols[5].text.replace('*', '').strip()
+                    results.append(
+                        {team_name: {'Place': int(place), 'CTF points': float(points)}})
+                results_for_menu = []
+                for i in results[:14]:
+                    for j in i:
+                        if i[j].get("Place") == 3:
+                            results_for_menu.append(f'🥉 <b>{i[j].get("Place")}</b> {j} Points: <b>{i[j].get("CTF points")}</b>')
+                        elif i[j].get("Place") == 2:
+                            results_for_menu.append(f'🥈 <b>{i[j].get("Place")}</b> {j} Points: <b>{i[j].get("CTF points")}</b>')
+                        elif i[j].get("Place") == 1:
+                            results_for_menu.append(f'🥇 <b>{i[j].get("Place")}</b> {j} Points: <b>{i[j].get("CTF points")}</b>')
+                        else:
+                            results_for_menu.append(f'▪️ <b>{i[j].get("Place")}</b> {j} Points: <b>{i[j].get("CTF points")}</b>')
+                return results_for_menu
+            else:
+                print("Cloudflare")
     except Exception as e:
         ic()
         ic(e)
