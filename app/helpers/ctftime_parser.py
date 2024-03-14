@@ -11,8 +11,7 @@ rht_results = "https://ctftime.org/team/186788"
 top_teams_ru_url = 'https://ctftime.org/stats/RU'
 
 header = {'Host': 'ctftime.org',
-          'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:88.0) Gecko/20100101 Firefox/88.0',
-          'Connection': 'close'}
+          'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:88.0) Gecko/20100101 Firefox/88.0'}
 
 
 def rating(results: list):
@@ -31,35 +30,38 @@ def rht_best_res() -> list:
     try:
         with requests.Session() as s:
             response = s.get(rht_results, headers=header)
-            soup = BeautifulSoup(response.content, "lxml")
-            table_div = soup.find("div", {"id": "rating_2024"})
-            table = table_div.find("table")
-            results = []
-            results_for_menu = []
-            total_rating = 0.0
-            for row in table.find_all("tr")[1:]:
-                cols = row.find_all("td")
-                place = cols[1].text.strip()
-                event = cols[2].text.strip()
-                ctf_points = cols[3].text.replace('*', '').strip()
-                rating_points = cols[4].text.replace('*', '').strip()
-                results.append(
-                    {event: {'Place': int(place), 'CTF points': float(ctf_points), 'Rating': float(rating_points)}})
-                sorted_data = sorted(results, key=lambda x: x[list(x.keys())[0]]['Rating'], reverse=True)
-            for i in sorted_data[:9]:
-                for j in i:
-                    total_rating += i[j].get('Rating')
-            for i in sorted_data[:8]:
-                for j in i:
-                    if i[j].get("Place") == 3:
-                        results_for_menu.append(f'🥉 {j} Rate: <b>{i[j].get("Rating")}</b>')
-                    elif i[j].get("Place") == 2:
-                        results_for_menu.append(f'🥈 {j} Rate: <b>{i[j].get("Rating")}</b>')
-                    elif i[j].get("Place") == 1:
-                        results_for_menu.append(f'🥇 {j} Rate: <b>{i[j].get("Rating")}</b>')
-                    else:
-                        results_for_menu.append(f'▪️ {i[j].get("Place")} {j} Rate: <b>{i[j].get("Rating")}</b>')
-            return [sorted_data[:8], total_rating, results_for_menu]
+            if "Just a moment" not in response.text:
+                soup = BeautifulSoup(response.content, "lxml")
+                table_div = soup.find("div", {"id": "rating_2024"})
+                table = table_div.find("table")
+                results = []
+                results_for_menu = []
+                total_rating = 0.0
+                for row in table.find_all("tr")[1:]:
+                    cols = row.find_all("td")
+                    place = cols[1].text.strip()
+                    event = cols[2].text.strip()
+                    ctf_points = cols[3].text.replace('*', '').strip()
+                    rating_points = cols[4].text.replace('*', '').strip()
+                    results.append(
+                        {event: {'Place': int(place), 'CTF points': float(ctf_points), 'Rating': float(rating_points)}})
+                    sorted_data = sorted(results, key=lambda x: x[list(x.keys())[0]]['Rating'], reverse=True)
+                for i in sorted_data[:9]:
+                    for j in i:
+                        total_rating += i[j].get('Rating')
+                for i in sorted_data[:8]:
+                    for j in i:
+                        if i[j].get("Place") == 3:
+                            results_for_menu.append(f'🥉 {j} Rate: <b>{i[j].get("Rating")}</b>')
+                        elif i[j].get("Place") == 2:
+                            results_for_menu.append(f'🥈 {j} Rate: <b>{i[j].get("Rating")}</b>')
+                        elif i[j].get("Place") == 1:
+                            results_for_menu.append(f'🥇 {j} Rate: <b>{i[j].get("Rating")}</b>')
+                        else:
+                            results_for_menu.append(f'▪️ {i[j].get("Place")} {j} Rate: <b>{i[j].get("Rating")}</b>')
+                return [sorted_data[:8], total_rating, results_for_menu]
+            else:
+                print("Cloudflare")
     except Exception as e:
         ic()
         ic(e)
