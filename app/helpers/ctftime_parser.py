@@ -104,6 +104,7 @@ def event_information(event_id: int) -> dict:
             event_info = json.loads(event_info.text)
         except json.decoder.JSONDecodeError:
             print('ctftime not available')
+            pass
     return event_info
 
 
