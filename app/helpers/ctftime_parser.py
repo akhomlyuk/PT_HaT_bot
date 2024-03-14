@@ -73,11 +73,15 @@ def rht_info() -> dict:
         with requests.Session() as s:
             try:
                 rht = s.get(rht_url, headers=header)
-                rht = json.loads(rht.text)
+                if "Just a moment" not in rht.text:
+                    rht = json.loads(rht.text)
+                    return rht
+                else:
+                    print("Cloudflare")
             except json.decoder.JSONDecodeError:
                 print('ctftime not available')
                 pass
-        return rht
+
     except Exception as e:
         ic()
         ic(e)
