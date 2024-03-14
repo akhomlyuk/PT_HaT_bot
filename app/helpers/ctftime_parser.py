@@ -74,6 +74,7 @@ def rht_info() -> dict:
                 rht = json.loads(rht.text)
             except json.decoder.JSONDecodeError:
                 print('ctftime not available')
+                pass
         return rht
     except Exception as e:
         ic()
