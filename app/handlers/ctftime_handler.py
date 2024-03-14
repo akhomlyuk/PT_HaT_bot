@@ -28,6 +28,7 @@ async def rhteam_info(message: Message):
         ic()
         ic(e)
         logging.error(e)
+        pass
 
 
 @router.message(F.text.startswith(cfg.all_commands['topteams_cmds']))
@@ -39,6 +40,7 @@ async def top_teams_ru(message: Message):
         ic()
         ic(e)
         logging.error(e)
+        pass
 
 
 @router.message(F.text.startswith(cfg.all_commands['bestres_cmds']))
@@ -52,3 +54,4 @@ async def rhteam_best(message: Message):
         ic()
         ic(e)
         logging.error(e)
+        pass
