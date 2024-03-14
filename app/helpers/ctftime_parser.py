@@ -63,6 +63,7 @@ def rht_best_res() -> list:
     except Exception as e:
         ic()
         ic(e)
+        pass
 
 
 def rht_info() -> dict:
@@ -78,6 +79,7 @@ def rht_info() -> dict:
         ic()
         ic(e)
         logging.error(e)
+        pass
 
 
 def results_from_ctftime() -> dict:
@@ -92,6 +94,7 @@ def results_from_ctftime() -> dict:
     except Exception as e:
         ic()
         ic(e)
+        pass
 
 
 def event_information(event_id: int) -> dict:
@@ -135,3 +138,4 @@ def top_teams_ru() -> list:
         ic()
         ic(e)
         logging.error(e)
+        pass
