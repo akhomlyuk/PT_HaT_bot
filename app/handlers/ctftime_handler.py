@@ -18,17 +18,17 @@ rht_summary = f'''🌍 Worldwide position: <b>{rht_info["rating"]["2024"]["ratin
 https://ctftime.org/team/186788'''
 
 top10_results = '\n'.join([i for i in rht_best[1]])
-#
-#
-# @router.message(F.text.startswith(cfg.all_commands['team_cmds']))
-# async def rhteam_info(message: Message):
-#     try:
-#         await message.answer(f'{rht_summary}')
-#     except Exception as e:
-#         ic()
-#         ic(e)
-#         logging.error(e)
-#         pass
+
+
+@router.message(F.text.startswith(cfg.all_commands['team_cmds']))
+async def rhteam_info(message: Message):
+    try:
+        await message.answer(f'{rht_summary}')
+    except Exception as e:
+        ic()
+        ic(e)
+        logging.error(e)
+        pass
 
 
 # @router.message(F.text.startswith(cfg.all_commands['topteams_cmds']))
