@@ -15,6 +15,7 @@ router: Router = Router()
 
 rht_info = rht_info()
 
+
 @router.message(F.text.in_(cfg.all_commands['menu_cmds']))
 async def menu_buttons(message: Message):
     try:
@@ -63,7 +64,7 @@ async def send_proxy_info(callback: CallbackQuery):
 @router.callback_query(F.data == 'best_results')
 async def send_best_results(callback: CallbackQuery):
     await callback.message.answer(f'<b>Лучшие результаты по рейтингу</b>\n\n{top10_results}\n\n'
-                                  f'🎯 Rating points: <b>{rht_info["rating"]["2024"]["rating_points"]}</b>',
+                                  f'🎯 Rating points: <b>{rht_info["rating"]["2024"]["rating_points"]}</b>'
                                   f'\n\nFrom: @{callback.from_user.username}', disable_web_page_preview=True)
     await callback.answer()
 
