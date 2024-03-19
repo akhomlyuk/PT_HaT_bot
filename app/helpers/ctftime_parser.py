@@ -33,13 +33,13 @@ def rht_best_res() -> list:
                 for j in i:
                     place = i[j].get("Place")
                     if i[j].get("Place") == 1:
-                        results_for_menu.append(f'🥇 {j} Rate: <b>{i[j].get("Rating")}</b>')
+                        results_for_menu.append(f'🥇 <b>{j}</b>')
                     elif i[j].get("Place") == 2:
-                        results_for_menu.append(f'🥈 {j} Rate: <b>{i[j].get("Rating")}</b>')
+                        results_for_menu.append(f'🥈 <b>{j}</b>')
                     elif i[j].get("Place") == 3:
-                        results_for_menu.append(f'🥉 {j} Rate: <b>{i[j].get("Rating")}</b>')
+                        results_for_menu.append(f'🥉 <b>{j}</b>')
                     else:
-                        results_for_menu.append(f'🪣 {place} {j} Rate: <b>{i[j].get("Rating")}</b>')
+                        results_for_menu.append(f'🪣 {place} <b>{j}</b>')
             return [sorted_data, results_for_menu]
     except Exception as e:
         logging.error(e)
