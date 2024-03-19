@@ -3,13 +3,13 @@ from aiogram.types import Message
 import logging
 import app.config.cfg as cfg
 from icecream import ic
-from app.helpers.ctftime_parser import rht_info, rht_best_res, top_teams_ru
+from app.helpers.ctftime_parser import rht_info, rht_best_res
 
 router: Router = Router()
 
 rht_info = rht_info()
 rht_best = rht_best_res()
-# top_ru = top_teams_ru()
+
 
 rht_summary = f'''🌍 Worldwide position: <b>{rht_info["rating"]["2024"]["rating_place"]}</b>
 🇷🇺 RU position: <b>{rht_info["rating"]["2024"]["country_place"]}</b>
