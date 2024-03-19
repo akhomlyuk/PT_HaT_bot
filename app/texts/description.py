@@ -1,7 +1,10 @@
 show_description = f'''Добро пожаловать в <b>Pentest Hacks and Tools 🎩</b>!
 
 !menu, !cmds
+
 Канал: @pt_soft
+Группа: @pt_hat
+Бот обратной связи: @pt_feedback_bot
 
 Coded with ❤️ on 🐍 and aiogram
 <b>Author</b>: @exited3n'''
