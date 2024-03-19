@@ -7,7 +7,7 @@ from app.config import cfg
 from app.config.cfg import bot
 from app.texts import revshells, description
 from app.texts.sqli_examples import sqli_example
-from app.helpers.ctftime_parser import top_teams_ru
+from app.helpers.ctftime_parser import top_teams_ru, rht_info
 from app.handlers.ctftime_handler import rht_summary, top10_results
 from icecream import ic
 
@@ -61,7 +61,8 @@ async def send_proxy_info(callback: CallbackQuery):
 
 @router.callback_query(F.data == 'best_results')
 async def send_best_results(callback: CallbackQuery):
-    await callback.message.answer(f'<b>Лучшие результаты по рейтингу</b>\n\n{top10_results}'
+    await callback.message.answer(f'<b>Лучшие результаты по рейтингу</b>\n\n{top10_results}\n\n'
+                                  f'🎯 Rating points: <b>{rht_info()["rating"]["2024"]["rating_points"]}</b>',
                                   f'\n\nFrom: @{callback.from_user.username}', disable_web_page_preview=True)
     await callback.answer()
 
