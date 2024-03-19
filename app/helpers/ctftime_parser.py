@@ -1,14 +1,13 @@
 import requests
 import json
-from bs4 import BeautifulSoup
 from icecream import ic
 import logging
 
 result_api_url = 'https://ctftime.org/api/v1/results/'
 event_info_api_url = 'https://ctftime.org/api/v1/events/'
 rht_url = 'https://ctftime.org/api/v1/teams/186788/'
-rht_results = "https://ctftime.org/team/186788"
-top_teams_ru_url = 'https://ctftime.org/stats/RU'
+# rht_results = "https://ctftime.org/team/186788"
+# top_teams_ru_url = 'https://ctftime.org/stats/RU'
 
 header = {'Host': 'ctftime.org',
           'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.199 Safari/537.36',
@@ -90,41 +89,41 @@ def event_information(event_id: int) -> dict:
     return event_info
 
 
-def top_teams_ru() -> list:
-    try:
-        with requests.Session() as s:
-            response = s.get(top_teams_ru_url, headers=header)
-            if "Just a moment" not in response.text:
-                soup = BeautifulSoup(response.content, "lxml")
-                table = soup.find("table", {"class": "table table-striped"})
-                results = []
-
-                for row in table.find_all("tr")[1:]:
-                    cols = row.find_all("td")
-                    place = cols[2].text.strip()
-                    team_name = cols[4].text.strip()
-                    points = cols[5].text.replace('*', '').strip()
-                    results.append(
-                        {team_name: {'Place': int(place), 'CTF points': float(points)}})
-                results_for_menu = []
-                for i in results[:14]:
-                    for j in i:
-                        if i[j].get("Place") == 3:
-                            results_for_menu.append(f'🥉 <b>{i[j].get("Place")}</b> {j} Points: <b>{i[j].get("CTF points")}</b>')
-                        elif i[j].get("Place") == 2:
-                            results_for_menu.append(f'🥈 <b>{i[j].get("Place")}</b> {j} Points: <b>{i[j].get("CTF points")}</b>')
-                        elif i[j].get("Place") == 1:
-                            results_for_menu.append(f'🥇 <b>{i[j].get("Place")}</b> {j} Points: <b>{i[j].get("CTF points")}</b>')
-                        else:
-                            results_for_menu.append(f'▪️ <b>{i[j].get("Place")}</b> {j} Points: <b>{i[j].get("CTF points")}</b>')
-                return results_for_menu
-            else:
-                print("Cloudflare")
-    except Exception as e:
-        ic()
-        ic(e)
-        logging.error(e)
-        pass
+# def top_teams_ru() -> list:
+#     try:
+#         with requests.Session() as s:
+#             response = s.get(top_teams_ru_url, headers=header)
+#             if "Just a moment" not in response.text:
+#                 soup = BeautifulSoup(response.content, "lxml")
+#                 table = soup.find("table", {"class": "table table-striped"})
+#                 results = []
+#
+#                 for row in table.find_all("tr")[1:]:
+#                     cols = row.find_all("td")
+#                     place = cols[2].text.strip()
+#                     team_name = cols[4].text.strip()
+#                     points = cols[5].text.replace('*', '').strip()
+#                     results.append(
+#                         {team_name: {'Place': int(place), 'CTF points': float(points)}})
+#                 results_for_menu = []
+#                 for i in results[:14]:
+#                     for j in i:
+#                         if i[j].get("Place") == 3:
+#                             results_for_menu.append(f'🥉 <b>{i[j].get("Place")}</b> {j} Points: <b>{i[j].get("CTF points")}</b>')
+#                         elif i[j].get("Place") == 2:
+#                             results_for_menu.append(f'🥈 <b>{i[j].get("Place")}</b> {j} Points: <b>{i[j].get("CTF points")}</b>')
+#                         elif i[j].get("Place") == 1:
+#                             results_for_menu.append(f'🥇 <b>{i[j].get("Place")}</b> {j} Points: <b>{i[j].get("CTF points")}</b>')
+#                         else:
+#                             results_for_menu.append(f'▪️ <b>{i[j].get("Place")}</b> {j} Points: <b>{i[j].get("CTF points")}</b>')
+#                 return results_for_menu
+#             else:
+#                 print("Cloudflare")
+#     except Exception as e:
+#         ic()
+#         ic(e)
+#         logging.error(e)
+#         pass
 
 
 def rating(results: list):
