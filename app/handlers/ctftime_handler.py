@@ -46,7 +46,7 @@ async def rhteam_info(message: Message):
 @router.message(F.text.startswith(cfg.all_commands['bestres_cmds']))
 async def rhteam_best(message: Message):
     try:
-        await message.answer(f'<b>Лучшие результаты по рейтингу</b>\n{top10_results}\n\n'
+        await message.answer(f'<b>Лучшие результаты по рейтингу</b>\n\n{top10_results}\n\n'
                              # f'<b>Organized CTF events</b>\n▪️ Cybercoliseum: <b>{22.83 * 2}</b>\n▪️ Cybercoliseum II: <b>{20.60 * 2}</b>\n\n'
                              f'🎯 Rating points: <b>{rht_info["rating"]["2024"]["rating_points"]}</b>',
                              disable_web_page_preview=True)
