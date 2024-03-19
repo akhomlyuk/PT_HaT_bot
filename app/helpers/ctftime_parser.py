@@ -14,6 +14,8 @@ header = {'Host': 'ctftime.org',
           'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.199 Safari/537.36',
           'Referer': 'https://ctftime.org/'}
 
+RHT = 186788
+
 
 def rht_best_res() -> list:
     try:
@@ -24,7 +26,7 @@ def rht_best_res() -> list:
             results_for_menu = []
             for key, value in response_text.items():
                 for i in value['scores']:
-                    if i.get('team_id') == 186788:
+                    if i.get('team_id') == RHT:
                         results.append(
                             {value.get('title'): {'Place': int(i.get('place')), 'CTF points': float(i.get('points'))}})
                         sorted_data = sorted(results, key=lambda x: x[list(x.keys())[0]]['Place'])
