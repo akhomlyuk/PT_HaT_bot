@@ -17,7 +17,7 @@ rht_summary = f'''🌍 Worldwide position: <b>{rht_info["rating"]["2024"]["ratin
 🚩 Team ID: <b>{rht_info["id"]}</b>
 https://ctftime.org/team/186788'''
 
-top10_results = '\n'.join([i for i in rht_best[2]])
+top10_results = '\n'.join([i for i in rht_best[1]])
 #
 #
 # @router.message(F.text.startswith(cfg.all_commands['team_cmds']))
