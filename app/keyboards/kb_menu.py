@@ -7,7 +7,7 @@ from app.config import cfg
 from app.config.cfg import bot
 from app.texts import revshells, description
 from app.texts.sqli_examples import sqli_example
-from app.helpers.ctftime_parser import top_teams_ru, rht_info
+from app.helpers.ctftime_parser import rht_info
 from app.handlers.ctftime_handler import rht_summary, top10_results
 from icecream import ic
 
