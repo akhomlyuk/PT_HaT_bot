@@ -31,20 +31,14 @@ def rht_best_res() -> list:
             for i in sorted_data[:10]:
                 for j in i:
                     place = i[j].get("Place")
-                    if i[j].get("Place") == 3:
-                        results_for_menu.append(f'🥉 {j} Rate: <b>{i[j].get("Rating")}</b>')
+                    if i[j].get("Place") == 1:
+                        results_for_menu.append(f'🥇 {j} Rate: <b>{i[j].get("Rating")}</b>')
                     elif i[j].get("Place") == 2:
                         results_for_menu.append(f'🥈 {j} Rate: <b>{i[j].get("Rating")}</b>')
-                    elif i[j].get("Place") == 1:
-                        results_for_menu.append(f'🥇 {j} Rate: <b>{i[j].get("Rating")}</b>')
-                    elif i[j].get("Place") == 4:
-                        results_for_menu.append(f'📈 {place} {j} Rate: <b>{i[j].get("Rating")}</b>')
-                    elif i[j].get("Place") == 5:
-                        results_for_menu.append(f'⬆️ {place} {j} Rate: <b>{i[j].get("Rating")}</b>')
-                    elif 6 <= i[j].get("Place") < 11:
-                        results_for_menu.append(f'🚬 {place} {j} Rate: <b>{i[j].get("Rating")}</b>')
+                    elif i[j].get("Place") == 3:
+                        results_for_menu.append(f'🥉 {j} Rate: <b>{i[j].get("Rating")}</b>')
                     else:
-                        results_for_menu.append(f'🪣 {i[j].get("Place")} {j} Rate: <b>{i[j].get("Rating")}</b>')
+                        results_for_menu.append(f'🪣 {place} {j} Rate: <b>{i[j].get("Rating")}</b>')
             return [sorted_data, results_for_menu]
     except Exception as e:
         logging.error(e)
