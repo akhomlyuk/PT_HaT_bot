@@ -1,4 +1,4 @@
-from aiogram import Router, F
+from aiogram import Router, F, types
 from aiogram.types import Message
 from aiogram.filters.command import Command
 from app.texts.description import show_description
@@ -24,6 +24,11 @@ async def cmd_start(message: Message):
 @router.message(Command("help"))
 async def cmd_help(message: Message):
     await message.answer(show_description, disable_web_page_preview=True)
+
+
+@router.message(Command("dice"))
+async def cmd_dice(message: types.Message):
+    await message.answer_dice(emoji="🎯")
 
 
 @router.message(F.text.in_(cfg.all_commands['help_cmds']))

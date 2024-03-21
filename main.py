@@ -10,6 +10,9 @@ from app.keyboards import kb_menu, kb_links
 from icecream import ic
 from sys import platform
 
+# Author : Exited3n
+# https://t.me/pt_soft
+
 if platform == "win32":
     os.makedirs(os.path.expanduser('~') + r'\PycharmProjects\PT_HaT_bot\logs', exist_ok=True)
     logging.basicConfig(level=logging.INFO, force=True, filename=os.path.expanduser('~') + r'\PycharmProjects\PT_HaT_bot\logs\bot.log',
