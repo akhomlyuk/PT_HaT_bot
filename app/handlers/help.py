@@ -4,6 +4,7 @@ from aiogram.filters.command import Command
 from app.texts.description import show_description
 import app.config.cfg as cfg
 import logging
+import random
 from icecream import ic
 
 router: Router = Router()
@@ -28,7 +29,8 @@ async def cmd_help(message: Message):
 
 @router.message(F.text == "!dice")
 async def cmd_dice(message: types.Message):
-    await message.answer_dice(emoji="🎯")
+    dices = ['🎲', '🎯', '🏀', '⚽', '🎳', '🎰']
+    await message.answer_dice(emoji=random.choice(dices))
 
 
 @router.message(F.text.in_(cfg.all_commands['help_cmds']))
