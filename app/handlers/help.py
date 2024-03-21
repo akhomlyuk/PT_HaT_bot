@@ -26,7 +26,7 @@ async def cmd_help(message: Message):
     await message.answer(show_description, disable_web_page_preview=True)
 
 
-@router.message(Command("dice"))
+@router.message(F.text("dice"))
 async def cmd_dice(message: types.Message):
     await message.answer_dice(emoji="🎯")
 
