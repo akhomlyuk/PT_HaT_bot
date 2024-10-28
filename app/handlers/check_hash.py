@@ -25,7 +25,7 @@ async def check_hash(message: Message):
         if len(msg) != 2:
             await message.answer(f'Пример:\n<code>!check_hash 12345678902dd833fc9db9d72e9483c5</code>')
         else:
-            await message.answer(f'{check_hash()}', disable_web_page_preview=True)
+            await message.answer(f'{check_hash(msg[1])}', disable_web_page_preview=True)
     except Exception as e:
         logging.warning(e)
         ic(e)
