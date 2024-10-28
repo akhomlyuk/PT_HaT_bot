@@ -11,7 +11,7 @@ all_commands = {'help_cmds': '!help', 'menu_cmds': '!menu', 'wiki_cmds': '!wiki'
                 'hash_alz_cmds': '!hash', 'b64decode_cmds': '!b64d', 'b64encode_cmds': '!b64e', 'hex2text_cmds': '!h2t',
                 'text2hex_cmds': '!t2h', 'gpt_cmds': '!gpt', 'links_cmds': '!links', 'ssti_cmds': '!ssti', 'topteams_cmds': '!top',
                 'socks5_cmds': '!socks5', 'socks4_cmds': '!socks4', 'proxy_cmds': '!http', 'proxies_cmds': '!proxies', 'qr_cmds': '!qr',
-                'bridges': '!bridges', 'feedback': '!feedback'
+                'bridges': '!bridges', 'feedback': '!feedback', 'check_hash': '!check_hash'
                 }
 
 admins = [539491282]
@@ -29,8 +29,10 @@ bot_commands = f'''
 🔎 <code>!whois</code> - Whois домена
 👁 <code>!rev</code> - Revshell
 🧨 <code>!ss</code> - Search Sploit
+🔍 <code>!poc</code> - Поиск PoC по CVE
 💉 <code>!sqli</code> - SQLi payloads
 🔨 <code>!ssti</code> - SSTI
+👁 <code>!brides</code> - Мосты (obfs4) для Tor
 🔍 <code>!port</code> - Проверить порт
 📄 <code>!dig</code> - Просмотр DNS записей
 🖌 <code>!b64e</code> <code>!b64d</code> - base64

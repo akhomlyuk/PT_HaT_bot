@@ -2,10 +2,10 @@ from aiogram import Router, F, types
 from aiogram.types import Message
 from aiogram.filters.command import Command
 from app.texts.description import show_description
-import app.config.cfg as cfg
+from app.config import cfg
+from icecream import ic
 import logging
 import random
-from icecream import ic
 
 router: Router = Router()
 

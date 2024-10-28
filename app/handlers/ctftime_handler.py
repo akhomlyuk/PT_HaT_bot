@@ -1,9 +1,9 @@
 from aiogram import Router, F
 from aiogram.types import Message
-import logging
-import app.config.cfg as cfg
+from app.config import cfg
 from icecream import ic
 from app.helpers.ctftime_parser import rht_info, rht_best_res
+import logging
 
 router: Router = Router()
 

@@ -1,7 +1,7 @@
 import requests
 import json
-from icecream import ic
 import logging
+from icecream import ic
 
 result_api_url = 'https://ctftime.org/api/v1/results/'
 event_info_api_url = 'https://ctftime.org/api/v1/events/'

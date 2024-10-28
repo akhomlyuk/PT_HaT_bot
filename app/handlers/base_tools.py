@@ -1,7 +1,7 @@
 from aiogram import Router, F
 from aiogram.types import Message
 import logging
-import app.config.cfg as cfg
+from app.config import cfg
 from icecream import ic
 import base64
 

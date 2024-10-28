@@ -2,7 +2,6 @@ from aiogram import Router, F
 from aiogram.types import Message, InlineKeyboardButton, CallbackQuery, URLInputFile
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 from aiogram import html
-import random as rand
 from app.config import cfg
 from app.config.cfg import bot
 from app.texts import revshells, description
@@ -10,6 +9,7 @@ from app.texts.sqli_examples import sqli_example
 from app.helpers.ctftime_parser import rht_info
 from app.handlers.ctftime_handler import rht_summary, top10_results
 from icecream import ic
+import random as rand
 
 router: Router = Router()
 
