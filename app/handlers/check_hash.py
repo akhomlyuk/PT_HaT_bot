@@ -13,6 +13,7 @@ def check_hash(hash_string: str):
         headers = {'Content-Type': 'application/json'}
         url = requests.get(f'https://weakpass.com/api/v1/search/{hash_string}.json', headers=headers)
         output = json.loads(url.text)
+        logging.warning(json.dumps(output, indent=2))
         return json.dumps(output, indent=2)
     except Exception as e:
         logging.warning(e)
@@ -21,6 +22,7 @@ def check_hash(hash_string: str):
 async def check_hash(message: Message):
     try:
         msg = message.text.split()
+        logging.warning(msg[1])
         if len(msg) != 2:
             await message.answer(f'Пример:\n<code>!check_hash 12345678902dd833fc9db9d72e9483c5</code>')
         else:
