@@ -1,5 +1,4 @@
 import requests
-from icecream import ic
 from aiogram import Router, F
 from aiogram.types import Message
 import logging
@@ -16,7 +15,7 @@ def check_hash(hash_string: str):
         output = json.loads(url.text)
         return json.dumps(output, indent=2)
     except Exception as e:
-        ic(e)
+        logging.warning(e)
 
 @router.message(F.text.in_(cfg.all_commands['check_hash']))
 async def check_hash(message: Message):
@@ -28,4 +27,3 @@ async def check_hash(message: Message):
             await message.answer(f'{check_hash(msg[1])}', disable_web_page_preview=True)
     except Exception as e:
         logging.warning(e)
-        ic(e)
