@@ -21,11 +21,6 @@ def check_hash_string(hash_string: str):
 async def check_hash(message: Message):
     try:
         msg = message.text.split()
-        if len(msg) == 1:
-            await message.answer(f'Пример:\n<code>!check_hash 12345678902dd833fc9db9d72e9483c5</code>')
-        if len(msg) == 2:
-            await message.answer(f'{check_hash_string(msg[1])}', disable_web_page_preview=True)
-        else:
-            await message.answer(f'Пример:\n<code>!check_hash 12345678902dd833fc9db9d72e9483c5</code>')
+        await message.answer(f'{check_hash_string(msg[1])}', disable_web_page_preview=True)
     except Exception as e:
         logging.warning(e)
