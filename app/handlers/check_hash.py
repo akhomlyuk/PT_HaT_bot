@@ -8,7 +8,7 @@ import json
 router: Router = Router()
 
 
-def check_hash(hash_string: str):
+def check_hash_string(hash_string: str):
     try:
         headers = {'Content-Type': 'application/json'}
         url = requests.get(f'https://weakpass.com/api/v1/search/{hash_string}.json', headers=headers)
@@ -24,7 +24,7 @@ async def check_hash(message: Message):
         if len(msg) == 1:
             await message.answer(f'Пример:\n<code>!check_hash 12345678902dd833fc9db9d72e9483c5</code>')
         if len(msg) == 2:
-            await message.answer(f'{check_hash(msg[1])}', disable_web_page_preview=True)
+            await message.answer(f'{check_hash_string(msg[1])}', disable_web_page_preview=True)
         else:
             await message.answer(f'Пример:\n<code>!check_hash 12345678902dd833fc9db9d72e9483c5</code>')
     except Exception as e:
