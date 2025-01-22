@@ -5,7 +5,7 @@ from aiogram import Dispatcher, types
 import app.config.cfg as cfg
 from app.handlers import (help, useful, wiki, base_tools, hex_tools, hash_tools_handler,
                           free_gpt, sqli_tools, ssti, searchsploit, check_port, whois_info, dig_query,
-                          ctftime_handler, block_users, socks_proxy, qr_generator, pocs, get_obfs4_tor_bridges, check_hash)
+                          block_users, socks_proxy, qr_generator, pocs, get_obfs4_tor_bridges, check_hash)
 from app.keyboards import kb_menu, kb_links
 from icecream import ic
 from sys import platform
