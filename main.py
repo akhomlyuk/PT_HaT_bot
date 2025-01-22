@@ -5,7 +5,7 @@ from aiogram import Dispatcher, types
 import app.config.cfg as cfg
 from app.handlers import (help, useful, wiki, base_tools, hex_tools, hash_tools_handler,
                           free_gpt, sqli_tools, ssti, searchsploit, check_port, whois_info, dig_query,
-                          block_users, socks_proxy, qr_generator, pocs, get_obfs4_tor_bridges, check_hash)
+                          block_users, qr_generator, pocs, get_obfs4_tor_bridges, check_hash)
 from app.keyboards import kb_menu, kb_links
 from icecream import ic
 from sys import platform
@@ -41,9 +41,7 @@ dp.include_router(searchsploit.router)
 dp.include_router(check_port.router)
 dp.include_router(whois_info.router)
 dp.include_router(dig_query.router)
-dp.include_router(ctftime_handler.router)
 dp.include_router(block_users.router)
-dp.include_router(socks_proxy.router)
 dp.include_router(qr_generator.router)
 dp.include_router(pocs.router)
 dp.include_router(get_obfs4_tor_bridges.router)
