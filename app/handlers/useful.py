@@ -167,7 +167,7 @@ async def new_members_handler(message: Message):
                                                        f'<b>message</b>\n<code>{json_data}</code>\n'
                                                        f'{await bot.get_chat(message.chat.id)}\n')
         new_member = message.new_chat_members[0]
-        await cfg.bot.send_message(message.chat.id, f"Добро пожаловать в <b>{message.chat.title}</b> 🖖, @{new_member.username} ! 🎩")
+        await cfg.bot.send_message(message.chat.id, f"Добро пожаловать в <b>{message.chat.title}</b> 🖖, @{new_member.username} !")
         await cfg.bot.send_message(message.chat.id, f"{cfg.bot_commands}")
         await cfg.bot.send_message(message.chat.id, f"Отправить вопрос/предложение/просьбу - @wh_feedback_bot")
     except Exception as e:
