@@ -19,7 +19,7 @@ rht_info = rht_info()
 async def menu_buttons(message: Message):
     try:
         builder = InlineKeyboardBuilder()
-        builder.add(InlineKeyboardButton(text="🎩 Pentest HaT", callback_data="pt_hat_channel"))
+        builder.add(InlineKeyboardButton(text="🔮 Whitehat Lab", callback_data="pt_hat_channel"))
         builder.add(InlineKeyboardButton(text="⚙️ Commands", callback_data="bot_commands"))
         # builder.add(InlineKeyboardButton(text="🚩 RHTeam", callback_data="rht_info"))
         # builder.add(InlineKeyboardButton(text="🏆 Лучшие результаты", callback_data="best_results"))
@@ -46,40 +46,40 @@ async def menu_buttons(message: Message):
         await message.answer(str(e))
 
 
-# Коллбеки для пунктов меню
-@router.callback_query(F.data == 'rht_info')
-async def send_rht_info(callback: CallbackQuery):
-    await callback.message.answer(f'{rht_summary}\n\nFrom: @{callback.from_user.username}')
-    await callback.answer()
-
-
-@router.callback_query(F.data == 'free_proxy')
-async def send_proxy_info(callback: CallbackQuery):
-    await callback.message.answer(f'{description.show_proxies_help}'
-                                  f'\n\nFrom: @{callback.from_user.username}')
-    await callback.answer()
-
-
-@router.callback_query(F.data == 'best_results')
-async def send_best_results(callback: CallbackQuery):
-    await callback.message.answer(f'<b>Лучшие результаты по рейтингу</b>\n\n{top10_results}\n\n'
-                                  f'🎯 Rating points: <b>{rht_info["rating"]["2024"]["rating_points"]}</b>'
-                                  f'\nFrom: @{callback.from_user.username}', disable_web_page_preview=True)
-    await callback.answer()
-
-
-@router.callback_query(F.data == 'top_ru')
-async def send_top_ru(callback: CallbackQuery):
-    top_ru = top_teams_ru()
-    top = '\n'.join(str(team) for team in top_ru)
-    await callback.message.answer(f'🇷🇺 <b>Топ команд России</b>: 🇷🇺\n\n{top}\n\nhttps://ctftime.org/stats/RU'
-                                  f'\n\nFrom: @{callback.from_user.username}', disable_web_page_preview=True)
-    await callback.answer()
+# # Коллбеки для пунктов меню
+# @router.callback_query(F.data == 'rht_info')
+# async def send_rht_info(callback: CallbackQuery):
+#     await callback.message.answer(f'{rht_summary}\n\nFrom: @{callback.from_user.username}')
+#     await callback.answer()
+#
+#
+# @router.callback_query(F.data == 'free_proxy')
+# async def send_proxy_info(callback: CallbackQuery):
+#     await callback.message.answer(f'{description.show_proxies_help}'
+#                                   f'\n\nFrom: @{callback.from_user.username}')
+#     await callback.answer()
+#
+#
+# @router.callback_query(F.data == 'best_results')
+# async def send_best_results(callback: CallbackQuery):
+#     await callback.message.answer(f'<b>Лучшие результаты по рейтингу</b>\n\n{top10_results}\n\n'
+#                                   f'🎯 Rating points: <b>{rht_info["rating"]["2024"]["rating_points"]}</b>'
+#                                   f'\nFrom: @{callback.from_user.username}', disable_web_page_preview=True)
+#     await callback.answer()
+#
+#
+# @router.callback_query(F.data == 'top_ru')
+# async def send_top_ru(callback: CallbackQuery):
+#     top_ru = top_teams_ru()
+#     top = '\n'.join(str(team) for team in top_ru)
+#     await callback.message.answer(f'🇷🇺 <b>Топ команд России</b>: 🇷🇺\n\n{top}\n\nhttps://ctftime.org/stats/RU'
+#                                   f'\n\nFrom: @{callback.from_user.username}', disable_web_page_preview=True)
+#     await callback.answer()
 
 
 @router.callback_query(F.data == 'pt_hat_channel')
 async def send_channel_link(callback: CallbackQuery):
-    await callback.message.answer(f'https://t.me/pt_soft '
+    await callback.message.answer(f'https://t.me/wh_lab '
                                   f'\n\nFrom: @{callback.from_user.username}')
     await callback.answer()
 
@@ -175,10 +175,10 @@ async def send_base_tools_description(callback: CallbackQuery):
     try:
         await callback.message.answer(f'''
 Пример:
-<code>!b64d UGVudGVzdCBIYVQ=</code>
+<code>!b64d V2hpdGVoYXQgTGFi</code>
 
 Пример:
-<code>!b64e Pentest Hacks and Tools</code>
+<code>!b64e Whitehat Lab</code>
 \n\nFrom: @{callback.from_user.username}''')
         await callback.answer()
     except Exception as e:

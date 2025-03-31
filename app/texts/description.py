@@ -1,12 +1,12 @@
-show_description = f'''Добро пожаловать в <b>Pentest Hacks and Tools 🎩</b>!
+show_description = f'''Добро пожаловать в <b>Whitehat Lab</b>!
 
 !menu, !cmds
 
-Канал: @pt_soft
-Группа: @pt_hat
-Бот обратной связи: @pt_feedback_bot
+Канал: @wh_lab
+Группа: @whitehat_chat
+Бот обратной связи: @wh_feedback_bot
 
-Coded with ❤️ on 🐍 and aiogram
+Coded with ❤️
 <b>Author</b>: @exited3n'''
 
 show_proxies_help = f'''<b>Справка по socks, http proxy</b>

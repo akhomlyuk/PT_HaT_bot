@@ -29,7 +29,7 @@ async def send_b64_decode(message: Message):
     try:
         msg = message.text.split()
         if len(msg) == 1:
-            await message.answer(f'Пример:\n<code>!b64d UGVudGVzdCBIYVQ=</code>')
+            await message.answer(f'Пример:\n<code>!b64d V2hpdGVoYXQgTGFi</code>')
         else:
             msg2 = message.text[6:]
             await message.answer(f'<code>{b64_decode(msg2)}</code>')
@@ -44,7 +44,7 @@ async def send_b64_encode(message: Message):
     try:
         msg = message.text.split()
         if len(msg) == 1:
-            await message.answer(f'Пример:\n<code>!b64e Pentest HaT</code>')
+            await message.answer(f'Пример:\n<code>!b64e Whitehat Lab</code>')
         else:
             msg2 = message.text[6:]
             await message.answer(f'<code>{b64_encode(msg2)}</code>')

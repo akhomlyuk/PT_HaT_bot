@@ -11,7 +11,7 @@ from icecream import ic
 from sys import platform
 
 # Author : Exited3n
-# https://t.me/pt_soft
+# https://t.me/wh_lab
 
 if platform == "win32":
     os.makedirs(os.path.expanduser('~') + r'\PycharmProjects\PT_HaT_bot\logs', exist_ok=True)
